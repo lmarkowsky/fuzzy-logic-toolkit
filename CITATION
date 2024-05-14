@@ -1,0 +1,30 @@
+To cite the fuzzy-logic-toolkit in publications, please use:
+
+    L. Markowsky and B. Segee. "The Octave Fuzzy Logic Toolkit," Proceedings of the 2011
+    IEEE International Workshop on Open-Source Software for Scientific Computation (OSSC-2011),
+    pp. 118-125, October 2011.
+
+    L. Markowsky and B. Segee. "Unsupervised Clustering With the Octave Fuzzy Logic Toolkit,"
+    Proceedings of the 2013 IEEE 10th International Conference on Fuzzy Systems and Knowledge
+    Discovery (FSKD-2013), pp. 207-212, July 2013.
+
+The BibTex entries for LaTex users:
+
+  @inproceedings{octavefuzzy01,
+    author = "L. Markowsky and B. Segee",
+    title = {{The Octave Fuzzy Logic Toolkit}},
+    booktitle = "Proceedings of the 2011 IEEE International Workshop on Open-Source Software for Scientific Computation",
+    month = "October",
+    year = 2011,
+    pages = {118--125}
+  }
+
+  @inproceedings{octavefuzzy02,
+    author = "L. Markowsky and B. Segee",
+    title = {{Unsupervised Clustering With the Octave Fuzzy Logic Toolkit}},
+    booktitle = "Proceedings of the 2013 IEEE 10th International Conference on Fuzzy Systems and Knowledge Discovery",
+    month = "July",
+    year = 2013,
+    pages = {207--212}
+  }
+ 
