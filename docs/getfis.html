@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Octave Fuzzy Logic Toolkit: getfis</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <style>
+    var {
+      font-style: italics;
+      font-weight: bold;
+    }
+    td {
+      vertical-align: top;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="bg-dark">
+      <div class="container-xl">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href=index.html>
+              <img src="assets/fuzzy-logic-toolkit.png" alt="fuzzy-logic-toolkit" class="d-inline-block align-top" width="25" height="25">
+              Octave Fuzzy Logic Toolkit
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html#Text Representation of Fuzzy Inference Systems">
+                    <i class="fas fa-list-alt"></i>
+                    Text Representation of Fuzzy Inference Systems
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://gnu-octave.github.io/packages/">
+                  <img src="assets/octave-logo.svg" alt="GNU Octave logo" class="d-inline-block align-top" width="25" height="25">
+                    Octave Packages
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.octave.org">
+                    <i class="fas fa-home"></i>
+                    GNU Octave website
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container-xl my-4">
+      <div class="card rounded">
+        <div class="card-header card-header-mod">
+          <div class="row d-flex flex-wrap align-items-center">
+            <div class="col-sm-3 col-md-5 mb-2 mb-sm-0">
+              <h3 class="d-inline-block mr-2">
+              Function&nbsp;Reference: <b><code>getfis</code></b>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+<dl>
+<dt><u>Function File:</u> <var>retval</var> = <b>getfis</b><i> (<var>fis</var>)</i></dt>
+<dt><u>Function File:</u> <var>retval</var> = <b>getfis</b><i> (<var>fis</var>, <var>property</var>)</i></dt>
+<dt><u>Function File:</u> <var>retval</var> = <b>getfis</b><i> (<var>fis</var>, <var>in_or_out</var>, <var>var_index</var>)</i></dt>
+<dt><u>Function File:</u> <var>retval</var> = <b>getfis</b><i> (<var>fis</var>, <var>in_or_out</var>, <var>var_index</var>, <var>var_property</var>)</i></dt>
+<dt><u>Function File:</u> <var>retval</var> = <b>getfis</b><i> (<var>fis</var>, <var>in_or_out</var>, <var>var_index</var>, <var>mf</var>, <var>mf_index</var>)</i></dt>
+<dt><u>Function File:</u> <var>retval</var> = <b>getfis</b><i> (<var>fis</var>, <var>in_or_out</var>, <var>var_index</var>, <var>mf</var>, <var>mf_index</var>, <var>mf_property</var>)</i></dt>
+</dl>
+
+<p> Return or print the property (field) values of an FIS structure
+ specified by the arguments. There are six forms of getfis:
+</p>
+<div class="ms-5">
+ <dl compact="compact">
+<dt> # Arguments</dt>
+</dl>
+<p> Action Taken
+ </p></dd>
+<dt> 1</dt>
+</dl>
+<p> Print (some) properties of an FIS structure on standard output.
+ Return the empty set.
+ </p></dd>
+<dt> 2</dt>
+</dl>
+<p> Return a specified property of the FIS structure. The properties
+ that may be specified are: name, type, version, numinputs, numoutputs,
+ numinputmfs, numoutputmfs, numrules, andmethod, ormethod,
+ impmethod, addmethod, defuzzmethod, inlabels, outlabels,
+ inrange, outrange, inmfs, outmfs, inmflabels, outmflabels,
+ inmftypes, outmftypes, inmfparams, outmfparams, and rulelist.
+ </p></dd>
+<dt> 3</dt>
+</dl>
+<p> Print the properties of a specified input or output variable
+ of the FIS structure. Return the empty set.
+ </p></dd>
+<dt> 4</dt>
+</dl>
+<p> Return a specified property of an input or output variable.
+ The properties that may be specified are: name, range, nummfs,
+ and mflabels.
+ </p></dd>
+<dt> 5</dt>
+</dl>
+<p> Print the properties of a specified membership function of the
+ FIS structure. Return the empty set.
+ </p></dd>
+<dt> 6</dt>
+</dl>
+<p> Return a specified property of a membership function. The
+ properties that may be specified are: name, type, and params.
+ </p></dd>
+</dl>
+
+<p> The types of the arguments are expected to be:
+ </p><dl compact="compact">
+<dt> <var>fis</var></dt>
+</dl>
+<p> an FIS structure
+ </p></dd>
+<dt> <var>property</var></dt>
+</dl>
+<p> a string; one of: &rsquo;name&rsquo;, &rsquo;type&rsquo;, &rsquo;version&rsquo;, &rsquo;numinputs&rsquo;,
+ &rsquo;numoutputs&rsquo;, &rsquo;numinputmfs&rsquo;, &rsquo;numoutputmfs&rsquo;,
+ &rsquo;numrules&rsquo;, &rsquo;andmethod&rsquo;, &rsquo;ormethod&rsquo;, &rsquo;impmethod&rsquo;,
+ &rsquo;addmethod&rsquo;, &rsquo;defuzzmethod&rsquo; &rsquo;inlabels&rsquo;, &rsquo;outlabels&rsquo;,
+ &rsquo;inrange&rsquo;, &rsquo;outrange&rsquo;, &rsquo;inmfs&rsquo;, &rsquo;outmfs&rsquo;,
+ &rsquo;inmflabels&rsquo;, &rsquo;outmflabels&rsquo;, &rsquo;inmftypes&rsquo;,
+ &rsquo;outmftypes&rsquo;, &rsquo;inmfparams&rsquo;, &rsquo;outmfparams&rsquo;, and
+ &rsquo;rulelist&rsquo; (case-insensitive)
+ </p></dd>
+<dt> <var>in_or_out</var></dt>
+</dl>
+<p> either &rsquo;input&rsquo; or &rsquo;output&rsquo; (case-insensitive)
+ </p></dd>
+<dt> <var>var_index</var></dt>
+</dl>
+<p> a valid integer index of an input or output FIS variable
+ </p></dd>
+<dt> <var>var_property</var></dt>
+</dl>
+<p> a string; one of: &rsquo;name&rsquo;, &rsquo;range&rsquo;, &rsquo;nummfs&rsquo;, and &rsquo;mflabels&rsquo;
+ </p></dd>
+<dt> <var>mf</var></dt>
+</dl>
+<p> the string &rsquo;mf&rsquo;
+ </p></dd>
+<dt> <var>mf_index</var></dt>
+</dl>
+<p> a valid integer index of a membership function 
+ </p></dd>
+<dt> <var>mf_property</var></dt>
+</dl>
+<p> a string; one of &rsquo;name&rsquo;, &rsquo;type&rsquo;, or &rsquo;params&rsquo;
+ </p></dd>
+</dl>
+
+ <p> Note that all of the strings representing properties above are case
+ insensitive.
+</p>
+<p> <strong>See also: </strong>
+  <a href="setfis.html">setfis</a>, 
+  <a href="showfis.html">showfis</a>
+</p>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
