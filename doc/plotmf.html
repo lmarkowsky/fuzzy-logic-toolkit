@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Octave Fuzzy Logic Toolkit: plotmf</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <style>
+    var {
+      font-style: italics;
+      font-weight: bold;
+    }
+    td {
+      vertical-align: top;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="bg-dark">
+      <div class="container-xl">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href=index.html>
+              <img src="assets/fuzzy-logic-toolkit.png" alt="fuzzy-logic-toolkit" class="d-inline-block align-top" width="25" height="25">
+              Octave Fuzzy Logic Toolkit
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html#Plotting">
+                    <i class="fas fa-list-alt"></i>
+                    Plotting
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://gnu-octave.github.io/packages/">
+                  <img src="assets/octave-logo.svg" alt="GNU Octave logo" class="d-inline-block align-top" width="25" height="25">
+                    Octave Packages
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.octave.org">
+                    <i class="fas fa-home"></i>
+                    GNU Octave website
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container-xl my-4">
+      <div class="card rounded">
+        <div class="card-header card-header-mod">
+          <div class="row d-flex flex-wrap align-items-center">
+            <div class="col-sm-3 col-md-5 mb-2 mb-sm-0">
+              <h3 class="d-inline-block mr-2">
+              Function&nbsp;Reference: <b><code>plotmf</code></b>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+<dl>
+<dt><u>Function File:</u> <b>plotmf</b><i> (<var>fis</var>, <var>in_or_out</var>, <var>var_index</var>)</i></dt>
+<dt><u>Function File:</u> <b>plotmf</b><i> (<var>fis</var>, <var>in_or_out</var>, <var>var_index</var>, <var>y_lower_limit</var>)</i></dt>
+<dt><u>Function File:</u> <b>plotmf</b><i> (<var>fis</var>, <var>in_or_out</var>, <var>var_index</var>, <var>y_lower_limit</var>, <var>y_upper_limit</var>)</i></dt>
+</dl>
+
+<p> Plot the membership functions defined for the specified FIS input or output
+ variable on a single set of axes. Fuzzy output membership functions are
+ represented by the [0, 1]-valued fuzzy functions, and constant output
+ membership functions are represented by unit-valued singleton spikes.
+ Linear output membership functions, however, are represented by
+ two-dimensional lines y = ax + c, regardless of how many dimensions the
+ linear function is defined to have. In effect, all of the other dimensions
+ of the linear function are set to 0.
+</p>
+<div class="ms-5">
+<p> If both constant and linear membership functions are used for a single FIS
+ output, then two sets of axes are used: one for the constant membership
+ functions, and another for the linear membership functions. To plot both
+ constant and linear membership functions together, or to plot constant
+ membership functions as horizontal lines instead of unit-valued spikes,
+ represent the constant membership functions using &rsquo;linear&rsquo; functions, with
+ 0 for all except the last parameter, and with the desired constant value as
+ the last parameter.
+</p>
+<p> The types of the arguments are expected to be:
+ </p><ul>
+<li>
+ <var>fis</var> - an FIS structure
+ </li><li>
+ <var>in_or_out</var> - either &rsquo;input&rsquo; or &rsquo;output&rsquo; (case-insensitive)
+ </li><li>
+ <var>var_index</var> - an FIS input or output variable index
+ </li><li>
+ <var>y_lower_limit</var> - a real scalar (default value = -0.1)
+ </li><li>
+ <var>y_upper_limit</var> - a real scalar (default value = 1.1)
+ </li></ul>
+
+<p> Six examples that use plotmf are:
+ </p><ul>
+<li>
+ cubic_approx_demo.m
+ </li><li>
+ heart_disease_demo_1.m
+ </li><li>
+ heart_disease_demo_2.m
+ </li><li>
+ investment_portfolio_demo.m
+ </li><li>
+ linear_tip_demo.m
+ </li><li>
+ mamdani_tip_demo.m
+ </li><li>
+ sugeno_tip_demo.m
+ </li></ul>
+
+<p> <strong>See also: </strong>
+  <a href="gensurf.html">gensurf</a>
+</p>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Octave Fuzzy Logic Toolkit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <style>
+    var {
+      font-style: italics;
+      font-weight: bold;
+    }
+    td {
+      vertical-align: top;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="bg-dark">
+      <div class="container-xl">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href=https://gnu-octave.github.io/packages/fuzzy-logic-toolkit>
+              <img src="assets/fuzzy-logic-toolkit.png" alt="fuzzy-logic-toolkit" class="d-inline-block align-top" width="25" height="25">
+              Octave Fuzzy Logic Toolkit
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="https://gnu-octave.github.io/packages/">
+                  <img src="assets/octave-logo.svg" alt="GNU Octave logo" class="d-inline-block align-top" width="25" height="25">
+                    Octave Packages
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.octave.org">
+                    <i class="fas fa-home"></i>
+                    GNU Octave website
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container-xl my-4">
+      <div class="card rounded">
+        <div class="card-header card-header-mod">
+          <div class="row d-flex flex-wrap align-items-center">
+            <div class="col-sm-3 col-md-2 mb-2 mb-sm-0">
+              <img src="assets/fuzzy-logic-toolkit.png" class="d-block m-auto" alt="fuzzy-logic-toolkit">
+            </div>
+            <div class="col-sm-9 col-md-10">
+              <h3 class="d-inline-block mr-2">fuzzy-logic-toolkit</h3>
+              <b>0.5.1&nbsp;2024-05-16</b>
+              <p class="indent">
+                A mostly MATLAB-compatible fuzzy logic toolkit for Octave.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+           <p>Select Category:
+             <select name="cat" onchange="location = this.options[this.selectedIndex].value;">
+             <option value="#Evaluation">Evaluation</option>
+             <option value="#Plotting">Plotting</option>
+             <option value="#File Input/Output of Fuzzy Inference Systems">File Input/Output of Fuzzy Inference Systems</option>
+             <option value="#Command-Line Creation and Modification of Fuzzy Inference Systems">Command-Line Creation and Modification of Fuzzy Inference Systems</option>
+             <option value="#Text Representation of Fuzzy Inference Systems">Text Representation of Fuzzy Inference Systems</option>
+             <option value="#Membership Functions">Membership Functions</option>
+             <option value="#T-Norms and S-Norms (in addition to max/min)">T-Norms and S-Norms (in addition to max/min)</option>
+             <option value="#Complete Fuzzy Inference System Demos">Complete Fuzzy Inference System Demos</option>
+             <option value="#Fuzzy Clustering Functions">Fuzzy Clustering Functions</option>
+             </select>
+           <p>
+
+           <h3 class="category">
+             <a name="Evaluation">Evaluation</a>
+           </h3>
+           <table class="table table-striped">
+             <tbody>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="defuzz.html">defuzz</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain, set of fuzzy function values, and defuzzification
+method, return the defuzzified (crisp) value of the fuzzy function.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="evalfis.html">evalfis</a>
+                   </code></b>
+                 </td>
+                 <td>Return the crisp output(s) of an FIS for each row in a matrix of crisp
+input values.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="evalmf.html">evalmf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain, set of parameters, membership function type, and
+optional hedge and not_flag, return the corresponding y-values for the
+membership function.</td>
+               </tr>
+             </tbody>
+           </table>
+           <h3 class="category">
+             <a name="Plotting">Plotting</a>
+           </h3>
+           <table class="table table-striped">
+             <tbody>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="gensurf.html">gensurf</a>
+                   </code></b>
+                 </td>
+                 <td>Generate and plot a surface (or 2-dimensional curve) showing one FIS
+output as a function of two (or one) of the FIS inputs.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="plotmf.html">plotmf</a>
+                   </code></b>
+                 </td>
+                 <td>Plot the membership functions defined for the specified FIS input or
+output variable on a single set of axes.</td>
+               </tr>
+             </tbody>
+           </table>
+           <h3 class="category">
+             <a name="File Input/Output of Fuzzy Inference Systems">File Input/Output of Fuzzy Inference Systems</a>
+           </h3>
+           <table class="table table-striped">
+             <tbody>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="readfis.html">readfis</a>
+                   </code></b>
+                 </td>
+                 <td>Read the information in an FIS file, and using this information, create
+and return an FIS structure.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="writefis.html">writefis</a>
+                   </code></b>
+                 </td>
+                 <td>Save the specified FIS currently in the Octave workspace to a file named
+by the user.</td>
+               </tr>
+             </tbody>
+           </table>
+           <h3 class="category">
+             <a name="Command-Line Creation and Modification of Fuzzy Inference Systems">Command-Line Creation and Modification of Fuzzy Inference Systems</a>
+           </h3>
+           <table class="table table-striped">
+             <tbody>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="addmf.html">addmf</a>
+                   </code></b>
+                 </td>
+                 <td>Add a membership function to an existing FIS structure and return the
+updated FIS.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="addrule.html">addrule</a>
+                   </code></b>
+                 </td>
+                 <td>Add a list of rules to an existing FIS structure and return the updated
+FIS.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="addvar.html">addvar</a>
+                   </code></b>
+                 </td>
+                 <td>Add an input or output variable to an existing FIS structure and return
+the updated FIS.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="newfis.html">newfis</a>
+                   </code></b>
+                 </td>
+                 <td>Create and return a new FIS structure using the argument values
+provided.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="rmmf.html">rmmf</a>
+                   </code></b>
+                 </td>
+                 <td>Remove a membership function from an existing FIS structure and return
+the updated FIS.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="rmvar.html">rmvar</a>
+                   </code></b>
+                 </td>
+                 <td>Remove an input or output variable from an existing FIS structure and
+return the updated FIS.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="setfis.html">setfis</a>
+                   </code></b>
+                 </td>
+                 <td>Set a property (field) value of an FIS structure and return the updated
+FIS.</td>
+               </tr>
+             </tbody>
+           </table>
+           <h3 class="category">
+             <a name="Text Representation of Fuzzy Inference Systems">Text Representation of Fuzzy Inference Systems</a>
+           </h3>
+           <table class="table table-striped">
+             <tbody>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="getfis.html">getfis</a>
+                   </code></b>
+                 </td>
+                 <td>Return or print the property (field) values of an FIS structure
+specified by the arguments.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="showfis.html">showfis</a>
+                   </code></b>
+                 </td>
+                 <td>Print all of the property (field) values of the FIS structure and its
+substructures.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="showrule.html">showrule</a>
+                   </code></b>
+                 </td>
+                 <td>Show the rules for an FIS structure in verbose, symbolic, or indexed
+format.</td>
+               </tr>
+             </tbody>
+           </table>
+           <h3 class="category">
+             <a name="Membership Functions">Membership Functions</a>
+           </h3>
+           <table class="table table-striped">
+             <tbody>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="dsigmf.html">dsigmf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [A1 C1 A2 C2]), return
+the corresponding Y values for the difference between two sigmoidal
+membership functions.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="gauss2mf.html">gauss2mf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [SIG1 C1 SIG2 C2]),
+return the corresponding Y values for the two-sided Gaussian composite
+membership function.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="gaussmf.html">gaussmf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [SIG C]), return the
+corresponding Y values for the Gaussian membership function.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="gbellmf.html">gbellmf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [A B C]), return the
+corresponding Y values for the generalized bell-shaped membership
+function.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="pimf.html">pimf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [A B C D]), return the
+corresponding Y values for the pi-shaped membership function.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="psigmf.html">psigmf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [A1 C1 A2 C2]), return
+the corresponding Y values for the product of two sigmoidal membership
+functions.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="sigmf.html">sigmf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [A C]), return the
+corresponding Y values for the sigmoidal membership function.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="smf.html">smf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [A B]), return the
+corresponding Y values for the S-shaped membership function.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="trapmf.html">trapmf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [A B C D]), return the
+corresponding Y values for the trapezoidal membership function.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="trimf.html">trimf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [A B C]), return the
+corresponding Y values for the triangular membership function.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="zmf.html">zmf</a>
+                   </code></b>
+                 </td>
+                 <td>For a given domain X and parameters PARAMS (or [A B]), return the
+corresponding Y values for the Z-shaped membership function.</td>
+               </tr>
+             </tbody>
+           </table>
+           <h3 class="category">
+             <a name="T-Norms and S-Norms (in addition to max/min)">T-Norms and S-Norms (in addition to max/min)</a>
+           </h3>
+           <table class="table table-striped">
+             <tbody>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="algebraic_product.html">algebraic_product</a>
+                   </code></b>
+                 </td>
+                 <td>Return the algebraic product of the input.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="algebraic_sum.html">algebraic_sum</a>
+                   </code></b>
+                 </td>
+                 <td>Return the algebraic sum of the input.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="bounded_difference.html">bounded_difference</a>
+                   </code></b>
+                 </td>
+                 <td>Return the bounded difference of the input.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="bounded_sum.html">bounded_sum</a>
+                   </code></b>
+                 </td>
+                 <td>Return the bounded sum of the input.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="drastic_product.html">drastic_product</a>
+                   </code></b>
+                 </td>
+                 <td>Return the drastic product of the input.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="drastic_sum.html">drastic_sum</a>
+                   </code></b>
+                 </td>
+                 <td>Return the drastic sum of the input.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="einstein_product.html">einstein_product</a>
+                   </code></b>
+                 </td>
+                 <td>Return the Einstein product of the input.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="einstein_sum.html">einstein_sum</a>
+                   </code></b>
+                 </td>
+                 <td>Return the Einstein sum of the input.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="hamacher_product.html">hamacher_product</a>
+                   </code></b>
+                 </td>
+                 <td>Return the Hamacher product of the input.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="hamacher_sum.html">hamacher_sum</a>
+                   </code></b>
+                 </td>
+                 <td>Return the Hamacher sum of the input.</td>
+               </tr>
+             </tbody>
+           </table>
+           <h3 class="category">
+             <a name="Complete Fuzzy Inference System Demos">Complete Fuzzy Inference System Demos</a>
+           </h3>
+           <table class="table table-striped">
+             <tbody>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="cubic_approx_demo.html">cubic_approx_demo</a>
+                   </code></b>
+                 </td>
+                 <td>Demonstrate the use of the Octave Fuzzy Logic Toolkit to approximate a
+non-linear function using a Sugeno-type FIS with linear output
+functions.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="heart_disease_demo_1.html">heart_disease_demo_1</a>
+                   </code></b>
+                 </td>
+                 <td>Demonstrate the use of newfis, addvar, addmf, addrule, and evalfis to
+build and evaluate an FIS.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="heart_disease_demo_2.html">heart_disease_demo_2</a>
+                   </code></b>
+                 </td>
+                 <td>Demonstrate the use of the Octave Fuzzy Logic Toolkit to read and
+evaluate a Sugeno-type FIS stored in a file.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="investment_portfolio_demo.html">investment_portfolio_demo</a>
+                   </code></b>
+                 </td>
+                 <td>Demonstrate the use of the Octave Fuzzy Logic Toolkit to read and
+evaluate a Mamdani-type FIS stored in a file.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="linear_tip_demo.html">linear_tip_demo</a>
+                   </code></b>
+                 </td>
+                 <td>Demonstrate the use of linear output membership functions to simulate
+constant membership functions.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="mamdani_tip_demo.html">mamdani_tip_demo</a>
+                   </code></b>
+                 </td>
+                 <td>Demonstrate the use of the Octave Fuzzy Logic Toolkit to read and
+evaluate a Mamdani-type FIS stored in a file.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="sugeno_tip_demo.html">sugeno_tip_demo</a>
+                   </code></b>
+                 </td>
+                 <td>Demonstrate the use of the Octave Fuzzy Logic Toolkit to read and
+evaluate a Sugeno-type FIS with multiple outputs stored in a text file.</td>
+               </tr>
+             </tbody>
+           </table>
+           <h3 class="category">
+             <a name="Fuzzy Clustering Functions">Fuzzy Clustering Functions</a>
+           </h3>
+           <table class="table table-striped">
+             <tbody>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="fcm.html">fcm</a>
+                   </code></b>
+                 </td>
+                 <td>Using the Fuzzy C-Means algorithm, calculate and return the soft
+partition of a set of unlabeled data points.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="gustafson_kessel.html">gustafson_kessel</a>
+                   </code></b>
+                 </td>
+                 <td>Using the Gustafson-Kessel algorithm, calculate and return the soft
+partition of a set of unlabeled data points.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="partition_coeff.html">partition_coeff</a>
+                   </code></b>
+                 </td>
+                 <td>Return the partition coefficient for a given soft partition.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="partition_entropy.html">partition_entropy</a>
+                   </code></b>
+                 </td>
+                 <td>Return the partition entropy for a given soft partition.</td>
+               </tr>
+               <tr>
+                 <td>
+                   <b><code>
+                   <a href="xie_beni_index.html">xie_beni_index</a>
+                   </code></b>
+                 </td>
+                 <td>Return the Xie-Beni validity index for a given soft partition.</td>
+               </tr>
+             </tbody>
+           </table>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
