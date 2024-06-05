@@ -24,9 +24,9 @@
 ## Examples:
 ## @example
 ## @group
-## is_row_vector([])         ==> 0
-## is_row_vector([1 2 3])    ==> 1
-## is_row_vector([1; 2; 3])  ==> 0
+## is_row_vector([])         ==> false
+## is_row_vector([1 2 3])    ==> true
+## is_row_vector([1; 2; 3])  ==> false
 ## @end group
 ## @end example
 ##
@@ -36,10 +36,15 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_row_vector.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 24 May 2024
 
 function y = is_row_vector (x)
 
   y = isvector (x) && (rows (x) == 1);
 
 endfunction
+
+## Tests corresponding to examples in the comment at the top of this file.
+%!assert(is_row_vector([]), false)
+%!assert(is_row_vector([1 2 3]), true)
+%!assert(is_row_vector([1; 2; 3]), false)

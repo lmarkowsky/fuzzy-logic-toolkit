@@ -26,14 +26,14 @@
 ## Examples:
 ## @example
 ## @group
-## is_real(6)         ==> 1
-## is_real(6.2)       ==> 1
-## is_real(ones(2))   ==> 0
-## is_real(6 + 0i)    ==> 1
-## is_real(6 + i)     ==> 0
-## is_real([0])       ==> 1
-## is_real([0 0])     ==> 0
-## is_real('h')       ==> 0
+## is_real(6)         ==> true
+## is_real(6.2)       ==> true
+## is_real(ones(2))   ==> false
+## is_real(6 + 0i)    ==> true
+## is_real(6 + i)     ==> false
+## is_real([0])       ==> true
+## is_real([0 0])     ==> false
+## is_real('h')       ==> false
 ## @end group
 ## @end example
 ##
@@ -43,10 +43,20 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_real.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 24 May 2024
 
 function y = is_real (x)
 
   y = isnumeric(x) && isscalar (x) && isreal (x);
 
 endfunction
+
+## Tests corresponding to examples in the comment at the top of this file.
+%!assert(is_real(6), true)
+%!assert(is_real(6.2), true)
+%!assert(is_real(ones(2)), false)
+%!assert(is_real(6 + 0i), true)
+%!assert(is_real(6 + i), false)
+%!assert(is_real([0]), true)
+%!assert(is_real([0 0]), false)
+%!assert(is_real('h'), false)

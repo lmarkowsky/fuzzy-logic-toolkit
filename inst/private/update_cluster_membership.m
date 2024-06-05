@@ -25,11 +25,11 @@
 ##
 ## @end deftypefn
 
-## Author:        L. Markowsky
+## Authors:       Tony Trew, L. Markowsky
 ## Keywords:      fuzzy-logic-toolkit fuzzy partition clustering
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      update_cluster_membership.m
-## Last-Modified: 15 Mar 2022
+## Last-Modified: 5 Jun 2024
 
 ##----------------------------------------------------------------------
 ## Note:     This function is an implementation of Equation 13.4 in
@@ -63,24 +63,21 @@ function Mu = update_cluster_membership (V, X, m, k, n, sqr_dist)
 
 endfunction
 
-## Test the vectorized version of this function (above) by comparing its
-## output with the output of the previous, nested-for-loop version (below).
-##
-## The test is run 100 times (but is reported by the Octave interpreter as
-## "1 test"). In each of the 100 test runs, the vectorized and loop versions
-## of the function are called using randomly generated matrices X, V.
-##
-## The sizes of X and V, however, aren't random: X has 100 rows, 8 cols,
-## and V has 5 rows, 8 cols. That is, the entries in X and V are random
-## values in the range [0, 1], but the sizes of X and V are hard-coded.
-##
-## The test is passed if all entries of the two results differ by less than
-## a tolerance of 10e-9 in all 100 test runs.
-
 %!test
-%!  ## Previous (slow but simple, nested-for-loop) version of the function,
-%!  ## saved for testing the new version (more efficient, without loops).
-%!
+%!  ## Test the vectorized version of this function (above) by comparing its
+%!  ## output with the output of the previous, nested-for-loop version (below).
+%!  ##
+%!  ## The test is run 100 times (but is reported by the Octave interpreter as
+%!  ## "1 test"). In each of the 100 test runs, the vectorized and loop versions
+%!  ## of the function are called using randomly generated matrices X, V.
+%!  ##
+%!  ## The sizes of X and V, however, aren't random: X has 100 rows, 8 cols,
+%!  ## and V has 5 rows, 8 cols. That is, the entries in X and V are random
+%!  ## values in the range [0, 1], but the sizes of X and V are hard-coded.
+%!  ##
+%!  ## The test is passed if all entries of the two results differ by less than
+%!  ## a tolerance of 10e-9 in all 100 test runs.
+%!  
 %!  function Mu = update_cluster_membership_using_for_loops (V, X, m, k, n, sqr_dist)
 %!
 %!    Mu = zeros (k, n);

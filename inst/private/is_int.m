@@ -28,11 +28,11 @@
 ## Examples:
 ## @example
 ## @group
-## is_int(6)         ==> 1
-## is_int(6.2)       ==> 0
-## is_int(ones(2))   ==> 0
-## is_int(6 + 0i)    ==> 1
-## is_int(0)         ==> 1
+## is_int(6)         ==> true
+## is_int(6.2)       ==> false
+## is_int(ones(2))   ==> false
+## is_int(6 + 0i)    ==> true
+## is_int(0)         ==> true
 ## @end group
 ## @end example
 ##
@@ -42,10 +42,17 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_int.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 24 May 2024
 
 function y = is_int (x)
 
   y = isscalar (x) && isreal (x) && (fix (x) == x);
 
 endfunction
+
+## Tests corresponding to examples in the comment at the top of this file.
+%!assert(is_int(6), true)
+%!assert(is_int(6.2), false)
+%!assert(is_int(ones(2)), false)
+%!assert(is_int(6 + 0i), true)
+%!assert(is_int(0), true)

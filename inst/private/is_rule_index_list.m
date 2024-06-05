@@ -41,7 +41,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_rule_index_list.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 24 May 2024
 
 function y = is_rule_index_list (x, max_index)
 

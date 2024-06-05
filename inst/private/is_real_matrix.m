@@ -25,8 +25,8 @@
 ## Examples:
 ## @example
 ## @group
-## is_real_matrix(6)            ==> 0
-## is_real_matrix([])           ==> 0
+## is_real_matrix(6)            ==> 1
+## is_real_matrix([])           ==> 1
 ## is_real_matrix([1 2; 3 4])   ==> 1
 ## is_real_matrix([1 2 3])      ==> 1
 ## is_real_matrix([i 2 3])      ==> 0
@@ -40,7 +40,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_real_matrix.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 24 May 2024
 
 function y = is_real_matrix (x)
 
@@ -56,3 +56,11 @@ function y = is_real_matrix (x)
   endif
 
 endfunction
+
+## Tests corresponding to examples in the comment at the top of this file.
+%!assert(is_real_matrix(6), 1)
+%!assert(is_real_matrix([]), 1)
+%!assert(is_real_matrix([1 2; 3 4]), 1)
+%!assert(is_real_matrix([1 2 3]), 1)
+%!assert(is_real_matrix([i 2 3]), 0)
+%!assert(is_real_matrix("hello"), 0)
