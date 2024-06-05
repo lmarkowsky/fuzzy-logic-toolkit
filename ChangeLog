@@ -1,3 +1,18 @@
+2024-06-05 L. Markowsky <lmarkowsky@gmail.com>
+
+  * Version 0.6.0 released.
+  * ChangeLog: Updated file.
+  * DESCRIPTION: Updated file.
+  * NEWS: Updated file.
+  * inst/*.m and inst/private/*.m: Added many built-in self tests,
+      simplified error messages, and made minor improvements to comments.
+  * inst/private/square_distance_matrix.m and inst/private/update_cluster_membership.m:
+      Reimplemented the two private functions. Tested for identical results
+      with previous implementation using an embedded test in each file.
+  * doc/fuzzy-logic-toolkit.png: New image for the top of docs/index.html.
+  * docs/*.html: New directory containing html documentation for each
+      top-level function.
+
 2024-05-16 L. Markowsky <lmarkowsky@gmail.com>
 
   * Version 0.5.1 released.
