@@ -80,7 +80,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      setfis.m
-## Last-Modified: 1 Jul 2014
+## Last-Modified: 2 Jun 2024
 
 ##----------------------------------------------------------------------
 
@@ -93,7 +93,6 @@ function fis = setfis (fis, arg2, arg3, arg4 = 'dummy', ...
     case 7  fis = setfis_seven_args (fis, arg2, arg3, arg4, arg5, ...
                                      arg6, arg7);
     otherwise
-            puts ("Type 'help setfis' for more information.\n");
             error ("setfis requires 3, 5, or 7 arguments\n");
   endswitch
 
@@ -111,18 +110,14 @@ function fis = setfis_three_args (fis, arg2, arg3)
   ## message and halt.
 
   if (!is_fis (fis))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's first argument must be an FIS structure\n");
   elseif (!(is_string (arg2) && ismember (tolower (arg2), ...
           {'name', 'type', 'andmethod', 'ormethod', 'impmethod', ...
            'aggmethod', 'defuzzmethod', 'version'})))
-    puts ("Type 'help setfis' for more information.\n");
     error ("incorrect second argument to setfis\n");
   elseif (strcmp(tolower (arg2), 'version') && !is_real (arg3))
-    puts ("Type 'help setfis' for more information.\n");
     error ("the third argument to setfis must be a number\n");
   elseif (!strcmp(tolower (arg2), 'version') && !is_string (arg3))
-    puts ("Type 'help setfis' for more information.\n");
     error ("the third argument to setfis must be a string\n");
   endif
 
@@ -153,24 +148,18 @@ function fis = setfis_five_args (fis, arg2, arg3, arg4, arg5)
   ## message and halt.
 
   if (!is_fis (fis))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's first argument must be an FIS structure\n");
   elseif (!(is_string (arg2) && ...
             ismember (tolower (arg2), {'input','output'})))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's second argument must be 'input' or 'output'\n");
   elseif (!is_var_index (fis, arg2, arg3))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's third argument must be a variable index\n");
   elseif (!(is_string (arg4) && ...
             ismember (tolower (arg4), {'name', 'range'})))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's fourth argument must be 'name' or 'range'\n");
   elseif (strcmp (arg4, 'name') && !is_string (arg5))
-    puts ("Type 'help setfis' for more information.\n");
     error ("incorrect fifth argument to setfis\n");
   elseif (strcmp (arg4, 'range') && !is_real_matrix (arg5))
-    puts ("Type 'help setfis' for more information.\n");
     error ("incorrect fifth argument to setfis\n");
   endif
 
@@ -205,31 +194,23 @@ function fis = setfis_seven_args (fis, arg2, arg3, arg4, arg5, ...
   ## message and halt.
 
   if (!is_fis (fis))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's first argument must be an FIS structure\n");
   elseif (!(is_string (arg2) && ...
             ismember (tolower (arg2), {'input','output'})))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's second argument must be 'input' or 'output'\n");
   elseif (!is_var_index (fis, arg2, arg3))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's third argument must be a variable index\n");
   elseif (!(is_string (arg4) && strcmp (tolower (arg4), 'mf')))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's fourth argument must be 'mf'\n");
   elseif (!is_mf_index (fis, arg2, arg3, arg5))
-    puts ("Type 'help setfis' for more information.\n");
     error ("setfis's fifth arg must be a membership function index\n");
   elseif (!(is_string (arg6) && ismember (tolower(arg6), ...
            {'name', 'type', 'params'})))
-    puts ("Type 'help setfis' for more information.\n");
     error ("incorrect sixth argument to setfis\n");
   elseif (ismember (tolower (arg6), {'name', 'type'}) && ...
           !is_string (arg7))
-    puts ("Type 'help setfis' for more information.\n");
     error ("incorrect seventh argument to setfis\n");
   elseif (strcmp (tolower (arg6), 'params') && !is_real_matrix (arg7))
-    puts ("Type 'help setfis' for more information.\n");
     error ("incorrect seventh argument to setfis\n");
   endif
 
@@ -251,3 +232,38 @@ function fis = setfis_seven_args (fis, arg2, arg3, arg4, arg5, ...
   endswitch
 
 endfunction
+
+%!shared fis
+%! fis = readfis ('mamdani_tip_calculator.fis');
+
+%!test
+%! fis = setfis(fis, 'defuzzMethod', 'mom');
+%! assert(fis.defuzzMethod, 'mom');
+
+## Test input validation
+%!error <setfis requires 3, 5, or 7 arguments>
+%! setfis()
+%!error <setfis requires 3, 5, or 7 arguments>
+%! setfis(1)
+%!error <setfis requires 3, 5, or 7 arguments>
+%! setfis(1, 2)
+%!error <setfis requires 3, 5, or 7 arguments>
+%! setfis(1, 2, 3, 4)
+%!error <setfis requires 3, 5, or 7 arguments>
+%! setfis(1, 2, 3, 4, 5, 6)
+%!error <setfis: function called with too many inputs>
+%! setfis(1, 2, 3, 4, 5, 6, 7, 8)
+%!error <setfis's first argument must be an FIS structure>
+%! setfis(1, 2, 3, 4, 5, 6, 7)
+%!error <setfis's second argument must be 'input' or 'output'>
+%! setfis(fis, 2, 3, 4, 5, 6, 7)
+%!error <setfis's third argument must be a variable index>
+%! setfis(fis, 'input', 3, 4, 5, 6, 7)
+%!error <setfis's fourth argument must be 'mf'>
+%! setfis(fis, 'input', 1, 4, 5, 6, 7)
+%!error <setfis's fifth arg must be a membership function index>
+%! setfis(fis, 'input', 1, 'mf', 5, 6, 7)
+%!error <incorrect sixth argument to setfis>
+%! setfis(fis, 'input', 1, 'mf', 1, 6, 7)
+%!error <incorrect seventh argument to setfis>
+%! setfis(fis, 'input', 1, 'mf', 1, 'name', 7)

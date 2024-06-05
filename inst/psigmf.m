@@ -58,7 +58,8 @@
 ## (Here, the symbol ~ means "approximately equal".)
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('psigmf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo psigmf}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{dsigmf, gauss2mf, gaussmf, gbellmf, pimf, sigmf, smf, trapmf, trimf, zmf}
 ## @end deftypefn
@@ -67,7 +68,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership sigmoidal
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      psigmf.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 30 May 2024
 
 function y = psigmf (x, params)
 
@@ -75,13 +76,10 @@ function y = psigmf (x, params)
   ## types, print an error message and halt.
 
   if (nargin != 2)
-    puts ("Type 'help psigmf' for more information.\n");
     error ("psigmf requires 2 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help psigmf' for more information.\n");
     error ("psigmf's first argument must be a valid domain\n");
   elseif (!are_mf_params ('psigmf', params))
-    puts ("Type 'help psigmf' for more information.\n");
     error ("psigmf's second argument must be a parameter vector\n");
   endif
 
@@ -117,3 +115,33 @@ endfunction
 %! xlabel('Crisp Input Value', 'FontWeight', 'bold');
 %! ylabel('Degree of Membership', 'FontWeight', 'bold');
 %! grid;
+
+%!test
+%! x = 0:10:100;
+%! params = [0.3 20 -0.2 60];
+%! y = [2.4726e-03 0.047424 0.4998 0.9502 0.9796 0.8807 ...
+%!      0.5000 0.1192 0.017986 2.4726e-03 3.3535e-04];
+%! z = psigmf(x, params);
+%! assert(z, y, 1e-4);
+
+## Test input validation
+%!error <psigmf requires 2 arguments>
+%! psigmf()
+%!error <psigmf requires 2 arguments>
+%! psigmf(1)
+%!error <psigmf: function called with too many inputs>
+%! psigmf(1, 2, 3)
+%!error <psigmf's first argument must be a valid domain>
+%! psigmf([1 0], 2)
+%!error <psigmf's second argument must be a parameter vector>
+%! psigmf(1, 2)
+%!error <psigmf's second argument must be a parameter vector>
+%! psigmf(0:100, [])
+%!error <psigmf's second argument must be a parameter vector>
+%! psigmf(0:100, [30])
+%!error <psigmf's second argument must be a parameter vector>
+%! psigmf(0:100, [2 3])
+%!error <psigmf's second argument must be a parameter vector>
+%! psigmf(0:100, [90 80 30])
+%!error <psigmf's second argument must be a parameter vector>
+%! psigmf(0:100, 'abc')

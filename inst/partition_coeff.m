@@ -50,7 +50,7 @@
 ## Keywords:      fuzzy-logic-toolkit partition coefficient cluster
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      partition_coeff.m
-## Last-Modified: 4 Sep 2012
+## Last-Modified: 29 May 2024
 
 ##----------------------------------------------------------------------
 ## Note: This function is an implementation of Equation 13.9 (corrected
@@ -67,15 +67,11 @@ function vpc = partition_coeff (soft_partition)
   ## print an error message and halt.
 
   if (nargin != 1)
-    puts ("Type 'help partition_coeff' for more information.\n");
     error ("partition_coeff requires 1 argument\n");
   elseif (!(is_real_matrix (soft_partition) &&
             (min (min (soft_partition)) >= 0) &&
             (max (max (soft_partition)) <= 1)))
-    puts ("Type 'help partition_coeff' for more information.\n");
-    puts ("partition_coeff's argument must be a matrix of real ");
-    puts ("numbers mu, with 0 <= mu <= 1\n");
-    error ("invalid argument to partition_coeff\n");
+    error ("partition_coeff's argument must be a matrix of reals 0.0-1.0\n");
   endif
 
   ## Compute and return the partition coefficient.
@@ -84,3 +80,12 @@ function vpc = partition_coeff (soft_partition)
   vpc = (sum (sum (soft_part_sqr))) / columns (soft_partition);
 
 endfunction
+
+## Test input validation
+%!error <partition_coeff requires 1 argument>
+%! partition_coeff()
+%!error <partition_coeff: function called with too many inputs>
+%! partition_coeff(1, 2)
+%!error <partition_coeff's argument must be a matrix of reals 0.0-1.0>
+%! partition_coeff([-1 2])
+

@@ -210,12 +210,8 @@
 ## @noindent
 ## Examples:
 ##
-## Seven examples of using evalfis are shown in:
+## Five examples of using evalfis are shown in:
 ## @itemize @bullet
-## @item
-## cubic_approx_demo.m
-## @item
-## heart_disease_demo_1.m
 ## @item
 ## heart_disease_demo_2.m
 ## @item
@@ -235,7 +231,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      evalfis.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 1 Jun 2024
 
 function [output, rule_input, rule_output, fuzzy_output] = ...
            evalfis (user_input, fis, num_points = 101)
@@ -245,16 +241,12 @@ function [output, rule_input, rule_output, fuzzy_output] = ...
   ## and halt.
 
   if ((nargin != 2) && (nargin != 3))
-    puts ("Type 'help evalfis' for more information.\n");
     error ("evalfis requires 2 or 3 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help evalfis' for more information.\n");
     error ("evalfis's second argument must be an FIS structure\n");
   elseif (!is_input_matrix (user_input, fis))
-    puts ("Type 'help evalfis' for more information.\n");
     error ("evalfis's 1st argument must be a matrix of input values\n");
   elseif (!is_pos_int (num_points))
-    puts ("Type 'help evalfis' for more information.\n");
     error ("evalfis's third argument must be a positive integer\n");
   endif
 
@@ -265,3 +257,32 @@ function [output, rule_input, rule_output, fuzzy_output] = ...
     evalfis_private (user_input, fis, num_points);
 
 endfunction
+
+%!shared fis, food_service
+%! fis = readfis ('sugeno_tip_calculator.fis');
+%! food_service = [1 1; 5 5; 10 10; 4 6; 6 4; 7 4];
+
+%!test
+%! tip = evalfis (food_service, fis, 1001);
+%! expected_result = ...
+%!   [10.000   10.000   12.500
+%!    10.868   13.681   19.138
+%!    17.500   17.500   20.000
+%!    10.604   14.208   19.452
+%!    10.427   13.687   19.033
+%!    10.471   14.358   19.353];
+%! assert(tip, expected_result, 1e-3);
+
+## Test input validation
+%!error <evalfis requires 2 or 3 arguments>
+%! evalfis()
+%!error <evalfis requires 2 or 3 arguments>
+%! evalfis(1)
+%!error <evalfis: function called with too many inputs>
+%! evalfis(1, 2, 3, 4)
+%!error <evalfis's second argument must be an FIS structure>
+%! evalfis(food_service, 2, 3)
+%!error <evalfis's 1st argument must be a matrix of input values>
+%! evalfis(0, fis, 3)
+%!error <evalfis's third argument must be a positive integer>
+%! evalfis(food_service, fis, -3)

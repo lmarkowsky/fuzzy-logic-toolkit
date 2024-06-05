@@ -23,7 +23,7 @@
 ## Sugeno-type FIS stored in a file.
 ##
 ## The demo:
-## @itemize @minus
+## @itemize @bullet
 ## @item
 ## reads the FIS structure from a file
 ## @item
@@ -45,7 +45,7 @@
 ##                Dr. Bruce Segee (University of Maine Dept. of ECE).
 ## Directory:     fuzzy-logic-toolkit/inst
 ## Filename:      heart_disease_demo_2.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 4 Jun 2024
 
 ## Read the FIS structure from a file.
 ## (Alternatively, to select heart_disease_risk.fis using the dialog,
@@ -66,3 +66,9 @@ puts ("\nFor the following four sets of LDL-HDL values:\n\n");
 ldl_hdl = [129 59; 130 60; 90 65; 205 40]
 puts ("\nThe Heart Disease Risk is:\n\n");
 heart_disease_risk = evalfis (ldl_hdl, fis, 1001)
+
+%!test
+%! fis = readfis ('heart_disease_risk.fis');
+%! ldl_hdl = [129 59; 130 60; 90 65; 205 40];
+%! heart_disease_risk = evalfis (ldl_hdl, fis, 1001);
+%! assert(heart_disease_risk, [3.6250; 3.7500; 0; 8.7500], 1e-4);

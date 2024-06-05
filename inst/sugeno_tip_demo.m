@@ -25,7 +25,7 @@
 ## Einstein product and sum as the T-norm/S-norm pair.
 ##
 ## The demo:
-## @itemize @minus
+## @itemize @bullet
 ## @item
 ## reads the FIS structure from a file
 ## @item
@@ -49,7 +49,7 @@
 ##                Dr. Bruce Segee (University of Maine Dept. of ECE).
 ## Directory:     fuzzy-logic-toolkit/inst
 ## Filename:      sugeno_tip_demo.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 4 Jun 2024
 
 ## Read the FIS structure from a file.
 fis = readfis ('sugeno_tip_calculator.fis');
@@ -75,3 +75,17 @@ puts ("\nFor the following values of (Food Quality, Service):\n\n");
 food_service = [1 1; 5 5; 10 10; 4 6; 6 4; 7 4]
 puts ("\nThe cheap, average, and generous tips are:\n\n");
 tip = evalfis (food_service, fis, 1001)
+
+%!test
+%! fis = readfis ('sugeno_tip_calculator.fis');
+%! food_service = [1 1; 5 5; 10 10; 4 6; 6 4; 7 4];
+%! tip = evalfis (food_service, fis, 1001);
+%! expected_result = ...
+%!   [10.000   10.000   12.500
+%!    10.868   13.681   19.138
+%!    17.500   17.500   20.000
+%!    10.604   14.208   19.452
+%!    10.427   13.687   19.033
+%!    10.471   14.358   19.353];
+%! assert(tip, expected_result, 1e-3);
+

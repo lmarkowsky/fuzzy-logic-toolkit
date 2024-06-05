@@ -51,7 +51,8 @@
 ## @end itemize
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('sigmf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo sigmf}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{dsigmf, gauss2mf, gaussmf, gbellmf, pimf, psigmf, smf, trapmf, trimf, zmf}
 ## @end deftypefn
@@ -60,7 +61,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership sigmoidal
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      sigmf.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 30 May 2024
 
 function y = sigmf (x, params)
 
@@ -68,13 +69,10 @@ function y = sigmf (x, params)
   ## types, print an error message and halt.
 
   if (nargin != 2)
-    puts ("Type 'help sigmf' for more information.\n");
     error ("sigmf requires 2 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help sigmf' for more information.\n");
     error ("sigmf's first argument must be a valid domain\n");
   elseif (!are_mf_params ('sigmf', params))
-    puts ("Type 'help sigmf' for more information.\n");
     error ("sigmf's second argument must be a parameter vector\n");
   endif
 
@@ -107,3 +105,32 @@ endfunction
 %! xlabel('Crisp Input Value', 'FontWeight', 'bold');
 %! ylabel('Degree of Membership', 'FontWeight', 'bold');
 %! grid;
+
+%!test
+%! x = 0:10;
+%! params = [5 2];
+%! y = [4.5398e-05 6.6929e-03 0.5000 0.9933 1 1 1 1 1 1 1];
+%! z = sigmf(x, params);
+%! assert(z, y, 1e-4);
+
+## Test input validation
+%!error <sigmf requires 2 arguments>
+%! sigmf()
+%!error <sigmf requires 2 arguments>
+%! sigmf(1)
+%!error <sigmf: function called with too many inputs>
+%! sigmf(1, 2, 3)
+%!error <sigmf's first argument must be a valid domain>
+%! sigmf([1 0], 2)
+%!error <sigmf's second argument must be a parameter vector>
+%! sigmf(1, 2)
+%!error <sigmf's second argument must be a parameter vector>
+%! sigmf(0:100, [])
+%!error <sigmf's second argument must be a parameter vector>
+%! sigmf(0:100, [30])
+%!error <sigmf's second argument must be a parameter vector>
+%! sigmf(0:100, [90 80 30])
+%!error <sigmf's second argument must be a parameter vector>
+%! sigmf(0:100, 'abc')
+%!error <sigmf's second argument must be a parameter vector>
+%! sigmf(0:100, '')

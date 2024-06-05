@@ -38,12 +38,12 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy einstein_sum
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      einstein_sum.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 29 May 2024
 
 function retval = einstein_sum (x, y = 0)
   if (nargin == 0 || nargin > 2 ||
       !is_real_matrix (x) || !is_real_matrix (y))
-    argument_error
+    error ("invalid arguments to function einstein_sum\n");
 
   elseif (nargin == 1)
     if (isvector (x))
@@ -51,7 +51,7 @@ function retval = einstein_sum (x, y = 0)
     elseif (ndims (x) == 2)
       retval = matrix_arg (x);
     else
-      argument_error;
+      error ("invalid arguments to function einstein_sum\n");
     endif
 
   elseif (nargin == 2)
@@ -64,7 +64,7 @@ function retval = einstein_sum (x, y = 0)
       y = y * ones (size (x));
       retval = arrayfun (@scalar_args, x, y);
     else
-      argument_error;
+      error ("invalid arguments to function einstein_sum\n");
     endif
   endif
 endfunction
@@ -90,7 +90,32 @@ function retval = matrix_arg (x)
   endfor
 endfunction
 
-function argument_error
-  puts ("Type 'help einstein_sum' for more information.\n");
-  error ("invalid arguments to function einstein_sum\n");
-endfunction
+%!test
+%! x = [5 3];
+%! z = einstein_sum(x);
+%! assert(z, 0.5000);
+
+%!test
+%! x = [5 2 3 6];
+%! y = [-1 1 2 3];
+%! z = einstein_sum(x, y);
+%! assert(z, [-1.000 1.000 0.7143 0.4737], 1e-4);
+
+## Test input validation
+%!error <invalid arguments to function einstein_sum>
+%! einstein_sum()
+%!error <invalid arguments to function einstein_sum>
+%! einstein_sum(2j)
+%!error <invalid arguments to function einstein_sum>
+%! einstein_sum(1, 2j)
+%!error <invalid arguments to function einstein_sum>
+%! einstein_sum([1 2j])
+%!error <einstein_sum: function called with too many inputs>
+%! einstein_sum(1, 2, 3)
+%!error <invalid arguments to function einstein_sum>
+%! einstein_sum([1 2], [1 2 3])
+%!error <invalid arguments to function einstein_sum>
+%! einstein_sum([1 2], [1 2; 3 4])
+%!error <invalid arguments to function einstein_sum>
+%! einstein_sum(0:100, [])
+

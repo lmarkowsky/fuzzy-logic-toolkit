@@ -29,7 +29,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      showfis.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 29 May 2024
 
 function showfis (fis)
 
@@ -38,10 +38,8 @@ function showfis (fis)
   ## message and halt.
 
   if (nargin != 1)
-    puts ("Type 'help showfis' for more information.\n");
     error ("showfis requires 1 argument\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help showfis' for more information.\n");
     error ("showfis's argument must be an FIS structure\n");
   endif
 
@@ -316,3 +314,11 @@ function showfis (fis)
   endif
 
 endfunction
+
+## Test input validation
+%!error <showfis requires 1 argument>
+%! showfis()
+%!error <showfis: function called with too many inputs>
+%! showfis(1, 2)
+%!error <showfis's argument must be an FIS structure>
+%! showfis(1)

@@ -84,7 +84,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy rule
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      addrule.m
-## Last-Modified: 18 Aug 2012
+## Last-Modified: 2 Jun 2024
 
 function fis = addrule (fis, rule_matrix) 
 
@@ -92,14 +92,11 @@ function fis = addrule (fis, rule_matrix)
   ## types, print an error message and halt.
 
   if (nargin != 2)
-    puts ("Type 'help addrule' for more information.\n");
     error ("addrule requires 2 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help addrule' for more information.\n");
     error ("addrule's first argument must be an FIS structure\n");
   elseif (!is_real_matrix (rule_matrix))
-    puts ("Type 'help addrule' for more information. addrule's \n");
-    error ("second argument must be a matrix of real numbers\n");
+    error ("addrule's second argument must be a matrix of real numbers\n");
   endif
 
   ## For each row in the rule_matrix, create a new rule struct and
@@ -127,3 +124,22 @@ function fis = addrule (fis, rule_matrix)
   endif
 
 endfunction
+
+%!shared fis
+%! fis = readfis ('mamdani_tip_calculator.fis');
+
+%!test
+%! fis = addrule(fis, [1 2 2 1 1 1]);
+%! assert(fis.rule(5).antecedent, [1 2]);
+
+## Test input validation
+%!error <addrule requires 2 arguments>
+%! addrule()
+%!error <addrule requires 2 arguments>
+%! addrule(1)
+%!error <addrule: function called with too many inputs>
+%! addrule(1, 2, 3)
+%!error <addrule's first argument must be an FIS structure>
+%! addrule(1, 2)
+%!error <addrule's second argument must be a matrix of real numbers>
+%! addrule(fis, 2j)

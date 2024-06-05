@@ -53,7 +53,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      newfis.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 2 Jun 2024
 
 function fis = newfis (fis_name, fis_type = 'mamdani', ...
                        and_method = 'min', or_method = 'max', ...
@@ -65,13 +65,11 @@ function fis = newfis (fis_name, fis_type = 'mamdani', ...
   ## message and halt.
 
   if (!(nargin >= 1 && nargin <= 8))
-    puts ("Type 'help newfis' for more information.\n");
     error ("newfis requires between 1 and 8 arguments\n");
   elseif (!(is_string (fis_name) && is_string (fis_type) && ...
            is_string (and_method) && is_string (or_method) && ...
            is_string (imp_method) && is_string (agg_method) && ...
            is_string (defuzz_method) && isfloat (fis_version)))
-    puts ("Type 'help newfis' for more information.\n");
     error ("incorrect argument type in newfis argument list\n");
   endif
 
@@ -89,3 +87,39 @@ function fis = newfis (fis_name, fis_type = 'mamdani', ...
                 'output', [], ...
                 'rule', []);
 endfunction
+
+%!shared fis
+%! fis = newfis ('Heart-Disease-Risk', 'sugeno', ...
+%!               'min', 'max', 'min', 'max', 'wtaver');
+
+%!assert(fis.name == 'Heart-Disease-Risk');
+%!assert(fis.type == 'sugeno');
+%!assert(fis.andMethod == 'min');
+%!assert(fis.orMethod == 'max');
+%!assert(fis.impMethod == 'min');
+%!assert(fis.aggMethod == 'max');
+%!assert(fis.defuzzMethod == 'wtaver');
+
+## Test input validation
+%!error <newfis requires between 1 and 8 arguments>
+%! newfis()
+%!error <newfis: function called with too many inputs>
+%! newfis(1, 2, 3, 4, 5, 6, 7, 8, 9)
+%!error <incorrect argument type in newfis argument list>
+%! newfis(1, 'str', 'str', 'str', 'str', 'str', 'str', 8)
+%!error <incorrect argument type in newfis argument list>
+%! newfis(1, 'str', 'str', 'str', 'str', 'str', 'str', 8)
+%!error <incorrect argument type in newfis argument list>
+%! newfis('str', 2, 'str', 'str', 'str', 'str', 'str', 8)
+%!error <incorrect argument type in newfis argument list>
+%! newfis('str', 'str', 3, 'str', 'str', 'str', 'str', 8)
+%!error <incorrect argument type in newfis argument list>
+%! newfis('str', 'str', 'str', 4,  'str', 'str', 'str', 8)
+%!error <incorrect argument type in newfis argument list>
+%! newfis('str', 'str', 'str', 'str', 5, 'str', 'str', 8)
+%!error <incorrect argument type in newfis argument list>
+%! newfis('str', 'str', 'str', 'str', 'str', 6, 'str', 8)
+%!error <incorrect argument type in newfis argument list>
+%! newfis('str', 'str', 'str', 'str', 'str', 'str', 7, 8)
+%!error <incorrect argument type in newfis argument list>
+%! newfis('str', 'str', 'str', 'str', 'str', 'str', 'str', 'str')

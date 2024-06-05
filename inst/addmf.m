@@ -51,7 +51,8 @@
 ## them for FIS inputs or Mamdani-type FIS outputs has not yet been tested.
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('addmf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo addmf}" (without the quotation
+## marks) at the Octave prompt.
 ## This demo creates two FIS input variables and associated membership functions
 ## and then produces two figures showing the term sets for the two FIS inputs.
 ##
@@ -64,7 +65,7 @@
 ## Filename:      addmf.m
 ## Note:          The demo code is based on an assignment written by
 ##                Dr. Bruce Segee (University of Maine Dept. of ECE).
-## Last-Modified: 18 Aug 2012
+## Last-Modified: 2 Jun 2024
 
 function fis = addmf (fis, in_or_out, var_index, mf_name, mf_type, ...
                       mf_params)
@@ -73,23 +74,17 @@ function fis = addmf (fis, in_or_out, var_index, mf_name, mf_type, ...
   ## types, print an error message and halt.
 
   if (nargin != 6)
-    puts ("Type 'help addmf' for more information.\n");
     error ("addmf requires 6 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help addmf' for more information.\n");
     error ("addmf's first argument must be an FIS structure\n");
   elseif (!(is_string (in_or_out) && ...
           ismember (tolower (in_or_out), {'input', 'output'})))
-    puts ("Type 'help addmf' for more information.\n");
     error ("addmf's second argument must be 'input' or 'output'\n");
   elseif (!is_var_index (fis, in_or_out, var_index))
-    puts ("Type 'help addmf' for more information.\n");
     error ("addmf's third argument must be a variable index\n");
   elseif (!(is_string (mf_name) && is_string (mf_type)))
-    puts ("Type 'help addmf' for more information.\n");
     error ("addmf's fourth and fifth arguments must be strings\n");
   elseif (!are_mf_params (mf_type, mf_params))
-    puts ("Type 'help addmf' for more information.\n");
     error ("addmf's sixth argument must be a vector of parameters\n");
   endif
 
@@ -138,3 +133,38 @@ endfunction
 %! ## Plot the input membership functions.
 %! plotmf (a, 'input', 1);
 %! plotmf (a, 'input', 2);
+
+%!shared fis
+%! fis = readfis ('mamdani_tip_calculator.fis');
+
+%!test
+%! fis = addmf(fis, 'input', 1, 'Excellent', 'trapmf', [5 8 10 11]);
+%! assert(fis.input(1).mf(3).name, 'Excellent');
+
+## Test input validation
+%!error <addmf requires 6 arguments>
+%! addmf()
+%!error <addmf requires 6 arguments>
+%! addmf(1)
+%!error <addmf requires 6 arguments>
+%! addmf(1, 2)
+%!error <addmf requires 6 arguments>
+%! addmf(1, 2, 3)
+%!error <addmf requires 6 arguments>
+%! addmf(1, 2, 3, 4)
+%!error <addmf requires 6 arguments>
+%! addmf(1, 2, 3, 4, 5)
+%!error <addmf: function called with too many inputs>
+%! addmf(1, 2, 3, 4, 5, 6, 7)
+%!error <addmf's first argument must be an FIS structure>
+%! addmf(1, 2, 3, 4, 5, 6)
+%!error <addmf's second argument must be 'input' or 'output'>
+%! addmf(fis, 'file', 3, 4, 5, 6)
+%!error <addmf's third argument must be a variable index>
+%! addmf(fis, 'input', 3, 4, 5, 6)
+%!error <addmf's fourth and fifth arguments must be strings>
+%! addmf(fis, 'input', 1, 4, 'string', 6)
+%!error <addmf's fourth and fifth arguments must be strings>
+%! addmf(fis, 'input', 1, 'string', 5, 6)
+%!error <addmf's sixth argument must be a vector of parameters>
+%! addmf(fis, 'input', 1, 'string', 'trapmf', [])

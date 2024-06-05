@@ -44,7 +44,8 @@
 ## which always returns values in the range [0, 1].
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('pimf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo pimf}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{dsigmf, gauss2mf, gaussmf, gbellmf, psigmf, sigmf, smf, trapmf, trimf, zmf}
 ## @end deftypefn
@@ -53,7 +54,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership pi-shaped pi
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      pimf.m
-## Last-Modified: 19 August 2012
+## Last-Modified: 30 May 2024
 
 function y = pimf (x, params)
 
@@ -61,13 +62,10 @@ function y = pimf (x, params)
   ## types, print an error message and halt.
 
   if ((nargin != 2))
-    puts ("Type 'help pimf' for more information.\n");
     error ("pimf requires 2 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help pimf' for more information.\n");
     error ("pimf's first argument must be a valid domain\n");
   elseif (!are_mf_params ('pimf', params))
-    puts ("Type 'help pimf' for more information.\n");
     error ("pimf's second argument must be a parameter vector\n");
   endif
 
@@ -153,3 +151,32 @@ endfunction
 %! xlabel('Crisp Input Value', 'FontWeight', 'bold');
 %! ylabel('Degree of Membership', 'FontWeight', 'bold');
 %! grid;
+
+%!test
+%! x = 0:25:250;
+%! params = [50 75 105 175];
+%! y = [0 0 0 1 1 0.8367 0.2551 0 0 0 0];
+%! z = pimf(x, params);
+%! assert(z, y, 1e-4);
+
+## Test input validation
+%!error <pimf requires 2 arguments>
+%! pimf()
+%!error <pimf requires 2 arguments>
+%! pimf(1)
+%!error <pimf: function called with too many inputs>
+%! pimf(1, 2, 3)
+%!error <pimf's first argument must be a valid domain>
+%! pimf([1 0], 2)
+%!error <pimf's second argument must be a parameter vector>
+%! pimf(1, 2)
+%!error <pimf's second argument must be a parameter vector>
+%! pimf(0:100, [])
+%!error <pimf's second argument must be a parameter vector>
+%! pimf(0:100, [30])
+%!error <pimf's second argument must be a parameter vector>
+%! pimf(0:100, [2 3])
+%!error <pimf's second argument must be a parameter vector>
+%! pimf(0:100, [90 80 30])
+%!error <pimf's second argument must be a parameter vector>
+%! pimf(0:100, 'abc')

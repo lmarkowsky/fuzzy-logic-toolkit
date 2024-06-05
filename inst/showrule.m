@@ -21,7 +21,7 @@
 ## @deftypefnx {Function File} {} showrule (@var{fis}, @var{index_list})
 ## @deftypefnx {Function File} {} showrule (@var{fis}, @var{index_list}, @var{format})
 ## @deftypefnx {Function File} {} showrule (@var{fis}, @var{index_list}, @var{'verbose'}, @var{language})
-## @deftypefnx {Function File} {} showrule (@var{fis}, @var{index_list}, @var{'verbose'}, @var{'custom'}, @var{"and" "or" "If" "then" "is" "isn't" "somewhat" "very" "extremely" "very very"})
+## @deftypefnx {Function File} {} showrule (@var{fis}, @var{index_list}, @var{'verbose'}, @var{'custom'}, @var{@{"and" "or" "If" "then" "is" "isn't" "somewhat" "very" "extremely" "very very"@}})
 ##
 ##
 ## Show the rules for an FIS structure in verbose, symbolic, or indexed format.
@@ -37,8 +37,8 @@
 ## parameter.
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('showrule')} at the
-## Octave prompt.
+## To run the demonstration code, type "@t{demo showrule}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{addrule, getfis, showfis}
 ## @end deftypefn
@@ -47,7 +47,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy rule
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      showrule.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 29 May 2024
 
 function showrule (fis, index_list = [], format = 'verbose', ...
                    language = 'english', ...
@@ -61,27 +61,20 @@ function showrule (fis, index_list = [], format = 'verbose', ...
   ##--------------------------------------------------------------------
 
   if (!(nargin >= 1 && nargin <= 5))
-    puts ("Type 'help showrule' for more information.\n");
     error ("showrule requires between 1 and 5 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help showrule' for more information.\n");
     error ("showrule's first argument must be an FIS structure\n");
   elseif ((nargin >= 2) && ...
           !is_rule_index_list (index_list, length (fis.rule)))
-    puts ("Type 'help showrule' for more information.\n");
     error ("showrule's second arg must be a vector of rule indices\n");
   elseif ((nargin >= 3) && !is_format (format))
-    puts ("Type 'help showrule' for more information.\n");
     error ("showrule's third argument must specify the format\n");
   elseif ((nargin == 4) && isequal (tolower (language), "custom"))
-    puts ("Type 'help showrule' for more information.\n");
-    error ("please specify custom verbose strings in the fifth arg\n");
+    error ("showrule: specify custom verbose strings in the fifth arg\n");
   elseif ((nargin == 4) && !is_builtin_language (language))
-    puts ("Type 'help showrule' for more information.\n");
     error ("showrule's fourth arg must specify a built-in language\n");
   elseif ((nargin == 5) && !isequal (tolower (language), "custom"))
-    puts ("Type 'help showrule' for more information.\n");
-    error ("use 'custom' for the 4th arg to specify custom strings\n");
+    error ("showrule: use 'custom' as 4th arg to specify custom strings\n");
   endif
 
   ##--------------------------------------------------------------------
@@ -438,7 +431,7 @@ function showrule_verbose_format (fis, index_list, language, ...
 endfunction
 
 ##----------------------------------------------------------------------
-## Embedded Demos
+## Embedded Demos and Tests
 ##----------------------------------------------------------------------
 
 %!demo
@@ -464,3 +457,24 @@ endfunction
 %! puts ("Output of: showrule(fis, 1, 'verbose', 'francais')\n");
 %! showrule (fis, 1, 'verbose', 'francais')
 %! puts ("\n");
+
+%!shared fis
+%! fis = readfis ('mamdani_tip_calculator.fis');
+
+## Test input validation
+%!error <showrule requires between 1 and 5 arguments>
+%! showrule()
+%!error <showrule: function called with too many inputs>
+%! showrule(1, 2, 3, 4, 5, 6)
+%!error <showrule's first argument must be an FIS structure>
+%! showrule(1, 2, 3, 4, 5)
+%!error <showrule's second arg must be a vector of rule indices>
+%! showrule(fis, '2', 3, 4, 5)
+%!error <showrule's third argument must specify the format>
+%! showrule(fis, 2, 3, 4, 5)
+%!error <showrule: specify custom verbose strings in the fifth arg>
+%! showrule(fis, [2 4], 'verbose', 'custom')
+%!error <showrule's fourth arg must specify a built-in language>
+%! showrule(fis, [2 4], 'verbose', 4)
+%!error <showrule: use 'custom' as 4th arg to specify custom strings>
+%! showrule(fis, [2 4], 'verbose', 'english', 5)

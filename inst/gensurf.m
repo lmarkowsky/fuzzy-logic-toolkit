@@ -81,7 +81,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis plot
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      gensurf.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 29 May 2024
 
 function [x, y, z] = gensurf (fis, input_axes = [1 2], ...
                               output_axis = 1, grids = [15 15], ...
@@ -92,26 +92,19 @@ function [x, y, z] = gensurf (fis, input_axes = [1 2], ...
   ## message and halt.
 
   if ((nargin < 1) || (nargin > 6))
-    puts ("Type 'help gensurf' for more information.\n");
     error ("gensurf requires between 1 and 6 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help gensurf' for more information.\n");
     error ("gensurf's first argument must be an FIS structure\n");
   elseif ((nargin >= 2) && !are_input_indices (input_axes, fis))
-    puts ("Type 'help gensurf' for more information.\n");
     error ("gensurf's second argument must be valid input indices\n");
   elseif ((nargin >= 3) && !is_output_index (output_axis, fis))
-    puts ("Type 'help gensurf' for more information.\n");
     error ("gensurf's third argument must be a valid output index\n");
   elseif ((nargin >= 4) && !is_grid_spec (grids))
-    puts ("Type 'help gensurf' for more information.\n");
     error ("gensurf's 4th argument must be a grid specification\n");
   elseif ((nargin >= 5) && !is_ref_input (ref_input, fis, input_axes))
-    puts ("Type 'help gensurf' for more information.\n");
     error ("gensurf's 5th argument must be reference input values\n");
   elseif ((nargin == 6) && ...
           !(is_pos_int (num_points) && (num_points >= 2)))
-    puts ("Type 'help gensurf' for more information.\n");
     error ("gensurf's sixth argument must be an integer >= 2\n");
   endif
 
@@ -219,3 +212,22 @@ function [x, y, z] = generate_surface (fis, input_axes, output_axis, ...
   zlabel (fis.output(output_axis).name);
 
 endfunction
+
+%!shared fis
+%! fis = readfis ('cubic_approximator.fis');
+
+## Test input validation
+%!error <gensurf requires between 1 and 6 arguments>
+%! gensurf()
+%!error <gensurf: function called with too many inputs>
+%! gensurf(fis, 1, 1, 3, 0, 2, 0)
+%!error <gensurf's first argument must be an FIS structure>
+%! gensurf(1)
+%!error <gensurf's second argument must be valid input indices>
+%! gensurf(fis, 2)
+%!error <gensurf's third argument must be a valid output index>
+%! gensurf(fis, 1, 2)
+%!error <gensurf's 4th argument must be a grid specification>
+%! gensurf(fis, 1, 1, 0)
+%!error <gensurf's 5th argument must be reference input values>
+%! gensurf(fis, 1, 1, 3, [0; 0])

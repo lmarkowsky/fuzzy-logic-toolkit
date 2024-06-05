@@ -116,7 +116,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy partition clustering
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      fcm.m
-## Last-Modified: 5 Sep 2012
+## Last-Modified: 29 May 2024
 
 function [cluster_centers, soft_partition, obj_fcn_history] = ...
            fcm (input_data, num_clusters, options = [2.0, 100, 1e-5, 1])
@@ -126,16 +126,12 @@ function [cluster_centers, soft_partition, obj_fcn_history] = ...
   ## and halt.
 
   if ((nargin != 2) && (nargin != 3))
-    puts ("Type 'help fcm' for more information.\n");
     error ("fcm requires 2 or 3 arguments\n");
   elseif (!is_real_matrix (input_data))
-    puts ("Type 'help fcm' for more information.\n");
     error ("fcm's first argument must be matrix of real numbers\n");
   elseif (!(is_int (num_clusters) && (num_clusters > 1)))
-    puts ("Type 'help fcm' for more information.\n");
     error ("fcm's second argument must be an integer greater than 1\n");
   elseif (!(isreal (options) && isvector (options)))
-    puts ("Type 'help fcm' for more information.\n");
     error ("fcm's third argument must be a vector of real numbers\n");
   endif
 
@@ -362,3 +358,17 @@ endfunction
 %! printf ("Xie-Beni Index: %f\n\n", ...
 %!         xie_beni_index (input_data, cluster_centers, ...
 %!         soft_partition));
+
+## Test input validation
+%!error <fcm requires 2 or 3 arguments>
+%! fcm()
+%!error <fcm requires 2 or 3 arguments>
+%! fcm(1)
+%!error <fcm: function called with too many inputs>
+%! fcm(1, 2, 3, 4)
+%!error <fcm's first argument must be matrix of real numbers>
+%! fcm('input', 2)
+%!error <fcm's second argument must be an integer greater than 1>
+%! fcm(1, 0)
+%!error <fcm's third argument must be a vector of real numbers>
+%! fcm(1, 2, 2j)

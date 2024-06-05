@@ -25,7 +25,7 @@
 ## aggregation method.
 ##
 ## The demo:
-## @itemize @minus
+## @itemize @bullet
 ## @item
 ## reads the FIS structure from a file
 ## @item
@@ -48,10 +48,10 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy tests demos
 ## Directory:     fuzzy-logic-toolkit/inst
 ## Filename:      investment_portfolio_demo.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 4 Jun 2024
 
 ## Read the FIS structure from a file.
-fis=readfis ('investment_portfolio');
+fis = readfis ('investment_portfolio.fis');
 
 ## Plot the input and output membership functions.
 plotmf (fis, 'input', 1);
@@ -103,3 +103,9 @@ hold;
 ## Show the rules in English.
 puts ("\nInvestment Portfolio Calculator Rules:\n\n");
 showrule (fis);
+
+%!test
+%! fis = readfis ('investment_portfolio.fis');
+%! output = evalfis ([40 7], fis, 1001);
+%! assert(output, 69.358, 1e-3);
+

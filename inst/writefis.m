@@ -68,7 +68,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      writefis.m
-## Last-Modified: 26 Jun 2014
+## Last-Modified: 29 May 2024
 
 function writefis (fis, filename = 'filename.fis', dialog = 'dummy')
 
@@ -77,17 +77,13 @@ function writefis (fis, filename = 'filename.fis', dialog = 'dummy')
   ## and halt.
 
   if (!(nargin >= 1 && nargin <= 3))
-    puts ("Type 'help writefis' for more information.\n");
     error ("writefis requires between 1 and 3 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help writefis' for more information.\n");
     error ("writefis's first argument must be an FIS structure\n");
   elseif ((nargin >= 2) && !is_string (filename))
-    puts ("Type 'help writefis' for more information.\n");
     error ("writefis's second argument must be a string\n");
   elseif ((nargin == 3) && ...
           !(is_string (dialog) && strcmpi (dialog, 'dialog')))
-    puts ("Type 'help writefis' for more information.\n");
     error ("writefis's third argument must the string 'dialog'\n");
   endif
 
@@ -137,7 +133,6 @@ function fid = open_output_file (filename, use_gui)
                               echo $file", filename);
     [dialog_error, filename] = system (file=system_command);
     if (dialog_error)
-      puts ("Type 'help writefis' for more information.\n");
       error ("error selecting file using dialog\n");
     endif
     filename = strtrim (filename);
@@ -150,7 +145,6 @@ function fid = open_output_file (filename, use_gui)
     if (use_gui)
       system ('zenity --error --text "Error opening output file."');
     endif
-    puts ("Type 'help writefis' for more information.\n");
     error ("error opening output file: %s\n", msg);
   endif
 
@@ -303,3 +297,18 @@ function str = params2str (params)
     str = strrep (mat2str (params), ",", " ");
   endif
 endfunction
+
+%!shared fis
+%! fis = readfis ('sugeno_tip_calculator.fis');
+
+## Test input validation
+%!error <writefis requires between 1 and 3 arguments>
+%! writefis()
+%!error <writefis's first argument must be an FIS structure>
+%! writefis(1)
+%!error <writefis's second argument must be a string>
+%! writefis(fis, 2)
+%!error <writefis's third argument must the string 'dialog'>
+%! writefis(fis, 'temp.fis', 'abc')
+%!error <writefis: function called with too many inputs>
+%! writefis(1, 2, 3, 4)

@@ -44,12 +44,12 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy drastic_product
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      drastic_product.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 29 May 2024
 
 function retval = drastic_product (x, y = 0)
   if (nargin == 0 || nargin > 2 ||
       !is_real_matrix (x) || !is_real_matrix (y))
-    argument_error
+    error ("invalid arguments to function drastic_product\n");
 
   elseif (nargin == 1)
     if (isvector (x))
@@ -57,7 +57,7 @@ function retval = drastic_product (x, y = 0)
     elseif (ndims (x) == 2)
       retval = matrix_arg (x);
     else
-      argument_error;
+      error ("invalid arguments to function drastic_product\n");
     endif
 
   elseif (nargin == 2)
@@ -70,7 +70,7 @@ function retval = drastic_product (x, y = 0)
       y = y * ones (size (x));
       retval = arrayfun (@scalar_args, x, y);
     else
-      argument_error;
+      error ("invalid arguments to function drastic_product\n");
     endif
   endif
 endfunction
@@ -101,7 +101,32 @@ function retval = matrix_arg (x)
   endfor
 endfunction
 
-function argument_error
-  puts ("Type 'help drastic_product' for more information.\n");
-  error ("invalid arguments to function drastic_product\n");
-endfunction
+%!test
+%! x = [0.5 0.2];
+%! z = drastic_product(x);
+%! assert(z, 0);
+
+%!test
+%! x = [0.5 0.2 0.3 1];
+%! y = [1 0 0.2 0.3];
+%! z = drastic_product(x, y);
+%! assert(z, [0.5 0 0 0.3]);
+
+## Test input validation
+%!error <invalid arguments to function drastic_product>
+%! drastic_product()
+%!error <drastic_product: function called with too many inputs>
+%! drastic_product(1, 2, 3)
+%!error <invalid arguments to function drastic_product>
+%! drastic_product(2j)
+%!error <invalid arguments to function drastic_product>
+%! drastic_product(1, 2j)
+%!error <invalid arguments to function drastic_product>
+%! drastic_product([1 2j])
+%!error <invalid arguments to function drastic_product>
+%! drastic_product([1 2], [1 2 3])
+%!error <invalid arguments to function drastic_product>
+%! drastic_product([1 2], [1 2; 3 4])
+%!error <invalid arguments to function drastic_product>
+%! drastic_product(0:100, [])
+

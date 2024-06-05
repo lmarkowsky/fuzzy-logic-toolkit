@@ -54,7 +54,8 @@
 ## @end itemize
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('zmf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo zmf}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{dsigmf, gauss2mf, gaussmf, gbellmf, pimf, psigmf, sigmf, smf, trapmf, trimf, zmf_demo}
 ## @end deftypefn
@@ -63,7 +64,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership z-shaped
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      zmf.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 30 May 2024
 
 function y = zmf (x, params)
 
@@ -71,13 +72,10 @@ function y = zmf (x, params)
   ## types, print an error message and halt.
 
   if (nargin != 2)
-    puts ("Type 'help zmf' for more informaion.\n");
     error ("zmf requires 2 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help zmf' for more informaion.\n");
     error ("zmf's first argument must be a valid domain\n");
   elseif (!are_mf_params ('zmf', params))
-    puts ("Type 'help zmf' for more informaion.\n");
     error ("zmf's second argument must be a parameter vector\n");
   endif
 
@@ -146,3 +144,22 @@ endfunction
 %! xlabel('Crisp Input Value', 'FontWeight', 'bold');
 %! ylabel('Degree of Membership', 'FontWeight', 'bold');
 %! grid;
+
+%!test
+%! x = 0:10:100;
+%! params = [25 75];
+%! y = [1 1 1 0.9800 0.8200 0.5000 0.1800 0.020000 0 0 0];
+%! z = zmf(x, params);
+%! assert(z, y, 1e-4);
+
+## Test input validation
+%!error <zmf requires 2 arguments> zmf()
+%!error <zmf requires 2 arguments> zmf(1)
+%!error <zmf: function called with too many inputs> zmf(1, 2, 3)
+%!error <zmf's first argument must be a valid domain> zmf([1 0], 2)
+%!error <zmf's second argument must be a parameter vector> zmf(1, 2)
+%!error <zmf's second argument must be a parameter vector> zmf(0:100, [])
+%!error <zmf's second argument must be a parameter vector> zmf(0:100, [30])
+%!error <zmf's second argument must be a parameter vector> zmf(0:100, [90 80 30])
+%!error <zmf's second argument must be a parameter vector> zmf(0:100, 'abc')
+%!error <zmf's second argument must be a parameter vector> zmf(0:100, '')

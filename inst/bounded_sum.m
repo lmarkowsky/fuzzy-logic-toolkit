@@ -37,11 +37,12 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy bounded_sum
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      bounded_sum.m
-## Last-Modified: 12 May 2024
+## Last-Modified: 29 May 2024
 
 function retval = bounded_sum (x, y = 0)
-  if (!(isreal (x) && isreal (y)))
-    puts ("Type 'help bounded_sum' for more information.\n");
+  if ((nargin != 1) && (nargin != 2))
+    error ("bounded_sum requires 1 or 2 arguments\n");
+  elseif (!(isreal (x) && isreal (y)))
     error ("bounded_sum requires real scalar or matrix arguments\n");
   elseif (nargin == 2 && ...
           (isscalar (x) || isscalar (y) || ...
@@ -56,7 +57,6 @@ function retval = bounded_sum (x, y = 0)
       retval(i) = bounded_sum_of_vector (x(:, i));
     endfor
   else
-    puts ("Type 'help bounded_sum' for more information.\n");
     error ("invalid arguments to function bounded_sum\n");
   endif
 endfunction
@@ -69,4 +69,33 @@ function retval = bounded_sum_of_vector (real_vector)
   endfor
   retval = x;
 endfunction
+
+%!test
+%! x = [0.5 0.2];
+%! z = bounded_sum(x);
+%! assert(z, 0.7, 1e-5);
+
+%!test
+%! x = [0.5 0.2 0.3 0.6];
+%! y = [1 0 0.2 0.3];
+%! z = bounded_sum(x, y);
+%! assert(z, [1 0.2 0.5 0.9], 1e-5);
+
+## Test input validation
+%!error <bounded_sum requires 1 or 2 arguments>
+%! bounded_sum()
+%!error <bounded_sum: function called with too many inputs>
+%! bounded_sum(1, 2, 3)
+%!error <bounded_sum requires real scalar or matrix arguments>
+%! bounded_sum(2j)
+%!error <bounded_sum requires real scalar or matrix arguments>
+%! bounded_sum(1, 2j)
+%!error <bounded_sum requires real scalar or matrix arguments>
+%! bounded_sum([1 2j])
+%!error <invalid arguments to function bounded_sum>
+%! bounded_sum([1 2], [1 2 3])
+%!error <invalid arguments to function bounded_sum>
+%! bounded_sum([1 2], [1 2; 3 4])
+%!error <invalid arguments to function bounded_sum>
+%! bounded_sum(0:100, [])
 

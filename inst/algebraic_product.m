@@ -37,14 +37,13 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy algebraic_product
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      algebraic_product.m
-## Last-Modified: 18 Aug 2012
+## Last-Modified: 29 May 2024
 
 function retval = algebraic_product (x, y = 0)
-  if (!(isreal (x) && isreal (y)))
-    puts ("Arguments to algebraic_product must be real scalars ");
-    puts ("or matrices.\n");
-    puts ("Type 'help algebraic_product' for more information.\n");
-    error ("invalid arguments to function algebraic_product\n");
+  if ((nargin != 1) && (nargin != 2))
+    error ("algebraic_product requires 1 or 2 arguments\n");
+  elseif (!(isreal (x) && isreal (y)))
+    error ("arguments to algebraic_product must be real scalars or matrices\n");
   elseif (nargin == 2 && ...
           (isscalar (x) || isscalar (y) || ...
            isequal (size (x), size (y))))
@@ -52,8 +51,35 @@ function retval = algebraic_product (x, y = 0)
   elseif (nargin == 1 && ndims (x) <= 2)
     retval = prod (x);
   else
-    puts ("Type 'help algebraic_product' for more information.\n");
     error ("invalid arguments to function algebraic_product\n");
   endif
 endfunction
 
+%!test
+%! x = [5 2 3 6];
+%! z = algebraic_product(x);
+%! assert(z, 180);
+
+%!test
+%! x = [5 2 3 6];
+%! y = [-1 0 2 3];
+%! z = algebraic_product(x, y);
+%! assert(z, [-5 0 6 18]);
+
+## Test input validation
+%!error <algebraic_product requires 1 or 2 arguments>
+%! algebraic_product()
+%!error <algebraic_product: function called with too many inputs>
+%! algebraic_product(1, 2, 3)
+%!error <arguments to algebraic_product must be real scalars or matrices>
+%! algebraic_product(2j)
+%!error <arguments to algebraic_product must be real scalars or matrices>
+%! algebraic_product(1, 2j)
+%!error <arguments to algebraic_product must be real scalars or matrices>
+%! algebraic_product([1 2j])
+%!error <invalid arguments to function algebraic_product>
+%! algebraic_product([1 2], [1 2 3])
+%!error <invalid arguments to function algebraic_product>
+%! algebraic_product([1 2], [1 2; 3 4])
+%!error <invalid arguments to function algebraic_product>
+%! algebraic_product(0:100, [])

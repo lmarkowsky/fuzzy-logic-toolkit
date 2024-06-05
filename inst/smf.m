@@ -39,7 +39,8 @@
 ## which always returns values in the range [0, 1].
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('smf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo smf}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{dsigmf, gauss2mf, gaussmf, gbellmf, pimf, psigmf, sigmf, trapmf, trimf, zmf}
 ## @end deftypefn
@@ -48,7 +49,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership s-shaped
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      smf.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 30 May 2024
 
 function y = smf (x, params)
 
@@ -56,13 +57,10 @@ function y = smf (x, params)
   ## types, print an error message and halt.
 
   if (nargin != 2)
-    puts ("Type 'help smf' for more information.\n");
     error ("smf requires 2 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help smf' for more information.\n");
     error ("smf's first argument must be a valid domain\n");
   elseif (!are_mf_params ('smf', params))
-    puts ("Type 'help smf' for more information.\n");
     error ("smf's second argument must be a parameter vector\n");
   endif
 
@@ -131,3 +129,32 @@ endfunction
 %! xlabel('Crisp Input Value', 'FontWeight', 'bold');
 %! ylabel('Degree of Membership', 'FontWeight', 'bold');
 %! grid;
+
+%!test
+%! x = 0:10:100;
+%! params = [25 75];
+%! y = [0 0 0 0.020000 0.1800 0.5000 0.8200 0.9800 1 1 1];
+%! z = smf(x, params);
+%! assert(z, y, 1e-4);
+
+## Test input validation
+%!error <smf requires 2 arguments>
+%! smf()
+%!error <smf requires 2 arguments>
+%! smf(1)
+%!error <smf: function called with too many inputs>
+%! smf(1, 2, 3)
+%!error <smf's first argument must be a valid domain>
+%! smf([1 0], 2)
+%!error <smf's second argument must be a parameter vector>
+%! smf(1, 2)
+%!error <smf's second argument must be a parameter vector>
+%! smf(0:100, [])
+%!error <smf's second argument must be a parameter vector>
+%! smf(0:100, [30])
+%!error <smf's second argument must be a parameter vector>
+%! smf(0:100, [90 80 30])
+%!error <smf's second argument must be a parameter vector>
+%! smf(0:100, 'abc')
+%!error <smf's second argument must be a parameter vector>
+%! smf(0:100, '')

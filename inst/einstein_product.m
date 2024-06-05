@@ -39,12 +39,12 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy einstein_product
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      einstein_product.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 29 May 2024
 
 function retval = einstein_product (x, y = 0)
   if (nargin == 0 || nargin > 2 ||
       !is_real_matrix (x) || !is_real_matrix (y))
-    argument_error
+    error ("invalid arguments to function einstein_product\n");
 
   elseif (nargin == 1)
     if (isvector (x))
@@ -52,7 +52,7 @@ function retval = einstein_product (x, y = 0)
     elseif (ndims (x) == 2)
       retval = matrix_arg (x);
     else
-      argument_error;
+      error ("invalid arguments to function einstein_product\n");
     endif
 
   elseif (nargin == 2)
@@ -65,7 +65,7 @@ function retval = einstein_product (x, y = 0)
       y = y * ones (size (x));
       retval = arrayfun (@scalar_args, x, y);
     else
-      argument_error;
+      error ("invalid arguments to function einstein_product\n");
     endif
   endif
 endfunction
@@ -91,7 +91,32 @@ function retval = matrix_arg (x)
   endfor
 endfunction
 
-function argument_error
-  puts ("Type 'help einstein_product' for more information.\n");
-  error ("invalid arguments to function einstein_product\n");
-endfunction
+%!test
+%! x = [5 3];
+%! z = einstein_product(x);
+%! assert(z, 1.6667, 1e-3);
+
+%!test
+%! x = [5 2 3 6];
+%! y = [-1 1 2 3];
+%! z = einstein_product(x, y);
+%! assert(z, [0.7134 2.0000 2.0000 1.6364], 1e-3);
+
+## Test input validation
+%!error <invalid arguments to function einstein_product>
+%! einstein_product()
+%!error <invalid arguments to function einstein_product>
+%! einstein_product(2j)
+%!error <invalid arguments to function einstein_product>
+%! einstein_product(1, 2j)
+%!error <invalid arguments to function einstein_product>
+%! einstein_product([1 2j])
+%!error <einstein_product: function called with too many inputs>
+%! einstein_product(1, 2, 3)
+%!error <invalid arguments to function einstein_product>
+%! einstein_product([1 2], [1 2 3])
+%!error <invalid arguments to function einstein_product>
+%! einstein_product([1 2], [1 2; 3 4])
+%!error <invalid arguments to function einstein_product>
+%! einstein_product(0:100, [])
+

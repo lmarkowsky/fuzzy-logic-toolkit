@@ -42,7 +42,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy variable
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      rmvar.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 2 Jun 2024
 
 function fis = rmvar (fis, in_or_out, var_index)
 
@@ -50,17 +50,13 @@ function fis = rmvar (fis, in_or_out, var_index)
   ## types, print an error message and halt.
 
   if (nargin != 3)
-    puts ("Type 'help rmvar' for more information.\n");
     error ("rmvar requires 3 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help rmvar' for more information.\n");
     error ("rmvar's first argument must be an FIS structure\n");
   elseif (!(is_string (in_or_out) && ...
            ismember (tolower (in_or_out), {'input', 'output'})))
-    puts ("Type 'help rmvar' for more information.\n");
     error ("rmvar's second argument must be 'input' or 'output'\n");
   elseif (!is_var_index (fis, in_or_out, var_index))
-    puts ("Type 'help rmvar' for more information.\n");
     error ("rmvar's third argument must be a variable index\n");
   endif
 
@@ -77,3 +73,26 @@ function fis = rmvar (fis, in_or_out, var_index)
   endif
 
 endfunction
+
+%!shared fis
+%! fis = readfis ('mamdani_tip_calculator.fis');
+
+%!test
+%! fis = rmvar(fis, 'input', 1);
+%! assert(fis.input.name, 'Service');
+
+## Test input validation
+%!error <rmvar requires 3 arguments>
+%! rmvar()
+%!error <rmvar requires 3 arguments>
+%! rmvar(1)
+%!error <rmvar requires 3 arguments>
+%! rmvar(1, 2)
+%!error <rmvar: function called with too many inputs>
+%! rmvar(1, 2, 3, 4)
+%!error <rmvar's first argument must be an FIS structure>
+%! rmvar(1, 2, 3)
+%!error <rmvar's second argument must be 'input' or 'output'>
+%! rmvar(fis, 2, 3)
+%!error <rmvar's third argument must be a variable index>
+%! rmvar(fis, 'input', 3)

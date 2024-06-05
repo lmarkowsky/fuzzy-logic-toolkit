@@ -44,7 +44,8 @@
 ## @end example
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('trapmf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo trapmf}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{dsigmf, gauss2mf, gaussmf, gbellmf, pimf, psigmf, sigmf, smf, trimf, zmf}
 ## @end deftypefn
@@ -53,7 +54,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership trapezoidal
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      trapmf.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 29 May 2024
 
 function y = trapmf (x, params)
 
@@ -61,13 +62,10 @@ function y = trapmf (x, params)
   ## types, print an error message and halt.
 
   if (nargin != 2)
-    puts ("Type 'help trapmf' for more information.\n");
     error ("trapmf requires 2 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help trapmf' for more information.\n");
     error ("trapmf's first argument must be a valid domain\n");
   elseif (!are_mf_params ('trapmf', params))
-    puts ("Type 'help trapmf' for more information.\n");
     error ("trapmf's second argument must be a parameter vector\n");
   endif
 
@@ -105,3 +103,37 @@ endfunction
 %! xlabel('Crisp Input Value', 'FontWeight', 'bold');
 %! ylabel('Degree of Membership', 'FontWeight', 'bold');
 %! grid;
+
+%!test
+%! x = 0:10;
+%! params = [-1 0 2 4];
+%! y1 = trapmf(x, params);
+%! assert(y1, [1.0 1.0 1.0 0.5 0 0 0 0 0 0 0]);
+%! params = [2 4 6 8];
+%! y2 = trapmf(x, params);
+%! assert(y2, [0 0 0 0.5 1.0 1.0 1.0 0.5 0 0 0]);
+%! params = [6 8 10 11];
+%! y3 = trapmf(x, params);
+%! assert(y3, [0 0 0 0 0 0 0 0.5 1.0 1.0 1.0]);
+
+## Test input validation
+%!error <trapmf requires 2 arguments>
+%! trapmf()
+%!error <trapmf requires 2 arguments>
+%! trapmf(1)
+%!error <trapmf: function called with too many inputs>
+%! trapmf(1, 2, 3)
+%!error <trapmf's first argument must be a valid domain>
+%! trapmf([1 0], 2)
+%!error <trapmf's second argument must be a parameter vector>
+%! trapmf(1, 2)
+%!error <trapmf's second argument must be a parameter vector>
+%! trapmf(0:100, [])
+%!error <trapmf's second argument must be a parameter vector>
+%! trapmf(0:100, [2])
+%!error <trapmf's second argument must be a parameter vector>
+%! trapmf(0:100, [2 3])
+%!error <trapmf's second argument must be a parameter vector>
+%! trapmf(0:100, [90 80 30 20])
+%!error <trapmf's second argument must be a parameter vector>
+%! trapmf(0:100, [30 80 20 20])

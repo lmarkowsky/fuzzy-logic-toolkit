@@ -54,7 +54,8 @@
 ## @end itemize
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('gaussmf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo gaussmf}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{dsigmf, gauss2mf, gbellmf, pimf, psigmf, sigmf, smf, trapmf, trimf, zmf}
 ## @end deftypefn
@@ -63,7 +64,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership gaussian
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      gaussmf.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 30 May 2024
 
 function y = gaussmf (x, params)
 
@@ -71,13 +72,10 @@ function y = gaussmf (x, params)
   ## types, print an error message and halt.
 
   if (nargin != 2)
-    puts ("Type 'help gaussmf' for more information.\n");
     error ("gaussmf requires 2 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help gaussmf' for more information.\n");
     error ("gaussmf's first argument must be a valid domain\n");
   elseif (!are_mf_params ('gaussmf', params))
-    puts ("Type 'help gaussmf' for more information.\n");
     error ("gaussmf's second argument must be a parameter vector\n");
   endif
 
@@ -111,3 +109,33 @@ endfunction
 %! ylabel('Degree of Membership');
 %! grid;
 %! hold;
+
+%!test
+%! x = -5:5;
+%! params = [2 0];
+%! y = [0.043937 0.1353 0.3247 0.6065 0.8825 1 ...
+%!      0.8825 0.6065 0.3247 0.1353 0.043937];
+%! z = gaussmf(x, params);
+%! assert(z, y, 1e-4);
+
+## Test input validation
+%!error <gaussmf requires 2 arguments>
+%! gaussmf()
+%!error <gaussmf requires 2 arguments>
+%! gaussmf(1)
+%!error <gaussmf: function called with too many inputs>
+%! gaussmf(1, 2, 3)
+%!error <gaussmf's first argument must be a valid domain>
+%! gaussmf([1 0], 2)
+%!error <gaussmf's second argument must be a parameter vector>
+%! gaussmf(1, 2)
+%!error <gaussmf's second argument must be a parameter vector>
+%! gaussmf(0:100, [])
+%!error <gaussmf's second argument must be a parameter vector>
+%! gaussmf(0:100, [30])
+%!error <gaussmf's second argument must be a parameter vector>
+%! gaussmf(0:100, [2 3 4 5])
+%!error <gaussmf's second argument must be a parameter vector>
+%! gaussmf(0:100, [90 80 30])
+%!error <gaussmf's second argument must be a parameter vector>
+%! gaussmf(0:100, 'abc')

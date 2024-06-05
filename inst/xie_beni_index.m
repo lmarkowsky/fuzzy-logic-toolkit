@@ -55,7 +55,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy xie beni cluster validity
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      xie_beni_index.m
-## Last-Modified: 4 Sep 2012
+## Last-Modified: 29 May 2024
 
 function vxb = xie_beni_index (input_data, cluster_centers, ...
                                soft_partition)
@@ -65,24 +65,16 @@ function vxb = xie_beni_index (input_data, cluster_centers, ...
   ## message and halt.
 
   if (nargin != 3)
-    puts ("Type 'help xie_beni_index' for more information.\n");
     error ("xie_beni_index requires 3 arguments\n");
   elseif (!is_real_matrix (input_data))
-    puts ("Type 'help xie_beni_index' for more information.\n");
     error ("xie_beni_index's first argument must be matrix of reals\n");
   elseif (!(is_real_matrix (cluster_centers) &&
             (columns (cluster_centers) == columns (input_data))))
-    puts ("Type 'help xie_beni_index' for more information.\n");
-    puts ("xie_beni_index's second argument must be matrix of reals\n");
-    puts ("with the same number of columns as the input_data\n");
-    error ("invalid second argument to xie_beni_index\n");
+    error ("xie_beni_index's 2nd arg must be matrix of reals with same #cols as input_data\n");
   elseif (!(is_real_matrix (soft_partition) &&
             (min (min (soft_partition)) >= 0) &&
             (max (max (soft_partition)) <= 1)))
-    puts ("Type 'help xie_beni_index' for more information.\n");
-    puts ("xie_beni_index's third argument must be a matrix of\n");
-    puts ("real numbers mu, with 0 <= mu <= 1\n");
-    error ("invalid third argument to xie_beni_index\n");
+    error ("xie_beni_index's 3rd arg must be a matrix of reals 0.0-1.0\n");
   endif
 
   ## Compute and return the Xie-Beni index.
@@ -132,3 +124,20 @@ function d_sqr_min = min_sqr_dist_between_centers (V)
   d_sqr_min = min (min (d_sqr_matrix));
 
 endfunction
+
+## Test input validation
+%!error <xie_beni_index requires 3 arguments>
+%! xie_beni_index()
+%!error <xie_beni_index requires 3 arguments>
+%! xie_beni_index(1)
+%!error <xie_beni_index requires 3 arguments>
+%! xie_beni_index(1, 2)
+%!error <xie_beni_index: function called with too many inputs>
+%! xie_beni_index(1, 2, 3, 4)
+%!error <xie_beni_index's first argument must be matrix of reals>
+%! xie_beni_index(1j, 2, 3)
+%!error <xie_beni_index's 2nd arg must be matrix of reals with same #cols as input_data>
+%! xie_beni_index(1, [2 2], 3)
+%!error <xie_beni_index's 3rd arg must be a matrix of reals 0.0-1.0>
+%! xie_beni_index([1 1], [2 2], 3j)
+

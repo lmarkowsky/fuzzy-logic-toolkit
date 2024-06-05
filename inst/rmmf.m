@@ -46,7 +46,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      rmmf.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 2 Jun 2024
 
 function fis = rmmf (fis, in_or_out, var_index, mf, mf_index)
 
@@ -54,23 +54,17 @@ function fis = rmmf (fis, in_or_out, var_index, mf, mf_index)
   ## types, print an error message and halt.
 
   if (nargin != 5)
-    puts ("Type 'help rmmf' for more information.\n");
     error ("rmmf requires 5 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help rmmf' for more information.\n");
     error ("rmmf's first argument must be an FIS structure\n");
   elseif (!(is_string(in_or_out) && ...
            ismember (tolower (in_or_out), {'input', 'output'})))
-    puts ("Type 'help rmmf' for more information.\n");
     error ("rmmf's second argument must be 'input' or 'output'\n");
   elseif (!is_var_index (fis, in_or_out, var_index))
-    puts ("Type 'help rmmf' for more information.\n");
     error ("rmmf's third argument must be a variable index\n");
   elseif (!isequal (mf, 'mf'))
-    puts ("Type 'help rmmf' for more information.\n");
     error ("rmmf's fourth argument must be the string 'mf'\n");
   elseif (!is_int (mf_index))
-    puts ("Type 'help rmmf' for more information.\n");
     error ("rmmf's fifth argument must be an integer\n");
   endif
 
@@ -87,3 +81,34 @@ function fis = rmmf (fis, in_or_out, var_index, mf, mf_index)
   endif
 
 endfunction
+
+%!shared fis
+%! fis = readfis ('mamdani_tip_calculator.fis');
+
+%!test
+%! fis = rmmf(fis, 'input', 1, 'mf', 1);
+%! assert(fis.input(1).mf.name, 'Good');
+
+## Test input validation
+%!error <rmmf requires 5 arguments>
+%! rmmf()
+%!error <rmmf requires 5 arguments>
+%! rmmf(1)
+%!error <rmmf requires 5 arguments>
+%! rmmf(1, 2)
+%!error <rmmf requires 5 arguments>
+%! rmmf(1, 2, 3)
+%!error <rmmf requires 5 arguments>
+%! rmmf(1, 2, 3, 4)
+%!error <rmmf: function called with too many inputs>
+%! rmmf(1, 2, 3, 4, 5, 6)
+%!error <rmmf's first argument must be an FIS structure>
+%! rmmf(1, 2, 3, 4, 5)
+%!error <rmmf's second argument must be 'input' or 'output'>
+%! rmmf(fis, 2, 3, 4, 5)
+%!error <rmmf's third argument must be a variable index>
+%! rmmf(fis, 'input', 3, 4, 5)
+%!error <rmmf's fourth argument must be the string 'mf'>
+%! rmmf(fis, 'input', 1, 4, 5)
+%!error <rmmf's fifth argument must be an integer>
+%! rmmf(fis, 'input', 1, 'mf', 5.5)

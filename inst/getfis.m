@@ -93,7 +93,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      getfis.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 29 May 2024
 
 ##----------------------------------------------------------------------
 
@@ -110,7 +110,6 @@ function retval = getfis (fis, arg2 = 'dummy', arg3 = 'dummy', ...
     case 6  retval = getfis_six_args (fis, arg2, arg3, arg4, arg5, ...
                                       arg6);
     otherwise
-            puts ("Type 'help getfis' for more information.\n");
             error ("getfis requires 1-6 arguments\n");
   endswitch
 
@@ -128,7 +127,6 @@ function retval = getfis_one_arg (fis)
   ## message and halt.
 
   if (!is_fis (fis))
-    puts ("Type 'help getfis' for more information.\n");
     error ("the first argument to getfis must be an FIS structure\n");
   endif
 
@@ -168,7 +166,6 @@ function retval = getfis_two_args (fis, arg2)
   ## message and halt.
 
   if (!is_fis (fis))
-    puts ("Type 'help getfis' for more information.\n");
     error ("the first argument to getfis must be an FIS structure\n");
   elseif (!(is_string (arg2) && ismember (tolower (arg2), {'name', ...
            'type', 'version', 'numinputs', 'numoutputs', ...
@@ -177,7 +174,6 @@ function retval = getfis_two_args (fis, arg2)
            'inlabels', 'outlabels', 'inrange', 'outrange', 'inmfs', ...
            'outmfs', 'inmflabels', 'outmflabels', 'inmftypes', ...
            'outmftypes', 'inmfparams', 'outmfparams', 'rulelist'})))
-    puts ("Type 'help getfis' for more information.\n");
     error ("unknown second argument to getfis\n");
   endif
 
@@ -403,14 +399,11 @@ function retval = getfis_three_args (fis, arg2, arg3)
   ## message and halt.
 
   if (!is_fis (fis))
-    puts ("Type 'help getfis' for more information.\n");
     error ("the first argument to getfis must be an FIS structure\n");
   elseif (!(is_string (arg2) && ...
             ismember (tolower (arg2), {'input','output'})))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect second argument to getfis\n");
   elseif (!is_var_index (fis, arg2, arg3))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect third argument to getfis\n");
   endif
 
@@ -443,18 +436,14 @@ function retval = getfis_four_args (fis, arg2, arg3, arg4)
   ## message and halt.
 
   if (!is_fis (fis))
-    puts ("Type 'help getfis' for more information.\n");
     error ("the first argument to getfis must be an FIS structure\n");
   elseif (!(is_string (arg2) && ...
             ismember (tolower (arg2), {'input','output'})))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect second argument to getfis\n");
   elseif (!is_var_index (fis, arg2, arg3))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect third argument to getfis\n");
   elseif (!(is_string (arg4) && ismember (tolower (arg4), ...
            {'name', 'range', 'nummfs', 'mflabels'})))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect fourth argument to getfis\n");
   endif
 
@@ -496,20 +485,15 @@ function retval = getfis_five_args (fis, arg2, arg3, arg4, arg5)
   ## message and halt.
 
   if (!is_fis (fis))
-    puts ("Type 'help getfis' for more information.\n");
     error ("the first argument to getfis must be an FIS structure\n");
   elseif (!(is_string(arg2) && ...
             ismember(tolower(arg2), {'input','output'})))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect second argument to getfis\n");
   elseif (!is_var_index(fis, arg2, arg3))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect third argument to getfis\n");
   elseif (!(is_string(arg4) && isequal(tolower(arg4), 'mf')))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect fourth argument to getfis\n");
   elseif (!is_mf_index(fis, arg2, arg3, arg5))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect fifth argument to getfis\n");
   endif
 
@@ -538,24 +522,18 @@ function retval = getfis_six_args (fis, arg2, arg3, arg4, arg5, arg6)
   ## message and halt.
 
   if (!is_fis (fis))
-    puts ("Type 'help getfis' for more information.\n");
     error ("the first argument to getfis must be an FIS structure\n");
   elseif (!(is_string (arg2) && ...
             ismember (tolower (arg2), {'input','output'})))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect second argument to getfis\n");
   elseif (!is_var_index (fis, arg2, arg3))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect third argument to getfis\n");
   elseif (!(is_string (arg4) && isequal (tolower (arg4), 'mf')))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect fourth argument to getfis\n");
   elseif (!is_mf_index (fis, arg2, arg3, arg5))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect fifth argument to getfis\n");
   elseif (!(is_string (arg6) && ismember (tolower (arg6), ...
            {'name', 'type', 'params'})))
-    puts ("Type 'help getfis' for more information.\n");
     error ("incorrect sixth argument to getfis\n");
   endif
 
@@ -565,3 +543,24 @@ function retval = getfis_six_args (fis, arg2, arg3, arg4, arg5, arg6)
                   num2str(arg5) ")." tolower(arg6)]);
 
 endfunction
+
+%!shared fis
+%! fis = readfis ('mamdani_tip_calculator.fis');
+
+## Test input validation
+%!error <getfis requires 1-6 arguments>
+%! getfis()
+%!error <getfis: function called with too many inputs>
+%! getfis(1, 2, 3, 4, 5, 6, 7)
+%!error <the first argument to getfis must be an FIS structure>
+%! getfis(1, 2, 3, 4, 5, 6)
+%!error <incorrect second argument to getfis>
+%! getfis(fis, 2, 3, 4, 5, 6)
+%!error <incorrect third argument to getfis>
+%! getfis(fis, 'input', 3, 4, 5, 6)
+%!error <incorrect fourth argument to getfis>
+%! getfis(fis, 'input', 1, 4, 5, 6)
+%!error <incorrect fifth argument to getfis>
+%! getfis(fis, 'input', 1, 'mf', 5, 6)
+%!error <incorrect sixth argument to getfis>
+%! getfis(fis, 'input', 1, 'mf', 1, 6)

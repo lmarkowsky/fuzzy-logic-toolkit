@@ -54,14 +54,15 @@
 ## @end example
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('evalmf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo evalmf}" (without the quotation
+## marks) at the Octave prompt.
 ## @end deftypefn
 
 ## Author:        L. Markowsky
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership evaluate
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      evalmf.m
-## Last-Modified: 26 Jun 2014
+## Last-Modified: 31 May 2024
 
 function y = evalmf (x, params, mf_type, hedge = 0, not_flag = false)
 
@@ -69,19 +70,14 @@ function y = evalmf (x, params, mf_type, hedge = 0, not_flag = false)
   ## types, print an error message and halt.
 
   if ((nargin < 3) || (nargin > 5))
-    puts ("Type 'help evalmf' for more information.\n");
     error ("evalmf requires between 3 and 5 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help evalmf' for more information.\n");
     error ("evalmf's first argument must be a valid domain\n");
   elseif (!is_string (mf_type))
-    puts ("Type 'help evalmf' for more information.\n");
     error ("evalmf's third argument must be a string\n");
   elseif (!is_real (hedge))
-    puts ("Type 'help evalmf' for more information.\n");
     error ("evalmf's fourth argument must be a real number\n");
   elseif (!isbool (not_flag))
-    puts ("Type 'help evalmf' for more information.\n");
     error ("evalmf's fifth argument must be a Boolean\n");
   endif
 
@@ -103,3 +99,28 @@ endfunction
 %! xlabel('Crisp Input Value', 'FontWeight', 'bold');
 %! ylabel('Degree of Membership', 'FontWeight', 'bold');
 %! grid;
+
+%!test
+%! x = 0:10:100;
+%! params = [25 50 75];
+%! mf_type = 'trimf';
+%! y = evalmf(x, params, mf_type);
+%! assert(y, [0 0 0 0.2 0.6 1 0.6 0.2 0 0 0]);
+
+## Test input validation
+%!error <evalmf requires between 3 and 5 arguments>
+%! evalmf()
+%!error <evalmf requires between 3 and 5 arguments>
+%! evalmf(1)
+%!error <evalmf requires between 3 and 5 arguments>
+%! evalmf(1, 2)
+%!error <evalmf: function called with too many inputs>
+%! evalmf(1, 2, 3, 4, 5, 6)
+%!error <evalmf's first argument must be a valid domain>
+%! evalmf([1 0], 2, 3)
+%!error <evalmf's third argument must be a string>
+%! evalmf([0 1], 2, 3)
+%!error <evalmf's fourth argument must be a real number>
+%! evalmf([0 1], 2, 'trimf', 2j)
+%!error <evalmf's fifth argument must be a Boolean>
+%! evalmf([0 1], 2, 'trimf', 2, 2)

@@ -44,12 +44,12 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy drastic_sum
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      drastic_sum.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 29 May 2024
 
 function retval = drastic_sum  (x, y = 0)
   if (nargin == 0 || nargin > 2 ||
       !is_real_matrix (x) || !is_real_matrix (y))
-    argument_error
+    error ("invalid arguments to function drastic_sum\n");
 
   elseif (nargin == 1)
     if (isvector (x))
@@ -57,7 +57,7 @@ function retval = drastic_sum  (x, y = 0)
     elseif (ndims (x) == 2)
       retval = matrix_arg (x);
     else
-      argument_error;
+      error ("invalid arguments to function drastic_sum\n");
     endif
 
   elseif (nargin == 2)
@@ -70,7 +70,7 @@ function retval = drastic_sum  (x, y = 0)
       y = y * ones (size (x));
       retval = arrayfun (@scalar_args, x, y);
     else
-      argument_error;
+      error ("invalid arguments to function drastic_sum\n");
     endif
   endif
 endfunction
@@ -101,7 +101,32 @@ function retval = matrix_arg (x)
   endfor
 endfunction
 
-function argument_error
-  puts ("Type 'help drastic_sum' for more information.\n");
-  error ("invalid arguments to function drastic_sum\n");
-endfunction
+%!test
+%! x = [0.5 0.2];
+%! z = drastic_sum(x);
+%! assert(z, 1);
+
+%!test
+%! x = [0.5 0.2 0.3 1];
+%! y = [1 0 0.2 0.3];
+%! z = drastic_sum(x, y);
+%! assert(z, [1 0.2 1 1]);
+
+## Test input validation
+%!error <invalid arguments to function drastic_sum>
+%! drastic_sum()
+%!error <drastic_sum: function called with too many inputs>
+%! drastic_sum(1, 2, 3)
+%!error <invalid arguments to function drastic_sum>
+%! drastic_sum(2j)
+%!error <invalid arguments to function drastic_sum>
+%! drastic_sum(1, 2j)
+%!error <invalid arguments to function drastic_sum>
+%! drastic_sum([1 2j])
+%!error <invalid arguments to function drastic_sum>
+%! drastic_sum([1 2], [1 2 3])
+%!error <invalid arguments to function drastic_sum>
+%! drastic_sum([1 2], [1 2; 3 4])
+%!error <invalid arguments to function drastic_sum>
+%! drastic_sum(0:100, [])
+

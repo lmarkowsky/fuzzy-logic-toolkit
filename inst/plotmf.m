@@ -78,7 +78,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership plot
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      plotmf.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 29 May 2024
 
 function plotmf (fis, in_or_out, var_index, ...
                  y_lower_limit = -0.1, y_upper_limit = 1.1)
@@ -87,20 +87,15 @@ function plotmf (fis, in_or_out, var_index, ...
   ## types, print an error message and halt.
 
   if ((nargin < 3) || (nargin > 5))
-    puts ("Type 'help plotmf' for more information.\n");
     error ("plotmf requires 3 - 5 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help plotmf' for more information.\n");
     error ("plotmf's first argument must be an FIS structure\n");
   elseif (!(is_string (in_or_out) && ...
            ismember (tolower (in_or_out), {'input', 'output'})))
-    puts ("Type 'help plotmf' for more information.\n");
     error ("plotmf's second argument must be 'input' or 'output'\n");
   elseif (!is_var_index (fis, in_or_out, var_index))
-    puts ("Type 'help plotmf' for more information.\n");
     error ("plotmf's third argument must be a variable index\n");
   elseif (!(is_real (y_lower_limit) && is_real (y_upper_limit)))
-    puts ("Type 'help plotmf' for more information.\n");
     error ("plotmf's 4th and 5th arguments must be real scalars\n");
   endif
 
@@ -180,5 +175,27 @@ function plotmf (fis, in_or_out, var_index, ...
     hold;
   endif
 
-
 endfunction
+
+%!shared fis
+%! fis = readfis ('cubic_approximator.fis');
+
+## Test input validation
+%!error <plotmf requires 3 - 5 arguments>
+%! plotmf()
+%!error <plotmf requires 3 - 5 arguments>
+%! plotmf(1)
+%!error <plotmf requires 3 - 5 arguments>
+%! plotmf(1, 2)
+%!error <plotmf: function called with too many inputs>
+%! plotmf(1, 2, 3, 4, 5, 6)
+%!error <plotmf's first argument must be an FIS structure>
+%! plotmf(1, 2, 3)
+%!error <plotmf's second argument must be 'input' or 'output'>
+%! plotmf(fis, 2, 3)
+%!error <plotmf's third argument must be a variable index>
+%! plotmf(fis, 'input', 3)
+%!error <plotmf's 4th and 5th arguments must be real scalars>
+%! plotmf(fis, 'input', 1, 2j)
+%!error <plotmf's 4th and 5th arguments must be real scalars>
+%! plotmf(fis, 'input', 1, 0, 2j)

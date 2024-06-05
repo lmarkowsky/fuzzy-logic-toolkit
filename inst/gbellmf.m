@@ -58,7 +58,8 @@
 ## differentiable and is symmetric about the line x = c.
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('gbellmf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo gbellmf}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{dsigmf, gauss2mf, gaussmf, pimf, psigmf, sigmf, smf, trapmf, trimf, zmf}
 ## @end deftypefn
@@ -67,7 +68,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership bell-shaped bell
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      gbellmf.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 30 May 2024
 
 function y = gbellmf (x, params)
 
@@ -75,13 +76,10 @@ function y = gbellmf (x, params)
   ## types, print an error message and halt.
 
   if (nargin != 2)
-    puts ("Type 'help gbellmf' for more information.\n");
     error ("gbellmf requires 2 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help gbellmf' for more information.\n");
     error ("gbellmf's first argument must be a valid domain\n");
   elseif (!are_mf_params ('gbellmf', params))
-    puts ("Type 'help gbellmf' for more information.\n");
     error ("gbellmf's second argument must be a parameter vector\n");
   endif
 
@@ -115,3 +113,33 @@ endfunction
 %! xlabel('Crisp Input Value', 'FontWeight', 'bold');
 %! ylabel('Degree of Membership', 'FontWeight', 'bold');
 %! grid;
+
+%!test
+%! x = 0:25:250;
+%! params = [40 2 100];
+%! y = [0.024961 0.074852 0.2906 0.8676 1 0.8676 ...
+%!      0.2906 0.074852 0.024961 0.010377 5.0313e-03];
+%! z = gbellmf(x, params);
+%! assert(z, y, 1e-4);
+
+## Test input validation
+%!error <gbellmf requires 2 arguments>
+%! gbellmf()
+%!error <gbellmf requires 2 arguments>
+%! gbellmf(1)
+%!error <gbellmf: function called with too many inputs>
+%! gbellmf(1, 2, 3)
+%!error <gbellmf's first argument must be a valid domain>
+%! gbellmf([1 0], 2)
+%!error <gbellmf's second argument must be a parameter vector>
+%! gbellmf(1, 2)
+%!error <gbellmf's second argument must be a parameter vector>
+%! gbellmf(0:100, [])
+%!error <gbellmf's second argument must be a parameter vector>
+%! gbellmf(0:100, [30])
+%!error <gbellmf's second argument must be a parameter vector>
+%! gbellmf(0:100, [2 3])
+%!error <gbellmf's second argument must be a parameter vector>
+%! gbellmf(0:100, [90 80 30 50])
+%!error <gbellmf's second argument must be a parameter vector>
+%! gbellmf(0:100, 'abcd')

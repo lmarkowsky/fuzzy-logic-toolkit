@@ -59,7 +59,8 @@
 ## Here, the symbol ~ means "approximately equal".
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('dsigmf')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo dsigmf}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @seealso{gauss2mf, gaussmf, gbellmf, pimf, psigmf, sigmf, smf, trapmf, trimf, zmf}
 ## @end deftypefn
@@ -68,7 +69,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership sigmoidal
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      dsigmf.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 29 May 2024
 
 function y = dsigmf (x, params)
 
@@ -76,13 +77,10 @@ function y = dsigmf (x, params)
   ## types, print an error message and halt.
 
   if (nargin != 2)
-    puts ("Type 'help dsigmf' for more information.\n");
     error ("dsigmf requires 2 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help dsigmf' for more information.\n");
     error ("dsigmf's first argument must be a valid domain\n");
   elseif (!are_mf_params ('dsigmf', params))
-    puts ("Type 'help dsigmf' for more information.\n");
     error ("dsigmf's second argument must be a parameter vector\n");
   endif
 
@@ -119,3 +117,33 @@ endfunction
 %! xlabel('Crisp Input Value', 'FontWeight', 'bold');
 %! ylabel('Degree of Membership', 'FontWeight', 'bold');
 %! grid;
+
+%!test
+%! x = 0:10;
+%! params = [5 2 3 6];
+%! y = [4.5383e-05 6.6925e-03 0.5000 0.9932 0.9975 0.9526 ...
+%!      0.5000 0.047426 2.4726e-03 1.2339e-04 6.1442e-06];
+%! z = dsigmf(x, params);
+%! assert(z, y, 1e-4);
+
+## Test input validation
+%!error <dsigmf requires 2 arguments>
+%! dsigmf()
+%!error <dsigmf requires 2 arguments>
+%! dsigmf(1)
+%!error <dsigmf's first argument must be a valid domain>
+%! dsigmf([1 0], 2)
+%!error <dsigmf's second argument must be a parameter vector>
+%! dsigmf(1, 2)
+%!error <dsigmf: function called with too many inputs>
+%! dsigmf(1, 2, 3)
+%!error <dsigmf's second argument must be a parameter vector>
+%! dsigmf(0:100, [])
+%!error <dsigmf's second argument must be a parameter vector>
+%! dsigmf(0:100, [30])
+%!error <dsigmf's second argument must be a parameter vector>
+%! dsigmf(0:100, [2 3])
+%!error <dsigmf's second argument must be a parameter vector>
+%! dsigmf(0:100, [90 80 30])
+%!error <dsigmf's second argument must be a parameter vector>
+%! dsigmf(0:100, 'abc')

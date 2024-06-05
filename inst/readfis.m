@@ -26,10 +26,16 @@
 ## with a @var{filename} that does not end with '.fis', append '.fis' to the
 ## @var{filename}. The @var{filename} is expected to be a string.
 ##
-## Three examples of the input file format:
+## Six examples of the input file format:
 ## @itemize @bullet
 ## @item
+## cubic_approximator.fis
+## @item
 ## heart_disease_risk.fis
+## @item
+## investment_portfolio.fis
+## @item
+## linear_tip_calculator.fis
 ## @item
 ## mamdani_tip_calculator.fis
 ## @item
@@ -59,7 +65,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      readfis.m
-## Last-Modified: 14 Jun 2014
+## Last-Modified: 1 Jun 2024
 
 function fis = readfis (filename = '')
 
@@ -67,10 +73,8 @@ function fis = readfis (filename = '')
   ## is not a string, print an error message and halt.
 
   if (nargin > 1)
-    puts ("Type 'help readfis' for more information.\n");
     error ("readfis requires 0 or 1 arguments\n");
   elseif ((nargin == 1) && !is_string (filename))
-    puts ("Type 'help readfis' for more information.\n");
     error ("readfis's argument must be a string\n");
   endif
 
@@ -609,3 +613,18 @@ function ret_val = comment_or_empty (line)
   ret_val = (length (line) == 0) || (line (1) == '#') || ...
             (line (1) == '%');
 endfunction
+
+%!shared fis
+%! fis = readfis ('sugeno_tip_calculator.fis');
+
+%!assert(fis.andMethod == 'einstein_product');
+%!assert(fis.orMethod == 'einstein_sum');
+%!assert(fis.impMethod == 'prod');
+%!assert(fis.aggMethod == 'sum');
+%!assert(fis.defuzzMethod == 'wtaver');
+
+## Test input validation
+%!error <readfis: function called with too many inputs>
+%! readfis(1, 2)
+%!error <readfis's argument must be a string>
+%! readfis(1)

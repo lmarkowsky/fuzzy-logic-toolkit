@@ -121,7 +121,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy partition clustering
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      gustafson_kessel.m
-## Last-Modified: 5 Sep 2012
+## Last-Modified: 29 May 2024
 
 function [cluster_centers, soft_partition, obj_fcn_history] = ...
            gustafson_kessel (input_data, num_clusters, ...
@@ -132,20 +132,15 @@ function [cluster_centers, soft_partition, obj_fcn_history] = ...
   ## an error message and halt.
 
   if ((nargin < 2) || (nargin > 4))
-    puts ("Type 'help gustafson_kessel' for more information.\n");
     error ("gustafson_kessel requires 2, 3, or 4 arguments\n");
   elseif (!is_real_matrix (input_data))
-    puts ("Type 'help gustafson_kessel' for more information.\n");
     error ("gustafson_kessel's 1st argument must be matrix of reals\n");
   elseif (!(is_int (num_clusters) && (num_clusters > 1)))
-    puts ("Type 'help gustafson_kessel' for more information.\n");
-    error ("gustafson_kessel's 2nd argument must be an integer > 1\n");
+    error ("gustafson_kessel's 2nd argument must be an int greater than 1\n");
   elseif (!(isequal (cluster_volume, []) || ...
            (isreal (cluster_volume) && isvector (cluster_volume))))
-    puts ("Type 'help gustafson_kessel' for more information.\n");
     error ("gustafson_kessel's 3rd arg must be a vector of reals\n");
   elseif (!(isreal (options) && isvector (options)))
-    puts ("Type 'help gustafson_kessel' for more information.\n");
     error ("gustafson_kessel's 4th arg must be a vector of reals\n");
   endif
 
@@ -432,3 +427,20 @@ endfunction
 %! printf ("Xie-Beni Index: %f\n\n", ...
 %!         xie_beni_index (input_data, cluster_centers, ...
 %!         soft_partition));
+
+## Test input validation
+%!error <gustafson_kessel requires 2, 3, or 4 arguments>
+%! gustafson_kessel()
+%!error <gustafson_kessel requires 2, 3, or 4 arguments>
+%! gustafson_kessel(1)
+%!error <gustafson_kessel: function called with too many inputs>
+%! gustafson_kessel(1, 2, 3, 4, 5)
+%!error <gustafson_kessel's 1st argument must be matrix of reals>
+%! gustafson_kessel('input', 2)
+%!error <gustafson_kessel's 2nd argument must be an int greater than 1>
+%! gustafson_kessel(1, 0)
+%!error <gustafson_kessel's 3rd arg must be a vector of reals>
+%! gustafson_kessel(1, 2, 3j)
+%!error <gustafson_kessel's 4th arg must be a vector of reals>
+%! gustafson_kessel(1, 2, 3, 4j)
+

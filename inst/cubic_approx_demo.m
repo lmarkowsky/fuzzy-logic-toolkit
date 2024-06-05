@@ -23,7 +23,7 @@
 ## non-linear function using a Sugeno-type FIS with linear output functions.
 ##
 ## The demo:
-## @itemize @minus
+## @itemize @bullet
 ## @item
 ## reads an FIS structure from a file
 ## @item
@@ -41,7 +41,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy tests demos
 ## Directory:     fuzzy-logic-toolkit/inst
 ## Filename:      cubic_approx_demo.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 4 Jun 2024
 
 ## Read the FIS structure from a file.
 fis = readfis ('cubic_approximator.fis');
@@ -52,3 +52,19 @@ plotmf (fis, 'output', 1, -150, 150);
 
 ## Plot the FIS output y as a function of the input x.
 gensurf (fis);
+
+%!test
+%! fis = readfis ('cubic_approximator.fis');
+%! cubes = evalfis([-2.5; -2; -1.5; -1; 0; 1; 1.5; 2; 2.5], fis, 101);
+%! expected_result = ...
+%!   [-13.7500
+%!    -8.0000
+%!    -2.2500
+%!    -1.0000
+%!          0
+%!     1.0000
+%!     2.2500
+%!     8.0000
+%!    13.7500];
+%! assert(cubes, expected_result, 1e-4);
+

@@ -19,13 +19,13 @@
 ## -*- texinfo -*-
 ## @deftypefn {Script File} {} heart_disease_demo_1
 ##
-## Demonstrate the use of newfis, addvar, addmf, addrule, and evalfis
+## Demonstrate the use of newfis, addvar, addmf, and addrule
 ## to build and evaluate an FIS. Also demonstrate the use of the algebraic
 ## product and sum as the T-norm/S-norm pair, and demonstrate the use of
 ## hedges in the FIS rules.
 ##
 ## The demo:
-## @itemize @minus
+## @itemize @bullet
 ## @item
 ## builds an FIS
 ## @item
@@ -47,7 +47,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy tests demos
 ## Directory:     fuzzy-logic-toolkit/inst
 ## Filename:      heart_disease_demo_1.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 4 Jun 2024
 
 ## Create new FIS.
 a = newfis ('Heart-Disease-Risk', 'sugeno', ...
@@ -90,3 +90,39 @@ showrule (a);
 
 ## Plot the output as a function of the two inputs.
 gensurf (a);
+
+%!test
+%! a = newfis ('Heart-Disease-Risk', 'sugeno', ...
+%!             'algebraic_product', 'algebraic_sum', ...
+%!             'min', 'max', 'wtaver');
+%! 
+%! ## Add two inputs and their membership functions.
+%! a = addvar (a, 'input', 'LDL-Level', [0 300]);
+%! a = addmf (a, 'input', 1, 'Low', 'trapmf', [-1 0 90 130]);
+%! a = addmf (a, 'input', 1, 'Moderate', 'trapmf', [90 130 160 200]);
+%! a = addmf (a, 'input', 1, 'High', 'trapmf', [160 200 300 301]);
+%! 
+%! a = addvar (a, 'input', 'HDL-Level', [0 100]);
+%! a = addmf (a, 'input', 2, 'Low', 'trapmf', [-1 0 35 45]);
+%! a = addmf (a, 'input', 2, 'Moderate', 'trapmf', [35 45 55 65]);
+%! a = addmf (a, 'input', 2, 'High', 'trapmf', [55 65 100 101]);
+%! 
+%! ## Add one output and its membership functions.
+%! a = addvar (a, 'output', 'Heart-Disease-Risk', [-2 12]);
+%! a = addmf (a, 'output', 1, 'Negligible', 'constant', 0);
+%! a = addmf (a, 'output', 1, 'Low', 'constant', 2.5);
+%! a = addmf (a, 'output', 1, 'Medium', 'constant', 5);
+%! a = addmf (a, 'output', 1, 'High', 'constant', 7.5);
+%! a = addmf (a, 'output', 1, 'Extreme', 'constant', 10);
+%! 
+%! ## Add 15 rules and display them in verbose format.
+%! a = addrule (a, [1 1 3 1 1; 1 2 2 1 1; 1 3 1 1 1; ...
+%!                  2 1 4 1 1; 2 2 3 1 1; 2 3 2 1 1; ...
+%!                  3 1 5 1 1; 3 2 4 1 1; 3 3 3 1 1; ...
+%!                  1.3 3.3 2 1 2; ...
+%!                  3.05 1.05 4 1 2; ...
+%!                  -3.2 -1.2 3 1 1]);
+%!
+%! ldl_hdl = [129 59; 130 60; 90 65; 205 40];
+%! heart_disease_risk = evalfis (ldl_hdl, a, 1001);
+%! assert(heart_disease_risk, [4.2679; 4.1667; 2.5000; 8.3333], 1e-4);

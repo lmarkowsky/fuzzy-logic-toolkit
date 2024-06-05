@@ -53,7 +53,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy defuzzification
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      defuzz.m
-## Last-Modified: 16 Feb 2021
+## Last-Modified: 1 Jun 2024
 
 ##----------------------------------------------------------------------
 
@@ -63,16 +63,12 @@ function crisp_x = defuzz (x, y, defuzz_method)
   ## types, print an error message and halt.
 
   if (nargin != 3)
-    puts ("Type 'help defuzz' for more information.\n");
     error ("defuzz requires 3 arguments\n");
   elseif (!is_domain (x))
-    puts ("Type 'help defuzz' for more information.\n");
     error ("defuzz's first argument must be a valid domain\n");
   elseif (!(isvector (y) && isreal (y) && length (x) == length (y)))
-    puts ("Type 'help defuzz' for more information.\n");
-    error ("defuzz's 2nd argument must be a real number or vector\n");
+    error ("defuzz's 1st and 2nd arguments must have the same length\n");
   elseif (!is_string (defuzz_method))
-    puts ("Type 'help defuzz' for more information.\n");
     error ("defuzz's third argument must be a string\n");
   endif
 
@@ -274,3 +270,31 @@ function retval = wtsum (values, weights)
 
 endfunction
 
+## Test each of the defuzzification methods
+%!assert(defuzz([1 2 3 4], [1 2 3 4], 'centroid'), 2.8667, 1e-4)
+%!assert(defuzz([1 2 3 4], [1 2 3 4], 'bisector'), 3)
+%!assert(defuzz([1 2 3 4], [1 2 3 4], 'mom'), 4)
+%!assert(defuzz([1 2 3 4], [1 2 3 4], 'som'), 4)
+%!assert(defuzz([1 2 3 4], [1 2 3 4], 'lom'), 4)
+%!assert(defuzz([1 2 3 4], [1 1 1 1], 'wtaver'), 2.5)
+%!assert(defuzz([1 2 3 4], [1 2 3 4], 'wtaver'), 3)
+%!assert(defuzz([1 2 3 4], [0 0 1 1], 'wtaver'), 3.5)
+%!assert(defuzz([1 2 3 4], [1 1 1 1], 'wtsum'), 10)
+%!assert(defuzz([1 2 3 4], [1 2 3 4], 'wtsum'), 30)
+%!assert(defuzz([1 2 3 4], [0 0 1 1], 'wtsum'), 7)
+
+## Test input validation
+%!error <defuzz requires 3 arguments>
+%! defuzz()
+%!error <defuzz requires 3 arguments>
+%! defuzz(1)
+%!error <defuzz requires 3 arguments>
+%! defuzz(1, 2)
+%!error <defuzz: function called with too many inputs>
+%! defuzz(1, 2, 3, 4)
+%!error <defuzz's first argument must be a valid domain>
+%! defuzz([1 0], 2, 3)
+%!error <defuzz's 1st and 2nd arguments must have the same length>
+%! defuzz([0 1], 2, 3)
+%!error <defuzz's third argument must be a string>
+%! defuzz([0 1], [2 3], 3)

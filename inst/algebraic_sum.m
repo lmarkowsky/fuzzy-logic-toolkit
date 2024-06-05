@@ -37,11 +37,12 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy algebraic_sum
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      algebraic_sum.m
-## Last-Modified: 12 May 2024
+## Last-Modified: 29 May 2024
 
 function retval = algebraic_sum (x, y = 0)
-  if (!(isreal (x) && isreal (y)))
-    puts ("Type 'help algebraic_sum' for more information.\n");
+  if ((nargin != 1) && (nargin != 2))
+    error ("algebraic_sum requires 1 or 2 arguments\n");
+  elseif (!(isreal (x) && isreal (y)))
     error ("algebraic_sum requires real scalar or matrix arguments\n");
   elseif (nargin == 2 && ...
           (isscalar (x) || isscalar (y) || ...
@@ -56,7 +57,6 @@ function retval = algebraic_sum (x, y = 0)
       retval(i) = algebraic_sum_of_vector (x(:, i));
     endfor
   else
-    puts ("Type 'help algebraic_sum' for more information.\n");
     error ("invalid arguments to function algebraic_sum\n");
   endif
 endfunction
@@ -69,4 +69,33 @@ function retval = algebraic_sum_of_vector (real_vector)
   endfor
   retval = x;
 endfunction
+
+%!test
+%! x = [5 2];
+%! z = algebraic_sum(x);
+%! assert(z, -3);
+
+%!test
+%! x = [5 2 3 6];
+%! y = [-1 0 2 3];
+%! z = algebraic_sum(x, y);
+%! assert(z, [9 2 -1 -9]);
+
+## Test input validation
+%!error <algebraic_sum requires 1 or 2 arguments>
+%! algebraic_sum()
+%!error <algebraic_sum: function called with too many inputs>
+%! algebraic_sum(1, 2, 3)
+%!error <algebraic_sum requires real scalar or matrix arguments>
+%! algebraic_sum(2j)
+%!error <algebraic_sum requires real scalar or matrix arguments>
+%! algebraic_sum(1, 2j)
+%!error <algebraic_sum requires real scalar or matrix arguments>
+%! algebraic_sum([1 2j])
+%!error <invalid arguments to function algebraic_sum>
+%! algebraic_sum([1 2], [1 2 3])
+%!error <invalid arguments to function algebraic_sum>
+%! algebraic_sum([1 2], [1 2; 3 4])
+%!error <invalid arguments to function algebraic_sum>
+%! algebraic_sum(0:100, [])
 

@@ -38,7 +38,8 @@
 ## specify the lower and upper bounds of the variable's domain.
 ##
 ## @noindent
-## To run the demonstration code, type @t{demo('addvar')} at the Octave prompt.
+## To run the demonstration code, type "@t{demo addvar}" (without the quotation
+## marks) at the Octave prompt.
 ##
 ## @end deftypefn
 
@@ -46,7 +47,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy variable
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      addvar.m
-## Last-Modified: 18 Aug 2012
+## Last-Modified: 2 Jun 2024
 
 function fis = addvar (fis, in_or_out, var_name, var_range)
 
@@ -54,20 +55,15 @@ function fis = addvar (fis, in_or_out, var_name, var_range)
   ## types, print an error message and halt.
 
   if (nargin != 4)
-    puts ("Type 'help addvar' for more information.\n");
     error ("addvar requires 4 arguments\n");
   elseif (!is_fis (fis))
-    puts ("Type 'help addvar' for more information.\n");
     error ("addvar's first argument must be an FIS structure\n");
   elseif (!(is_string (in_or_out) && ...
           ismember (tolower (in_or_out), {'input', 'output'})))
-    puts ("Type 'help addvar' for more information.\n");
     error ("addvar's second argument must be 'input' or 'output'\n");
   elseif (!is_string (var_name))
-    puts ("Type 'help addvar' for more information.\n");
-    error ("addvar's third argument must be a string\n\n");
+    error ("addvar's third argument must be a string\n");
   elseif (!are_bounds (var_range))
-    puts ("Type 'help addvar' for more information.\n");
     error ("addvar's fourth argument must specify variable bounds\n");
   endif
 
@@ -97,3 +93,30 @@ endfunction
 %!             'min', 'max', 'min', 'max', 'wtaver');
 %! a = addvar (a, 'input', 'LDL-Level', [0 300]);
 %! getfis (a, 'input', 1);
+
+%!shared fis
+%! fis = readfis ('mamdani_tip_calculator.fis');
+
+%!test
+%! fis = addvar(fis, 'input', 'Dining-Room', [1 10]);
+%! assert(fis.input(3).name == 'Dining-Room');
+
+## Test input validation
+%!error <addvar requires 4 arguments>
+%! addvar()
+%!error <addvar requires 4 arguments>
+%! addvar(1)
+%!error <addvar requires 4 arguments>
+%! addvar(1, 2)
+%!error <addvar requires 4 arguments>
+%! addvar(1, 2, 3)
+%!error <addvar: function called with too many inputs>
+%! addvar(1, 2, 3, 4, 5)
+%!error <addvar's first argument must be an FIS structure>
+%! addvar(1, 2, 3, 4)
+%!error <addvar's second argument must be 'input' or 'output'>
+%! addvar(fis, 2, 3, 4)
+%!error <addvar's third argument must be a string>
+%! addvar(fis, 'input', 3, 4)
+%!error <addvar's fourth argument must specify variable bounds>
+%! addvar(fis, 'input', 'string', 4)

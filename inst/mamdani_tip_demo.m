@@ -22,7 +22,7 @@
 ## Mamdani-type FIS stored in a file.
 ##
 ## The demo:
-## @itemize @minus
+## @itemize @bullet
 ## @item
 ## reads the FIS structure from a file
 ## @item
@@ -47,10 +47,10 @@
 ##                Dr. Bruce Segee (University of Maine Dept. of ECE).
 ## Directory:     fuzzy-logic-toolkit/inst
 ## Filename:      mamdani_tip_demo.m
-## Last-Modified: 19 Aug 2012
+## Last-Modified: 4 Jun 2024
 
 ## Read the FIS structure from a file.
-fis=readfis ('mamdani_tip_calculator');
+fis = readfis ('mamdani_tip_calculator.fis');
 
 ## Plot the input and output membership functions.
 plotmf (fis, 'input', 1);
@@ -105,3 +105,16 @@ hold;
 ## Show the rules in symbolic format.
 puts ("\nMamdani Tip Calculator Rules:\n\n");
 showrule (fis, 1:columns(fis.rule), 'symbolic');
+
+%!test
+%! fis = readfis ('mamdani_tip_calculator.fis');
+%! food_service = [1 1; 5 5; 10 10; 4 6; 6 4; 7 4];
+%! tip = evalfis (food_service, fis, 1001);
+%! expected_result = ...
+%!   [10.0000    1.1000
+%!    15.0000    1.1500
+%!    20.0000    1.2000
+%!    15.0000    1.1500
+%!    15.0000    1.1500
+%!    16.4708    1.1647];
+%! assert(tip, expected_result, 1e-4);

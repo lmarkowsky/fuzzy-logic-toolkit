@@ -39,12 +39,12 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy hamacher_product
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      hamacher_product.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 29 May 2024
 
 function retval = hamacher_product (x, y = 0)
   if (nargin == 0 || nargin > 2 ||
       !is_real_matrix (x) || !is_real_matrix (y))
-    argument_error
+    error ("invalid arguments to function hamacher_product\n");
 
   elseif (nargin == 1)
     if (isvector (x))
@@ -52,7 +52,7 @@ function retval = hamacher_product (x, y = 0)
     elseif (ndims (x) == 2)
       retval = matrix_arg (x);
     else
-      argument_error;
+      error ("invalid arguments to function hamacher_product\n");
     endif
 
   elseif (nargin == 2)
@@ -65,7 +65,7 @@ function retval = hamacher_product (x, y = 0)
       y = y * ones (size (x));
       retval = arrayfun (@scalar_args, x, y);
     else
-      argument_error;
+      error ("invalid arguments to function hamacher_product\n");
     endif
   endif
 endfunction
@@ -95,7 +95,32 @@ function retval = matrix_arg (x)
   endfor
 endfunction
 
-function argument_error
-  puts ("Type 'help hamacher_product' for more information.\n");
-  error ("invalid arguments to function hamacher_product\n");
-endfunction
+%!test
+%! x = [5 3];
+%! z = hamacher_product(x);
+%! assert(z, -2.1429, 1e-4);
+
+%!test
+%! x = [5 2 3 6];
+%! y = [-1 1 2 3];
+%! z = hamacher_product(x, y);
+%! assert(z, [-0.5556 2.0000 -6.0000 -2.0000], 1e-4);
+
+## Test input validation
+%!error <invalid arguments to function hamacher_product>
+%! hamacher_product()
+%!error <invalid arguments to function hamacher_product>
+%! hamacher_product(2j)
+%!error <invalid arguments to function hamacher_product>
+%! hamacher_product(1, 2j)
+%!error <invalid arguments to function hamacher_product>
+%! hamacher_product([1 2j])
+%!error <hamacher_product: function called with too many inputs>
+%! hamacher_product(1, 2, 3)
+%!error <invalid arguments to function hamacher_product>
+%! hamacher_product([1 2], [1 2 3])
+%!error <invalid arguments to function hamacher_product>
+%! hamacher_product([1 2], [1 2; 3 4])
+%!error <invalid arguments to function hamacher_product>
+%! hamacher_product(0:100, [])
+
