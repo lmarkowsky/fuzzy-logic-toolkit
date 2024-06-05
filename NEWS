@@ -8,9 +8,6 @@ Summary of important user-visible changes for fuzzy-logic-toolkit 0.6.0:
     and update_cluster_membership.m.  Tested for identical results
     with previous implementation using an embedded test in each file.
 
- ** Added new doc directory containing a new image for the top of
-    docs/index.html.
-
  ** Added new docs directory containing html documentation for each
     top-level function.
 

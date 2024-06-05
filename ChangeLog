@@ -9,7 +9,6 @@
   * inst/private/square_distance_matrix.m and inst/private/update_cluster_membership.m:
       Reimplemented the two private functions. Tested for identical results
       with previous implementation using an embedded test in each file.
-  * doc/fuzzy-logic-toolkit.png: New image for the top of docs/index.html.
   * docs/*.html: New directory containing html documentation for each
       top-level function.
 
