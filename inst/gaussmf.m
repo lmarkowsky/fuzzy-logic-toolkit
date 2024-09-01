@@ -29,31 +29,28 @@
 ## The argument @var{x} must be a real number or a non-empty vector of strictly
 ## increasing real numbers, and @var{sig} and @var{c} must be real numbers.
 ## This membership function satisfies the equation:
-## @example
-## f(x) = exp((-(x - c)^2)/(2 * sig^2))
-## @end example
 ##
-## @noindent
+## @verbatim
+##     f(x) = exp((-(x - c)^2)/(2 * sig^2))
+## @end verbatim
+##
 ## which always returns values in the range [0, 1].
 ##
 ## Just as for the Gaussian (normal) distribution, the parameters @var{sig} and
 ## @var{c} represent:
-## @itemize @w
-## @item
-## sig^2 == the variance (a measure of the width of the curve)
-## @item
-## c == the center (the mean; the x value of the peak)
-## @end itemize
 ##
-## @noindent
+## @verbatim
+##     sig^2 == the variance (a measure of the width of the curve)
+##         c == the center (the mean; the x value of the peak)
+## @end verbatim
+##
 ## For larger values of @var{sig}, the curve is flatter, and for smaller values
 ## of sig, the curve is narrower. The @var{y} value at the center is always 1:
-## @itemize @w
-## @item
-## f(c) == 1
-## @end itemize
 ##
-## @noindent
+## @verbatim
+##     f(c) == 1
+## @end verbatim
+##
 ## To run the demonstration code, type "@t{demo gaussmf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -64,7 +61,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership gaussian
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      gaussmf.m
-## Last-Modified: 30 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = gaussmf (x, params)
 

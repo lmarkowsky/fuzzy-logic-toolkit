@@ -30,30 +30,36 @@
 ## and custom defuzzification methods. 
 ##
 ## The built-in defuzzification methods are:
-## @table @samp
+##
+## @multitable @columnfractions .20 .75
+## @headitem Method @tab Value Returned
 ## @item centroid
-## Return the x-value of the centroid.
+## @tab  Return the x-value of the centroid.
 ## @item bisector
-## Return the x-value of the vertical bisector of the area.
+## @tab  Return the x-value of the vertical bisector of the area.
 ## @item mom
-## Return the mean x-value of the points with maximum y-values.
+## @tab  Return the mean x-value of the points with maximum y-values.
 ## @item som
-## Return the smallest (absolute) x-value of the points with maximum y-values.
+## @tab  Return the smallest (absolute) x-value of the points with
+##       maximum y-values.
 ## @item lom
-## Return the largest (absolute) x-value of the points with maximum y-values.
+## @tab  Return the largest (absolute) x-value of the points with
+##       maximum y-values.
 ## @item wtaver
-## Return the weighted average of the x-values, with the y-values used as
-## weights.
+## @tab  Return the weighted average of the x-values, with the y-values
+##       used as weights.
 ## @item wtsum
-## Return the weighted sum of the x-values, with the y-values used as weights.
-## @end table
+## @tab  Return the weighted sum of the x-values, with the y-values
+##       used as weights.
+## @end multitable
+##
 ## @end deftypefn
 
 ## Author:        L. Markowsky
 ## Keywords:      fuzzy-logic-toolkit fuzzy defuzzification
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      defuzz.m
-## Last-Modified: 1 Jun 2024
+## Last-Modified: 10 Jun 2024
 
 ##----------------------------------------------------------------------
 

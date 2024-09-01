@@ -22,41 +22,42 @@
 ## @deftypefnx {Function File} {} writefis (@var{fis}, @var{filename}, @var{dialog})
 ##
 ## Save the specified FIS currently in the Octave workspace to a file
-## named by the user. There are three forms of writefis:
+## named by the user.
 ##
-## @table @asis
-## @item # Arguments
-## Action Taken
+## There are three forms of writefis:
+##
+## @multitable @columnfractions .20 .70
+## @headitem Number of Arguments @tab Action Taken
 ## @item 1
-## Open a dialog GUI to help the user choose a directory and name
-## for the output file.
+## @tab  Open a dialog GUI to help the user choose a directory and name
+##       for the output file.
 ## @item 2
-## Do not open a dialog GUI. Save the FIS to a file in the
-## current directory with the specified @var{filename}. If the
-## specified @var{filename} does not end in '.fis', append '.fis'
-## to the @var{filename}.
+## @tab  Do not open a dialog GUI. Save the FIS to a file in the
+##       current directory with the specified @var{filename}. If the
+##       specified @var{filename} does not end in '.fis', append '.fis'
+##       to the @var{filename}.
 ## @item 3
-## Open a dialog GUI with the specified @var{filename} in the
-## 'filename' textbox of the GUI. If the specified @var{filename}
-## does not end in '.fis', append '.fis' to the @var{filename}.
-## @end table
+## @tab  Open a dialog GUI with the specified @var{filename} in the
+##       'filename' textbox of the GUI. If the specified @var{filename}
+##       does not end in '.fis', append '.fis' to the @var{filename}.
+## @end multitable
+## @sp 1
+## The types/values of the arguments are expected to be:
 ##
-## The types of the arguments are expected to be:
-## @table @var
-## @item fis
-## an FIS structure satisfying is_fis (see private/is_fis.m)
-## @item filename
-## a string; if the string does not already end with the extension
-## ".fis", then ".fis" is added
-## @item dialog
-## the string 'dialog' (case insensitive)
-## @end table
-##
-## @noindent
+## @multitable @columnfractions .20 .70
+## @headitem Argument @tab Expected Type or Value
+## @item @var{fis}
+## @tab  an FIS structure satisfying is_fis (see private/is_fis.m)
+## @item @var{filename}
+## @tab  a string; if the string does not already end with the extension
+##       ".fis", then ".fis" is added
+## @item @var{dialog}
+## @tab  the string 'dialog' (case insensitive)
+## @end multitable
+## @sp 1
 ## Note:
 ## The GUI dialog requires zenity to be installed on the system.
 ##
-## @noindent
 ## Known error:
 ## When using the file dialog, if the user clicks "Cancel" instead of
 ## saving the file, an error message is generated.
@@ -68,7 +69,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      writefis.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 13 Jun 2024
 
 function writefis (fis, filename = 'filename.fis', dialog = 'dummy')
 

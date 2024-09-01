@@ -24,20 +24,18 @@
 ## The argument to partition_coeff is:
 ## @itemize @w
 ## @item
-## @var{soft_partition} - the membership degree of each input data point in each cluster
+## @var{soft_partition}: the membership degree of each input data point in each cluster
 ## @end itemize
 ##
 ## The return value is:
 ## @itemize @w
 ## @item
-## @var{vpc} - the partition coefficient for the given soft partition
+## @var{vpc}: the partition coefficient for the given soft partition
 ## @end itemize
 ##
-## For demos of this function, please type:
-## @example
-## demo 'fcm'
-## demo 'gustafson_kessel'
-## @end example
+## To run demonstration code that uses this function, type "@t{demo fcm}"
+## or "@t{demo gustafson_kessel}" (without the quotation marks) at the
+## Octave prompt.
 ##
 ## For more information about the @var{soft_partition} matrix, please see the
 ## documentation for function fcm.
@@ -50,7 +48,7 @@
 ## Keywords:      fuzzy-logic-toolkit partition coefficient cluster
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      partition_coeff.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 13 Jun 2024
 
 ##----------------------------------------------------------------------
 ## Note: This function is an implementation of Equation 13.9 (corrected

@@ -26,34 +26,29 @@
 ## The argument @var{x} must be a real number or a non-empty vector of strictly
 ## increasing real numbers, and @var{a} and @var{b} must be real numbers, with
 ## @var{a} < @var{b}. This membership function satisfies:
-## @example
-## @group
-##         1                                if x <= a
-## f(x) =  1 - 2 * ((x - a)/(b - a))^2      if a < x <= (a + b)/2
-##         2 * ((x - b)/(b - a))^2          if (a + b)/2 < x < b
-##         0                                if x >= b
-## @end group
-## @end example
 ##
-## @noindent
+## @verbatim
+##             1                               if x <= a
+##     f(x) =  1 - 2 * ((x - a)/(b - a))^2     if a < x <= (a + b)/2
+##             2 * ((x - b)/(b - a))^2         if (a + b)/2 < x < b
+##             0                               if x >= b
+## @end verbatim
+##
 ## which always returns values in the range [0, 1].
 ##
 ## The parameters a and b specify:
-## @itemize @w
-## @item
-## a == the rightmost point at which f(x) = 1
-## @item
-## b == the leftmost point at which f(x) = 0
-## @end itemize
 ##
-## @noindent
+## @verbatim
+##     a == the rightmost point at which f(x) = 1
+##     b == the leftmost point at which f(x) = 0
+## @end verbatim
+##
 ## At the midpoint of the segment [a, b], the function value is 0.5:
-## @itemize @w
-## @item
-## f((a + b)/2) = 0.5
-## @end itemize
 ##
-## @noindent
+## @verbatim
+##     f((a + b)/2) = 0.5
+## @end verbatim
+##
 ## To run the demonstration code, type "@t{demo zmf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -64,7 +59,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership z-shaped
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      zmf.m
-## Last-Modified: 30 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = zmf (x, params)
 

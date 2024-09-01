@@ -22,54 +22,56 @@
 ## @deftypefnx {Function File} {@var{fis} =} setfis (@var{fis}, @var{in_or_out}, @var{var_index}, @var{mf}, @var{mf_index}, @var{mf_property}, @var{mf_property_value})
 ##
 ## Set a property (field) value of an FIS structure and return the
-## updated FIS. There are three forms of setfis:
+## updated FIS.
 ##
-## @table @asis
-## @item # Arguments
-## Action Taken
+## There are three forms of setfis:
+##
+## @multitable @columnfractions .20 .70
+## @headitem Number of Arguments @tab Action Taken
 ## @item 3
-## Set a property of the FIS structure. The properties that may
-## be set are: name, type, andmethod, ormethod, impmethod,
-## addmethod, defuzzmethod, and version.
+## @tab  Set a property of the FIS structure. The properties that may
+##       be set are: name, type, andmethod, ormethod, impmethod,
+##       addmethod, defuzzmethod, and version.
 ## @item 5
-## Set a property of an input or output variable of the FIS
-## structure. The properties that may be set are: name and range.
+## @tab  Set a property of an input or output variable of the FIS
+##       structure. The properties that may be set are: name and range.
 ## @item 7
-## Set a property of a membership function. The properties that
-## may be set are: name, type, and params.
-## @end table
+## @tab  Set a property of a membership function. The properties that
+##       may be set are: name, type, and params.
+## @end multitable
+## @sp 1
+## The types/values of the arguments are expected to be:
 ##
-## The types of the arguments are expected to be:
-## @table @var
-## @item fis
-## an FIS structure
-## @item property
-## a string; one of 'name', 'type', 'andmethod',
-## 'ormethod', 'impmethod', 'addmethod', 
-## 'defuzzmethod', and 'version' (case-insensitive)
-## @item property_value
-## a number (if property is 'version'); a string (otherwise)
-## @item in_or_out
-## either 'input' or 'output' (case-insensitive)
-## @item var_index
-## a valid integer index of an input or output FIS variable
-## @item var_property
-## a string; either 'name' or 'range'
-## @item var_property_value
-## a string (if var_property is 'name') or 
-## a vector range (if var_property is 'range')
-## @item mf
-## the string 'mf'
-## @item mf_index
-## a valid integer index of a membership function 
-## @item mf_property
-## a string; one of 'name', 'type', or 'params'
-## @item mf_property_value
-## a string (if mf_property is 'name' or 'type');
-## an array (if mf_property is 'params')
-## @end table
-##
-## @noindent
+## @multitable @columnfractions .20 .70
+## @headitem Argument @tab Expected Type or Value
+## @item @var{fis}
+## @tab  an FIS structure
+## @item @var{property}
+## @tab  a string; one of 'name', 'type', 'andmethod',
+##       'ormethod', 'impmethod', 'addmethod', 
+##       'defuzzmethod', and 'version' (case-insensitive)
+## @item @var{property_value}
+## @tab  a number (if property is 'version'); a string (otherwise)
+## @item @var{in_or_out}
+## @tab  either 'input' or 'output' (case-insensitive)
+## @item @var{var_index}
+## @tab  a valid integer index of an input or output FIS variable
+## @item @var{var_property}
+## @tab  a string; either 'name' or 'range'
+## @item @var{var_property_value}
+## @tab  a string (if var_property is 'name') or 
+##       a vector range (if var_property is 'range')
+## @item @var{mf}
+## @tab  the string 'mf'
+## @item @var{mf_index}
+## @tab  a valid integer index of a membership function 
+## @item @var{mf_property}
+## @tab  a string; one of 'name', 'type', or 'params'
+## @item @var{mf_property_value}
+## @tab  a string (if mf_property is 'name' or 'type');
+##       an array (if mf_property is 'params')
+## @end multitable
+## @sp 1
 ## Note that all of the strings representing properties above are case
 ## insensitive.
 ##
@@ -80,7 +82,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      setfis.m
-## Last-Modified: 2 Jun 2024
+## Last-Modified: 13 Jun 2024
 
 ##----------------------------------------------------------------------
 

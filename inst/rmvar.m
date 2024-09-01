@@ -22,16 +22,18 @@
 ## Remove an input or output variable from an existing FIS
 ## structure and return the updated FIS.
 ##
-## The types of the arguments are expected to be:
-## @itemize @bullet
-## @item
-## @var{fis} - an FIS structure
-## @item
-## @var{in_or_out} - either 'input' or 'output' (case-insensitive)
-## @item
-## @var{var_index} - an FIS input or output variable index
-## @end itemize
+## The types/values of the arguments are expected to be:
 ##
+## @multitable @columnfractions .35 .40
+## @headitem Argument @tab Expected Type or Value
+## @item @var{fis}
+## @tab  an FIS structure
+## @item @var{in_or_out}
+## @tab  either 'input' or 'output' (case-insensitive)
+## @item @var{var_index}
+## @tab  an FIS input or output variable index
+## @end multitable
+## @sp 1
 ## Note that rmvar will allow the user to delete an input or output variable
 ## that is currently in use by rules in the FIS.
 ##
@@ -42,7 +44,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy variable
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      rmvar.m
-## Last-Modified: 2 Jun 2024
+## Last-Modified: 13 Jun 2024
 
 function fis = rmvar (fis, in_or_out, var_index)
 

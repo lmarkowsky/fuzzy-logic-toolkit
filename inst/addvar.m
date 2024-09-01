@@ -22,22 +22,23 @@
 ## Add an input or output variable to an existing FIS
 ## structure and return the updated FIS.
 ##
-## The types of the arguments are expected to be:
-## @itemize @w
-## @item
-## @var{fis} - an FIS structure
-## @item
-## @var{in_or_out} - either 'input' or 'output' (case-insensitive)
-## @item
-## @var{var_name} - a string
-## @item
-## @var{var_range} - a vector [x1 x2] of two real numbers
-## @end itemize
+## The types/values of the arguments are expected to be:
 ##
+## @multitable @columnfractions .35 .40
+## @headitem Argument @tab Expected Type or Value
+## @item @var{fis}
+## @tab  an FIS structure
+## @item @var{in_or_out}
+## @tab  either 'input' or 'output' (case-insensitive)
+## @item @var{var_name}
+## @tab  a string
+## @item @var{var_range}
+## @tab  a vector [x1 x2] of two real numbers
+## @end multitable
+## @sp 1
 ## The vector components x1 and x2, which must also satisfy x1 <= x2,
 ## specify the lower and upper bounds of the variable's domain.
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo addvar}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -47,7 +48,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy variable
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      addvar.m
-## Last-Modified: 2 Jun 2024
+## Last-Modified: 13 Jun 2024
 
 function fis = addvar (fis, in_or_out, var_name, var_range)
 

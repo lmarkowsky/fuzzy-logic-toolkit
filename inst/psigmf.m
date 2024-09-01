@@ -27,37 +27,31 @@
 ## The argument @var{x} must be a real number or a non-empty vector of strictly
 ## increasing real numbers, and @var{a1}, @var{c1}, @var{a2}, and @var{c2} must
 ## be real numbers. This membership function satisfies the equation:
-## @example
-## f(x) = (1/(1 + exp(-a1*(x - c1)))) * (1/(1 + exp(-a2*(x - c2))))
-## @end example
 ##
-## @noindent
+## @verbatim
+##     f(x) = (1/(1 + exp(-a1*(x - c1)))) * (1/(1 + exp(-a2*(x - c2))))
+## @end verbatim
+##
 ## The function is bounded above by 1 and below by 0.
 ##
 ## If @var{a1} is positive, @var{a2} is negative, and @var{c1} and @var{c2} are
 ## far enough apart with @var{c1} < @var{c2}, then:
-## @itemize @w
-## @item
-## (a1)/4 ~ the rising slope at c1
-## @item
-## c1 ~ the left inflection point
-## @item
-## (a2)/4 ~ the falling slope at c2
-## @item
-## c2 ~ the right inflection point
-## @end itemize
 ##
-## @noindent
+## @verbatim
+##     (a1)/4 ~ the rising slope at c1
+##         c1 ~ the left inflection point
+##     (a2)/4 ~ the falling slope at c2
+##         c2 ~ the right inflection point
+## @end verbatim
+##
 ## and at each inflection point, the value of the function is about 0.5:
-## @itemize @w
-## @item
-## f(c1) ~ f(c2) ~ 0.5.
-## @end itemize
 ##
-## @noindent
+## @verbatim
+##      f(c1) ~ f(c2) ~ 0.5.
+## @end verbatim
+##
 ## (Here, the symbol ~ means "approximately equal".)
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo psigmf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -68,7 +62,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership sigmoidal
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      psigmf.m
-## Last-Modified: 30 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = psigmf (x, params)
 

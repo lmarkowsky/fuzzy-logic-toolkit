@@ -36,7 +36,6 @@
 ## "is" "isn't" "somewhat" "very" "extremely" "very very"@} for the fifth
 ## parameter.
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo showrule}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -47,7 +46,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy rule
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      showrule.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 10 Jun 2024
 
 function showrule (fis, index_list = [], format = 'verbose', ...
                    language = 'english', ...

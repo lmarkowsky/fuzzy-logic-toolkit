@@ -21,13 +21,13 @@
 ## @deftypefnx {Function File} {@var{retval} =} drastic_sum (@var{x}, @var{y})
 ##
 ## Return the drastic sum of the input.
+##
 ## The drastic sum of two real scalars x and y is:
-## @example
-## @group
-## max (x, y)     if min (x, y) == 0
-## 1              otherwise
-## @end group
-## @end example
+##
+## @verbatim
+##     max (x, y)     if min (x, y) == 0
+##     1              otherwise
+## @end verbatim
 ##
 ## For one vector argument, apply the drastic sum to all of the elements
 ## of the vector. (The drastic sum is associative.) For one
@@ -35,7 +35,7 @@
 ## of each column.
 ##
 ## For two vectors or matrices of identical dimensions, or for one scalar and
-## one vector or matrix argument, return the pair-wise drastic sum.
+## one vector or matrix argument, return the pairwise drastic sum.
 ##
 ## @seealso{algebraic_product, algebraic_sum, bounded_difference, bounded_sum, drastic_product, einstein_product, einstein_sum, hamacher_product, hamacher_sum}
 ## @end deftypefn
@@ -44,7 +44,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy drastic_sum
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      drastic_sum.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 26 Jul 2024
 
 function retval = drastic_sum  (x, y = 0)
   if (nargin == 0 || nargin > 2 ||

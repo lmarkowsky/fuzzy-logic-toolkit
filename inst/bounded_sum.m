@@ -28,7 +28,7 @@
 ## matrix argument, return a vector of the bounded sum of each column.
 ##
 ## For two vectors or matrices of identical dimensions, or for one scalar and
-## one vector or matrix argument, return the pair-wise bounded sum.
+## one vector or matrix argument, return the pairwise bounded sum.
 ##
 ## @seealso{algebraic_product, algebraic_sum, bounded_difference, drastic_product, drastic_sum, einstein_product, einstein_sum, hamacher_product, hamacher_sum}
 ## @end deftypefn
@@ -37,7 +37,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy bounded_sum
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      bounded_sum.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 26 Jul 2024
 
 function retval = bounded_sum (x, y = 0)
   if ((nargin != 1) && (nargin != 2))

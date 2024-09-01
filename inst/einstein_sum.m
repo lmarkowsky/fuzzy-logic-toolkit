@@ -29,7 +29,7 @@
 ## of each column.
 ##
 ## For two vectors or matrices of identical dimensions, or for one scalar and
-## one vector or matrix argument, return the pair-wise Einstein sum.
+## one vector or matrix argument, return the pairwise Einstein sum.
 ##
 ## @seealso{algebraic_product, algebraic_sum, bounded_difference, bounded_sum, drastic_product, drastic_sum, einstein_product, hamacher_product, hamacher_sum}
 ## @end deftypefn
@@ -38,7 +38,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy einstein_sum
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      einstein_sum.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 26 Jul 2024
 
 function retval = einstein_sum (x, y = 0)
   if (nargin == 0 || nargin > 2 ||

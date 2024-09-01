@@ -37,9 +37,9 @@
 ## The required arguments to gustafson_kessel are:
 ## @itemize @w
 ## @item
-## @var{input_data} - a matrix of input data points; each row corresponds to one point
+## @var{input_data}: a matrix of input data points; each row corresponds to one point
 ## @item
-## @var{num_clusters} - the number of clusters to form
+## @var{num_clusters}: the number of clusters to form
 ## @end itemize
 ##
 ## The third (optional) argument to gustafson_kessel is a vector of cluster volumes.
@@ -48,13 +48,13 @@
 ## The fourth (optional) argument to gustafson_kessel is a vector consisting of:
 ## @itemize @w
 ## @item
-## @var{m} - the parameter (exponent) in the objective function; default = 2.0
+## @var{m}: the parameter (exponent) in the objective function; default = 2.0
 ## @item
-## @var{max_iterations} - the maximum number of iterations before stopping; default = 100
+## @var{max_iterations}: the maximum number of iterations before stopping; default = 100
 ## @item
-## @var{epsilon} - the stopping criteria; default = 1e-5
+## @var{epsilon}: the stopping criteria; default = 1e-5
 ## @item
-## @var{display_intermediate_results} - if 1, display results after each iteration, and if 0, do not; default = 1
+## @var{display_intermediate_results}: if 1, display results after each iteration, and if 0, do not; default = 1
 ## @end itemize
 ##
 ## The default values are used if any of the four elements of the vector are missing or
@@ -63,11 +63,11 @@
 ## The return values are:
 ## @itemize @w
 ## @item
-## @var{cluster_centers} - a matrix of the cluster centers; each row corresponds to one point
+## @var{cluster_centers}: a matrix of the cluster centers; each row corresponds to one point
 ## @item
-## @var{soft_partition} - a constrained soft partition matrix
+## @var{soft_partition}: a constrained soft partition matrix
 ## @item
-## @var{obj_fcn_history} - the values of the objective function after each iteration
+## @var{obj_fcn_history}: the values of the objective function after each iteration
 ## @end itemize
 ##
 ## Three important matrices used in the calculation are X (the input points
@@ -83,35 +83,25 @@
 ## If n denotes the number of input points and k denotes the number of
 ## clusters to be formed, then X, V, and Mu have the dimensions:
 ##
-## @example
-## @group
-##                               1    2   ...  #features
-##                          1 [                           ]
-##    X  =  input_data  =   2 [                           ]
-##                        ... [                           ]
-##                          n [                           ]
-## @end group
-## @end example
+## @verbatim
+##                                     1    2   ...  #features
+##                               1 [[                           ]
+##    X  =  input_data       =   2  [                           ]
+##                              ... [                           ]
+##                               n  [                           ]]
 ##
-## @example
-## @group
-##                                    1    2   ...  #features
-##                               1 [                           ]
-##    V  =  cluster_centers  =   2 [                           ]
-##                             ... [                           ]
-##                               k [                           ]
-## @end group
-## @end example
+##                                     1    2   ...  #features
+##                               1 [[                           ]
+##    V  =  cluster_centers  =   2  [                           ]
+##                              ... [                           ]
+##                               k  [                           ]]
 ##
-## @example
-## @group
-##                                    1    2   ...   n
-##                               1 [                    ]
-##    Mu  =  soft_partition  =   2 [                    ]
-##                             ... [                    ]
-##                               k [                    ]
-## @end group
-## @end example
+##                                     1    2   ...   n
+##                               1 [[                    ]
+##    Mu  =  soft_partition  =   2  [                    ]
+##                              ... [                    ]
+##                               k  [                    ]]
+## @end verbatim
 ##
 ## @seealso{fcm, partition_coeff, partition_entropy, xie_beni_index}
 ##
@@ -121,7 +111,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy partition clustering
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      gustafson_kessel.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 13 Jun 2024
 
 function [cluster_centers, soft_partition, obj_fcn_history] = ...
            gustafson_kessel (input_data, num_clusters, ...

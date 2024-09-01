@@ -22,7 +22,9 @@
 ##
 ## For a given domain @var{x} and parameters @var{params} (or @var{[a b c d]}),
 ## return the corresponding @var{y} values for the trapezoidal membership
-## function. The argument @var{x} must be a real number or a non-empty vector of
+## function.
+##
+## The argument @var{x} must be a real number or a non-empty vector of
 ## strictly increasing real numbers, and parameters @var{a}, @var{b}, @var{c},
 ## and @var{d} must satisfy the inequalities:
 ## @var{a} < @var{b} <= @var{c} < @var{d}. None of the parameters @var{a},
@@ -32,18 +34,15 @@
 ## The parameters @var{[a b c d]} correspond to the x values
 ## of the corners of the trapezoid:
 ##
-## @example
-## @group
+## @verbatim
 ##        1-|      --------
 ##          |     /        \
 ##          |    /          \
 ##          |   /            \
 ##        0-----------------------
 ##             a   b      c   d
-## @end group
-## @end example
+## @end verbatim
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo trapmf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -54,7 +53,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership trapezoidal
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      trapmf.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = trapmf (x, params)
 

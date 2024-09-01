@@ -27,30 +27,26 @@
 ## The argument @var{x} must be a real number or a non-empty vector of strictly
 ## increasing real numbers, and @var{a} and @var{c} must be real numbers. This
 ## membership function satisfies the equation:
-## @itemize @w
-## @item
-## f(x) = 1/(1 + exp(-a*(x - c)))
-## @end itemize
 ##
-## @noindent
+## @verbatim
+##     f(x) = 1/(1 + exp(-a*(x - c)))
+## @end verbatim
+##
 ## which always returns values in the range [0, 1].
 ##
 ## The parameters a and c specify:
-## @itemize @w
-## @item
-## a == the slope at c
-## @item
-## c == the inflection point
-## @end itemize
 ##
-## @noindent
+## @verbatim
+##     a == the slope at c
+##     c == the inflection point
+## @end verbatim
+##
 ## and at the inflection point, the value of the function is 0.5:
-## @itemize @w
-## @item
-## f(c) == 0.5.
-## @end itemize
 ##
-## @noindent
+## @verbatim
+##     f(c) == 0.5.
+## @end verbatim
+##
 ## To run the demonstration code, type "@t{demo sigmf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -61,7 +57,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership sigmoidal
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      sigmf.m
-## Last-Modified: 30 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = sigmf (x, params)
 

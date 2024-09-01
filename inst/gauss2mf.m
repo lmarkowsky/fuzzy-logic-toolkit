@@ -28,22 +28,19 @@
 ## Given parameters @var{sig1}, @var{c1}, @var{sig2}, and @var{c2}, that define
 ## two Gaussian membership functions, let:
 ##
-## @example
-## @group
-## f1(x) = exp((-(x - c1)^2)/(2 * sig1^2))     if x <= c1
-##         1                                   otherwise
+## @verbatim
+##     f1(x) = exp((-(x - c1)^2)/(2 * sig1^2))    if x <= c1
+##             1                                  otherwise
 ##
-## f2(x) = 1                                   if x <= c2
-##         exp((-(x - c2)^2)/(2 * sig2^2))     otherwise
-## @end group
-## @end example
+##     f2(x) = 1                                  if x <= c2
+##             exp((-(x - c2)^2)/(2 * sig2^2))    otherwise
+## @end verbatim
 ##
-## @noindent
 ## Then gauss2mf is given by:
 ##
-## @example
-## f(x) = f1(x) * f2(x)
-## @end example
+## @verbatim
+##     f(x) = f1(x) * f2(x)
+## @end verbatim
 ##
 ## The argument @var{x} must be a real number or a non-empty vector of strictly
 ## increasing real numbers, and @var{sig1}, @var{c1}, @var{sig2}, and @var{c2}
@@ -57,7 +54,6 @@
 ## gauss2mf returns a subnormal membership function (has a maximum value less
 ## than 1).
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo gauss2mf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -68,7 +64,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership gaussian
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      gauss2mf.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = gauss2mf (x, params)
 

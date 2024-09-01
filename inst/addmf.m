@@ -22,22 +22,24 @@
 ## Add a membership function to an existing FIS 
 ## structure and return the updated FIS.
 ##
-## The types of the arguments are expected to be:
-## @itemize @w
-## @item @var{fis}:
-## an FIS structure
-## @item @var{in_or_out}:
-## 'input' or 'output' (case-insensitive)
-## @item @var{var_index}:
-## valid index of an FIS input/output variable
-## @item @var{mf_name}:
-## a string
-## @item @var{mf_type}:
-## a string
-## @item @var{mf_params}:
-## a vector
-## @end itemize
+## The types/values of the arguments are expected to be:
 ##
+## @multitable @columnfractions .35 .65
+## @headitem Argument @tab Expected Type or Value
+## @item @var{fis}
+## @tab  an FIS structure
+## @item @var{in_or_out}
+## @tab  'input' or 'output' (case-insensitive)
+## @item @var{var_index}
+## @tab  valid index of an FIS input/output variable
+## @item @var{mf_name}
+## @tab  a string
+## @item @var{mf_type}
+## @tab  a string
+## @item @var{mf_params}
+## @tab  a vector
+## @end multitable
+## @sp 1
 ## If @var{mf_type} is one of the built-in membership functions, then the
 ## number and values of the parameters must satisfy the membership function
 ## requirements for the specified @var{mf_type}.
@@ -50,7 +52,6 @@
 ## structure outputs or to Sugeno-type FIS structures, and the result of using
 ## them for FIS inputs or Mamdani-type FIS outputs has not yet been tested.
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo addmf}" (without the quotation
 ## marks) at the Octave prompt.
 ## This demo creates two FIS input variables and associated membership functions
@@ -65,7 +66,7 @@
 ## Filename:      addmf.m
 ## Note:          The demo code is based on an assignment written by
 ##                Dr. Bruce Segee (University of Maine Dept. of ECE).
-## Last-Modified: 2 Jun 2024
+## Last-Modified: 12 Jun 2024
 
 function fis = addmf (fis, in_or_out, var_index, mf_name, mf_type, ...
                       mf_params)

@@ -28,36 +28,34 @@
 ## increasing real numbers, @var{a}, @var{b}, and @var{c} must be real numbers,
 ## @var{a} must be non-zero, and @var{b} must be an integer. This membership
 ## function satisfies the equation:
-## @example
-## f(x) = 1/(1 + (abs((x - c)/a))^(2 * b))
-## @end example
+##
+## @verbatim
+##     f(x) = 1/(1 + (abs((x - c)/a))^(2 * b))
+## @end verbatim
+##
 ## which always returns values in the range [0, 1].
 ##
 ## The parameters @var{a}, @var{b}, and @var{c} give:
-## @example
-## @group
-## a == controls the width of the curve at f(x) = 0.5;
-##      f(c-a) = f(c+a) = 0.5
-## b == controls the slope of the curve at x = c-a and x = c+a;
-##      f'(c-a) = b/2a and f'(c+a) = -b/2a
-## c == the center of the curve
-## @end group
-## @end example
+##
+## @verbatim
+##     a == controls the width of the curve at f(x) = 0.5;
+##          f(c-a) = f(c+a) = 0.5
+##     b == controls the slope of the curve at x = c-a and x = c+a;
+##          f'(c-a) = b/2a and f'(c+a) = -b/2a
+##     c == the center of the curve
+## @end verbatim
 ##
 ## This membership function has a value of 0.5 at the two points c - a and
 ## c + a, and the width of the curve at f(x) == 0.5 is 2 * |a|:
-## @example
-## @group
-## f(c - a) == f(c + a) == 0.5
-## 2 * |a| == the width of the curve at f(x) == 0.5
-## @end group
-## @end example
 ##
-## @noindent
+## @verbatim
+##     f(c - a) == f(c + a) == 0.5
+##     2 * |a| == the width of the curve at f(x) == 0.5
+## @end verbatim
+##
 ## The generalized bell-shaped membership function is continuously
 ## differentiable and is symmetric about the line x = c.
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo gbellmf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -68,7 +66,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership bell-shaped bell
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      gbellmf.m
-## Last-Modified: 30 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = gbellmf (x, params)
 

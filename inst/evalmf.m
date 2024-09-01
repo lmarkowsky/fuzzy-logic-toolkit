@@ -38,22 +38,20 @@
 ## "extremely", and "very very", raise the membership function values to
 ## the power corresponding to the hedge.
 ##
-## @example
-## @group
-## (fraction == .05) <=>  somewhat x       <=>  mu(x)^0.5  <=>  sqrt(mu(x))
-## (fraction == .20) <=>  very x           <=>  mu(x)^2    <=>  sqr(mu(x))
-## (fraction == .30) <=>  extremely x      <=>  mu(x)^3    <=>  cube(mu(x))
-## (fraction == .40) <=>  very very x      <=>  mu(x)^4
-## (fraction == .dd) <=>  <custom hedge> x <=>  mu(x)^(dd/10)
-## @end group
-## @end example
+## @verbatim
+##   (fraction == .05) <=>  somewhat x       <=>  mu(x)^0.5  <=>  sqrt(mu(x))
+##   (fraction == .20) <=>  very x           <=>  mu(x)^2    <=>  sqr(mu(x))
+##   (fraction == .30) <=>  extremely x      <=>  mu(x)^3    <=>  cube(mu(x))
+##   (fraction == .40) <=>  very very x      <=>  mu(x)^4
+##   (fraction == .dd) <=>  <custom hedge> x <=>  mu(x)^(dd/10)
+## @end verbatim
 ##
 ## The @var{not_flag} negates the membership function using:
-## @example
-## mu(not(x)) = 1 - mu(x)
-## @end example
 ##
-## @noindent
+## @verbatim
+##   mu(not(x)) = 1 - mu(x)
+## @end verbatim
+##
 ## To run the demonstration code, type "@t{demo evalmf}" (without the quotation
 ## marks) at the Octave prompt.
 ## @end deftypefn
@@ -62,7 +60,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership evaluate
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      evalmf.m
-## Last-Modified: 31 May 2024
+## Last-Modified: 12 Jun 2024
 
 function y = evalmf (x, params, mf_type, hedge = 0, not_flag = false)
 

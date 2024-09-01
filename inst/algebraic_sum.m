@@ -28,7 +28,7 @@
 ## matrix argument, return a vector of the algebraic sum of each column.
 ##
 ## For two vectors or matrices of identical dimensions, or for one scalar and
-## one vector or matrix argument, return the pair-wise algebraic sum.
+## one vector or matrix argument, return the pairwise algebraic sum.
 ##
 ## @seealso{algebraic_product, bounded_difference, bounded_sum, drastic_product, drastic_sum, einstein_product, einstein_sum, hamacher_product, hamacher_sum}
 ## @end deftypefn
@@ -37,7 +37,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy algebraic_sum
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      algebraic_sum.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 26 Jul 2024
 
 function retval = algebraic_sum (x, y = 0)
   if ((nargin != 1) && (nargin != 2))

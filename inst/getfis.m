@@ -25,64 +25,66 @@
 ## @deftypefnx {Function File} {@var{retval} =} getfis (@var{fis}, @var{in_or_out}, @var{var_index}, @var{mf}, @var{mf_index}, @var{mf_property})
 ##
 ## Return or print the property (field) values of an FIS structure
-## specified by the arguments. There are six forms of getfis:
+## specified by the arguments.
 ##
-## @table @asis
-## @item # Arguments
-## Action Taken
+## There are six forms of getfis:
+##
+## @multitable @columnfractions .20 .70
+## @headitem Number of Arguments @tab Action Taken
 ## @item 1
-## Print (some) properties of an FIS structure on standard output.
-## Return the empty set.
+## @tab  Print (some) properties of an FIS structure on standard output.
+##       Return the empty set.
 ## @item 2
-## Return a specified property of the FIS structure. The properties
-## that may be specified are: name, type, version, numinputs, numoutputs,
-## numinputmfs, numoutputmfs, numrules, andmethod, ormethod,
-## impmethod, addmethod, defuzzmethod, inlabels, outlabels,
-## inrange, outrange, inmfs, outmfs, inmflabels, outmflabels,
-## inmftypes, outmftypes, inmfparams, outmfparams, and rulelist.
+## @tab  Return a specified property of the FIS structure. The properties
+##       that may be specified are: name, type, version, numinputs,
+##       numoutputs, numinputmfs, numoutputmfs, numrules, andmethod,
+##       ormethod, impmethod, addmethod, defuzzmethod, inlabels, outlabels,
+##       inrange, outrange, inmfs, outmfs, inmflabels, outmflabels,
+##       inmftypes, outmftypes, inmfparams, outmfparams, and rulelist.
 ## @item 3
-## Print the properties of a specified input or output variable
-## of the FIS structure. Return the empty set.
+## @tab  Print the properties of a specified input or output variable
+##       of the FIS structure. Return the empty set.
 ## @item 4
-## Return a specified property of an input or output variable.
-## The properties that may be specified are: name, range, nummfs,
-## and mflabels.
+## @tab  Return a specified property of an input or output variable.
+##       The properties that may be specified are: name, range, nummfs,
+##       and mflabels.
 ## @item 5
-## Print the properties of a specified membership function of the
-## FIS structure. Return the empty set.
+## @tab  Print the properties of a specified membership function of the
+##       FIS structure. Return the empty set.
 ## @item 6
-## Return a specified property of a membership function. The
-## properties that may be specified are: name, type, and params.
-## @end table
+## @tab  Return a specified property of a membership function. The
+##       properties that may be specified are: name, type, and params.
+## @end multitable
+## @sp 1
+## The types/values of the arguments are expected to be:
 ##
-## The types of the arguments are expected to be:
-## @table @var
-## @item fis
-## an FIS structure
-## @item property
-## a string; one of: 'name', 'type', 'version', 'numinputs',
-## 'numoutputs', 'numinputmfs', 'numoutputmfs',
-## 'numrules', 'andmethod', 'ormethod', 'impmethod',
-## 'addmethod', 'defuzzmethod' 'inlabels', 'outlabels',
-## 'inrange', 'outrange', 'inmfs', 'outmfs',
-## 'inmflabels', 'outmflabels', 'inmftypes',
-## 'outmftypes', 'inmfparams', 'outmfparams', and
-## 'rulelist' (case-insensitive)
-## @item in_or_out
-## either 'input' or 'output' (case-insensitive)
-## @item var_index
-## a valid integer index of an input or output FIS variable
-## @item var_property
-## a string; one of: 'name', 'range', 'nummfs', and 'mflabels'
-## @item mf
-## the string 'mf'
-## @item mf_index
-## a valid integer index of a membership function 
-## @item mf_property
-## a string; one of 'name', 'type', or 'params'
-## @end table
-##
-## @noindent
+## @multitable @columnfractions .20 .70
+## @headitem Argument @tab Expected Type or Value
+## @item @var{fis}
+## @tab  an FIS structure
+## @item @var{property}
+## @tab  a string; one of: 'name', 'type', 'version', 'numinputs',
+##       'numoutputs', 'numinputmfs', 'numoutputmfs',
+##       'numrules', 'andmethod', 'ormethod', 'impmethod',
+##       'addmethod', 'defuzzmethod' 'inlabels', 'outlabels',
+##       'inrange', 'outrange', 'inmfs', 'outmfs',
+##       'inmflabels', 'outmflabels', 'inmftypes',
+##       'outmftypes', 'inmfparams', 'outmfparams', and
+##       'rulelist' (case-insensitive)
+## @item @var{in_or_out}
+## @tab  either 'input' or 'output' (case-insensitive)
+## @item @var{var_index}
+## @tab  a valid integer index of an input or output FIS variable
+## @item @var{var_property}
+## @tab  a string; one of: 'name', 'range', 'nummfs', and 'mflabels'
+## @item @var{mf}
+## @tab  the string 'mf'
+## @item @var{mf_index}
+## @tab  a valid integer index of a membership function 
+## @item @var{mf_property}
+## @tab  a string; one of 'name', 'type', or 'params'
+## @end multitable
+## @sp 1
 ## Note that all of the strings representing properties above are case
 ## insensitive.
 ##
@@ -93,7 +95,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      getfis.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 13 Jun 2024
 
 ##----------------------------------------------------------------------
 

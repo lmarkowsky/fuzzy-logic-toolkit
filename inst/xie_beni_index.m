@@ -24,24 +24,22 @@
 ## The arguments to xie_beni_index are:
 ## @itemize @w
 ## @item
-## @var{input_data} - a matrix of input data points; each row corresponds to one point
+## @var{input_data}: a matrix of input data points; each row corresponds to one point
 ## @item
-## @var{cluster_centers} - a matrix of cluster centers; each row corresponds to one point
+## @var{cluster_centers}: a matrix of cluster centers; each row corresponds to one point
 ## @item
-## @var{soft_partition} - the membership degree of each input data point in each cluster
+## @var{soft_partition}: the membership degree of each input data point in each cluster
 ## @end itemize
 ##
 ## The return value is:
 ## @itemize @w
 ## @item
-## @var{vxb} - the Xie-Beni validity index for the given partition
+## @var{vxb}: the Xie-Beni validity index for the given partition
 ## @end itemize
 ##
-## For demos of this function, please type:
-## @example
-## demo 'fcm'
-## demo 'gustafson_kessel'
-## @end example
+## To run demonstration code that uses this function, type "@t{demo fcm}"
+## or "@t{demo gustafson_kessel}" (without the quotation marks) at the
+## Octave prompt.
 ##
 ## For more information about the @var{input_data}, @var{cluster_centers},
 ## and @var{soft_partition} matrices, please see the documentation for function
@@ -55,7 +53,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy xie beni cluster validity
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      xie_beni_index.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 13 Jun 2024
 
 function vxb = xie_beni_index (input_data, cluster_centers, ...
                                soft_partition)

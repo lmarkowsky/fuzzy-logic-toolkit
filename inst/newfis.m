@@ -28,24 +28,26 @@
 ##
 ## Create and return a new FIS structure using the argument values provided.
 ## Only the first argument is required. If fewer than eight arguments are given,
-## then some or all of the following default arguments will be used:
-## @itemize @bullet
-## @item
-## @var{fis_type} = 'mamdani'
-## @item
-## @var{and_method} = 'min'
-## @item
-## @var{or_method} = 'max'
-## @item
-## @var{imp_method} = 'min'
-## @item
-## @var{agg_method} = 'max'
-## @item
-## @var{defuzz_method} = 'centroid'
-## @item
-## @var{fis_version} = 1.0
-## @end itemize
+## then some or all of the following default values will be used:
 ##
+## @multitable @columnfractions .30 .30
+## @headitem Argument @tab Default Value
+## @item @var{fis_type}
+## @tab  'mamdani'
+## @item @var{and_method}
+## @tab  'min'
+## @item @var{or_method}
+## @tab  'max'
+## @item @var{imp_method}
+## @tab  'min'
+## @item @var{agg_method}
+## @tab  'max'
+## @item @var{defuzz_method}
+## @tab  'centroid'
+## @item @var{fis_version}
+## @tab  1.0
+## @end multitable
+## @sp 1
 ## @seealso{addmf, addrule, addvar, setfis}
 ## @end deftypefn
 
@@ -53,7 +55,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      newfis.m
-## Last-Modified: 2 Jun 2024
+## Last-Modified: 12 Jun 2024
 
 function fis = newfis (fis_name, fis_type = 'mamdani', ...
                        and_method = 'min', or_method = 'max', ...

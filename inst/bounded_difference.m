@@ -29,7 +29,7 @@
 ## of each column.
 ##
 ## For two vectors or matrices of identical dimensions, or for one scalar and
-## one vector or matrix argument, return the pair-wise bounded difference.
+## one vector or matrix argument, return the pairwise bounded difference.
 ##
 ## @seealso{algebraic_product, algebraic_sum, bounded_sum, drastic_product, drastic_sum, einstein_product, einstein_sum, hamacher_product, hamacher_sum}
 ## @end deftypefn
@@ -38,7 +38,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy bounded_difference
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      bounded_difference.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 26 Jul 2024
 
 function retval = bounded_difference (x, y = 0)
   if ((nargin != 1) && (nargin != 2))

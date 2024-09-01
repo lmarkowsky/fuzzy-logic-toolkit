@@ -23,58 +23,57 @@
 ## the updated FIS.
 ##
 ## Each row of the @var{rule_matrix} represents one rule and has the form:
-## @example
-## [in1_mf ... inM_mf out1_mf ... outN_mf weight connect]
-## @end example
 ##
-## @noindent
+## @verbatim
+##     [in1_mf ... inM_mf out1_mf ... outN_mf weight connect]
+## @end verbatim
+##
 ## where:
 ##
-## @itemize @w
-## @item
-## in<i>_mf == membership function index for input i
-## @item
-## out<j>_mf == membership function index for output j
-## @item
-## weight == relative weight of the rule (0 <= weight <= 1)
-## @item
-## connect == antecedent connective (1 == and; 2 == or)
-## @end itemize
-##
-## To express:
-## @itemize @w
-## @item
-## "not" -- prepend a minus sign to the membership function index
-## @item
-## "somewhat" -- append ".05" to the membership function index
-## @item
-## "very" -- append ".20" to the membership function index
-## @item
-## "extremely" -- append ".30" to the membership function index
-## @item
-## "very very" -- append ".40" to the membership function index
-## @item
-## custom hedge -- append .xy, where x.y is the degree to which the membership
-##   value should be raised, to the membership function index
-## @end itemize
-##
+## @multitable @columnfractions .25 .70
+## @headitem Element in Rule Vector @tab Expected Type or Value
+## @item in<i>_mf
+## @tab  membership function index for input i
+## @item out<j>_mf
+## @tab  membership function index for output j
+## @item weight
+## @tab  relative weight of the rule (0 <= weight <= 1)
+## @item connect
+## @tab  antecedent connective (1 == and; 2 == or)
+## @item @ @ 
+## @tab  @ @ 
+## @headitem Hedge String @tab Effect of Applying Hedge
+## @item "not"
+## @tab  prepend a minus sign to the membership function index
+## @item "somewhat"
+## @tab  append ".05" to the membership function index
+## @item "very"
+## @tab  append ".20" to the membership function index
+## @item "extremely"
+## @tab  append ".30" to the membership function index
+## @item "very very"
+## @tab  append ".40" to the membership function index
+## @item custom hedge
+## @tab  append .xy, where x.y is the degree to which the membership
+##       value should be raised, to the membership function index
+## @end multitable
+## @sp 1
 ## To omit an input or output, use 0 for the membership function index.
 ## The consequent connective is always "and".
 ##
-## @noindent
 ## For example, to express:
-## @example
-## "If (input_1 is mf_2) or (input_3 is not mf_1) or (input_4 is very mf_1),
-##  then (output_1 is mf_2) and (output_2 is mf_1^0.3)."
-## @end example
 ##
-## @noindent
+## @verbatim
+##     "If (input_1 is mf_2) or (input_3 is not mf_1) or (input_4 is very mf_1),
+##      then (output_1 is mf_2) and (output_2 is mf_1^0.3)."
+## @end verbatim
+##
 ## with weight 1, the corresponding row of @var{rule_matrix} would be:
-## @example
-## [2   0   -1   4.2   2   1.03   1   2]
-## @end example
 ##
-## @noindent
+## @verbatim
+##     [2   0   -1   4.2   2   1.03   1   2]
+## @end verbatim
+##
 ## For a complete example that uses addrule, see heart_disease_demo_1.m.
 ##
 ## @seealso{heart_disease_demo_1, showrule}
@@ -84,7 +83,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy rule
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      addrule.m
-## Last-Modified: 2 Jun 2024
+## Last-Modified: 13 Jun 2024
 
 function fis = addrule (fis, rule_matrix) 
 

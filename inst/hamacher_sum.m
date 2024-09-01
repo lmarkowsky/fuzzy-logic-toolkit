@@ -30,7 +30,7 @@
 ## of each column.
 ##
 ## For two vectors or matrices of identical dimensions, or for one scalar and
-## one vector or matrix argument, return the pair-wise Hamacher sum.
+## one vector or matrix argument, return the pairwise Hamacher sum.
 ##
 ## @seealso{algebraic_product, algebraic_sum, bounded_difference, bounded_sum, drastic_product, drastic_sum, einstein_product, einstein_sum, hamacher_product}
 ## @end deftypefn
@@ -39,7 +39,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy hamacher_sum
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      hamacher_sum.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 26 Jul 2024
 
 function retval = hamacher_sum (x, y = 0)
   if (nargin == 0 || nargin > 2 ||

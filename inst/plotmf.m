@@ -39,20 +39,22 @@
 ## 0 for all except the last parameter, and with the desired constant value as
 ## the last parameter.
 ##
-## The types of the arguments are expected to be:
-## @itemize @bullet
-## @item
-## @var{fis} - an FIS structure
-## @item
-## @var{in_or_out} - either 'input' or 'output' (case-insensitive)
-## @item
-## @var{var_index} - an FIS input or output variable index
-## @item
-## @var{y_lower_limit} - a real scalar (default value = -0.1)
-## @item
-## @var{y_upper_limit} - a real scalar (default value = 1.1)
-## @end itemize
+## The types/values of the arguments are expected to be:
 ##
+## @multitable @columnfractions .30 .65
+## @headitem Argument @tab Expected Type or Value
+## @item @var{fis}
+## @tab  an FIS structure
+## @item @var{in_or_out}
+## @tab  either 'input' or 'output' (case-insensitive)
+## @item @var{var_index}
+## @tab  an FIS input or output variable index
+## @item @var{y_lower_limit}
+## @tab  a real scalar (default value = -0.1)
+## @item @var{y_upper_limit}
+## @tab  a real scalar (default value = 1.1)
+## @end multitable
+## @sp 1
 ## Six examples that use plotmf are:
 ## @itemize @bullet
 ## @item
@@ -78,7 +80,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership plot
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      plotmf.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 12 Jun 2024
 
 function plotmf (fis, in_or_out, var_index, ...
                  y_lower_limit = -0.1, y_upper_limit = 1.1)

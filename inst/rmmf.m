@@ -22,20 +22,22 @@
 ## Remove a membership function from an existing FIS
 ## structure and return the updated FIS.
 ##
-## The types of the arguments are expected to be:
-## @itemize @bullet
-## @item
-## @var{fis} - an FIS structure
-## @item
-## @var{in_or_out} - either 'input' or 'output' (case-insensitive)
-## @item
-## @var{var_index} - an FIS input or output variable index
-## @item
-## @var{mf} - the string 'mf'
-## @item
-## @var{mf_index} - a string
-## @end itemize
+## The types/values of the arguments are expected to be:
 ##
+## @multitable @columnfractions .35 .40
+## @headitem Argument @tab Expected Type or Value
+## @item @var{fis}
+## @tab  an FIS structure
+## @item @var{in_or_out}
+## @tab  'input' or 'output' (case-insensitive)
+## @item @var{var_index}
+## @tab  valid index of an FIS input/output variable
+## @item @var{mf}
+## @tab  the string 'mf'
+## @item @var{mf_index}
+## @tab  an integer
+## @end multitable
+## @sp 1
 ## Note that rmmf will allow the user to delete membership functions that are
 ## currently in use by rules in the FIS.
 ##
@@ -46,7 +48,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      rmmf.m
-## Last-Modified: 2 Jun 2024
+## Last-Modified: 13 Jun 2024
 
 function fis = rmmf (fis, in_or_out, var_index, mf, mf_index)
 

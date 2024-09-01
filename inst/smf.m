@@ -26,19 +26,16 @@
 ## The argument @var{x} must be a real number or a non-empty vector of strictly
 ## increasing real numbers, and @var{a} and @var{b} must be real numbers, with
 ## @var{a} < @var{b}. This membership function satisfies:
-## @example
-## @group
-##         0                                if x <= a
-## f(x) =  2 * ((x - a)/(b - a))^2          if a < x <= (a + b)/2
-##         1 - 2 * ((x - b)/(b - a))^2      if (a + b)/2 < x < b
-##         1                                if x >= b
-## @end group
-## @end example
 ##
-## @noindent
+## @verbatim
+##           0                                if x <= a
+##   f(x) =  2 * ((x - a)/(b - a))^2          if a < x <= (a + b)/2
+##           1 - 2 * ((x - b)/(b - a))^2      if (a + b)/2 < x < b
+##           1                                if x >= b
+## @end verbatim
+##
 ## which always returns values in the range [0, 1].
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo smf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -49,7 +46,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership s-shaped
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      smf.m
-## Last-Modified: 30 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = smf (x, params)
 

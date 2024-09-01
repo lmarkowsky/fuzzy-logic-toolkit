@@ -21,13 +21,13 @@
 ## @deftypefnx {Function File} {@var{retval} =} drastic_product (@var{x}, @var{y})
 ##
 ## Return the drastic product of the input.
+##
 ## The drastic product of two real scalars x and y is:
-## @example
-## @group
-## min (x, y)     if max (x, y) == 1
-## 0              otherwise
-## @end group
-## @end example
+##
+## @verbatim
+##     min (x, y)     if max (x, y) == 1
+##     0              otherwise
+## @end verbatim
 ##
 ## For one vector argument, apply the drastic product to all of the elements
 ## of the vector. (The drastic product is associative.) For one
@@ -35,7 +35,7 @@
 ## of each column.
 ##
 ## For two vectors or matrices of identical dimensions, or for one scalar and
-## one vector or matrix argument, return the pair-wise drastic product.
+## one vector or matrix argument, return the pairwise drastic product.
 ##
 ## @seealso{algebraic_product, algebraic_sum, bounded_difference, bounded_sum, drastic_sum, einstein_product, einstein_sum, hamacher_product, hamacher_sum}
 ## @end deftypefn
@@ -44,7 +44,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy drastic_product
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      drastic_product.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 26 Jul 2024
 
 function retval = drastic_product (x, y = 0)
   if (nargin == 0 || nargin > 2 ||

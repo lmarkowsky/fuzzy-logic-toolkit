@@ -26,38 +26,24 @@
 ## with a @var{filename} that does not end with '.fis', append '.fis' to the
 ## @var{filename}. The @var{filename} is expected to be a string.
 ##
-## Six examples of the input file format:
-## @itemize @bullet
-## @item
-## cubic_approximator.fis
-## @item
-## heart_disease_risk.fis
-## @item
-## investment_portfolio.fis
-## @item
-## linear_tip_calculator.fis
-## @item
-## mamdani_tip_calculator.fis
-## @item
-## sugeno_tip_calculator.fis
-## @end itemize
+## Six examples of the input file format and example scripts that use readfis:
 ##
-## Six example scripts that use readfis:
-## @itemize @bullet
-## @item
-## cubic_approx_demo.m
-## @item
-## heart_disease_demo_2.m
-## @item
-## investment_portfolio_demo.m
-## @item
-## linear_tip_demo.m
-## @item
-## mamdani_tip_demo.m
-## @item
-## sugeno_tip_demo.m
-## @end itemize
-##
+## @multitable @columnfractions .45 .45
+## @headitem Example FIS File @tab Corresponding Example Script
+## @item cubic_approximator.fis
+## @tab  cubic_approx_demo.m
+## @item heart_disease_risk.fis
+## @tab  heart_disease_demo_2.m
+## @item investment_portfolio.fis
+## @tab  investment_portfolio_demo.m
+## @item linear_tip_calculator.fis
+## @tab  linear_tip_demo.m
+## @item mamdani_tip_calculator.fis
+## @tab  mamdani_tip_demo.m
+## @item sugeno_tip_calculator.fis
+## @tab  sugeno_tip_demo.m
+## @end multitable
+## @sp 1
 ## @seealso{writefis}
 ## @end deftypefn
 
@@ -65,7 +51,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      readfis.m
-## Last-Modified: 1 Jun 2024
+## Last-Modified: 12 Jun 2024
 
 function fis = readfis (filename = '')
 

@@ -28,22 +28,19 @@
 ## numbers, and @var{a}, @var{b}, @var{c}, and @var{d} must be real numbers,
 ## with @var{a} < @var{b} <= @var{c} < @var{d}. This membership function
 ## satisfies:
-## @example
-## @group
-##         0                             if x <= a
-##         2 * ((x - a)/(b - a))^2       if a < x <= (a + b)/2
-##         1 - 2 * ((x - b)/(b - a))^2   if (a + b)/2 < x < b
-## f(x) =  1                             if b <= x <= c
-##         1 - 2 * ((x - c)/(d - c))^2   if c < x <= (c + d)/2
-##         2 * ((x - d)/(d - c))^2       if (c + d)/2 < x < d
-##         0                             if x >= d
-## @end group
-## @end example
 ##
-## @noindent
+## @verbatim
+##           0                             if x <= a
+##           2 * ((x - a)/(b - a))^2       if a < x <= (a + b)/2
+##           1 - 2 * ((x - b)/(b - a))^2   if (a + b)/2 < x < b
+##   f(x) =  1                             if b <= x <= c
+##           1 - 2 * ((x - c)/(d - c))^2   if c < x <= (c + d)/2
+##           2 * ((x - d)/(d - c))^2       if (c + d)/2 < x < d
+##           0                             if x >= d
+## @end verbatim
+##
 ## which always returns values in the range [0, 1].
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo pimf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -54,7 +51,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership pi-shaped pi
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      pimf.m
-## Last-Modified: 30 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = pimf (x, params)
 

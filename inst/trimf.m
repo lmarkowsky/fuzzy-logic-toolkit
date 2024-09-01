@@ -33,18 +33,15 @@
 ## The parameters [@var{a} @var{b} @var{c}] correspond to the x values of the
 ## vertices of the triangle:
 ##
-## @example
-## @group
-## 1-|         /\
-##   |        /  \
-##   |       /    \
-##   |      /      \
-## 0-----------------------
-##         a   b   c
-## @end group
-## @end example
+## @verbatim
+##        1-|         /\
+##          |        /  \
+##          |       /    \
+##          |      /      \
+##        0-----------------------
+##                a   b   c
+## @end verbatim
 ##
-## @noindent
 ## To run the demonstration code, type "@t{demo trimf}" (without the quotation
 ## marks) at the Octave prompt.
 ##
@@ -55,7 +52,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy membership triangular
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      trimf.m
-## Last-Modified: 29 May 2024
+## Last-Modified: 13 Jun 2024
 
 function y = trimf (x, params)
 
