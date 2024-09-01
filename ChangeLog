@@ -1,3 +1,12 @@
+2024-08-31 L. Markowsky <lmarkowsky@gmail.com>
+
+  * Version 0.6.1 released.
+  * ChangeLog: Updated file.
+  * DESCRIPTION: Updated file.
+  * NEWS: Updated file.
+  * inst/*.m and inst/private/*.m: Improved many comments.
+  * docs/*.html: Updated html documentation.
+
 2024-06-05 L. Markowsky <lmarkowsky@gmail.com>
 
   * Version 0.6.0 released.
