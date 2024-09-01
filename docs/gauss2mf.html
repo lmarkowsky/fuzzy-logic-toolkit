@@ -84,18 +84,16 @@
 <p> Given parameters <var>sig1</var>, <var>c1</var>, <var>sig2</var>, and <var>c2</var>, that define
  two Gaussian membership functions, let:
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example"> f1(x) = exp((-(x - c1)^2)/(2 * sig1^2))     if x &lt;= c1
-         1                                   otherwise
+<pre class="verbatim">     f1(x) = exp((-(x - c1)^2)/(2 * sig1^2))    if x &lt;= c1
+             1                                  otherwise
 
- f2(x) = 1                                   if x &lt;= c2
-         exp((-(x - c2)^2)/(2 * sig2^2))     otherwise
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> Then gauss2mf is given by:
+     f2(x) = 1                                  if x &lt;= c2
+             exp((-(x - c2)^2)/(2 * sig2^2))    otherwise
+ </pre>
+<p> Then gauss2mf is given by:
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> f(x) = f1(x) * f2(x)
- </pre></td></tr></table>
-
+<pre class="verbatim">     f(x) = f1(x) * f2(x)
+ </pre>
 <p> The argument <var>x</var> must be a real number or a non-empty vector of strictly
  increasing real numbers, and <var>sig1</var>, <var>c1</var>, <var>sig2</var>, and <var>c2</var>
  must be real numbers.
@@ -108,7 +106,7 @@
  gauss2mf returns a subnormal membership function (has a maximum value less
  than 1).
 </p>
- <p> To run the demonstration code, type &quot;<tt>demo gauss2mf</tt>&quot; (without the quotation
+<p> To run the demonstration code, type &quot;<tt>demo gauss2mf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 <p> <strong>See also: </strong>

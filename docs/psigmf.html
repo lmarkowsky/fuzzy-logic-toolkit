@@ -83,38 +83,26 @@
 <p> The argument <var>x</var> must be a real number or a non-empty vector of strictly
  increasing real numbers, and <var>a1</var>, <var>c1</var>, <var>a2</var>, and <var>c2</var> must
  be real numbers. This membership function satisfies the equation:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> f(x) = (1/(1 + exp(-a1*(x - c1)))) * (1/(1 + exp(-a2*(x - c2))))
- </pre></td></tr></table>
-
- <p> The function is bounded above by 1 and below by 0.
+</p>
+<pre class="verbatim">     f(x) = (1/(1 + exp(-a1*(x - c1)))) * (1/(1 + exp(-a2*(x - c2))))
+ </pre>
+<p> The function is bounded above by 1 and below by 0.
 </p>
 <p> If <var>a1</var> is positive, <var>a2</var> is negative, and <var>c1</var> and <var>c2</var> are
  far enough apart with <var>c1</var> &lt; <var>c2</var>, then:
- </p><ul class="toc">
-<li>
- (a1)/4 ~ the rising slope at c1
- 
-</li><li>
- c1 ~ the left inflection point
- 
-</li><li>
- (a2)/4 ~ the falling slope at c2
- 
-</li><li>
- c2 ~ the right inflection point
- 
-</li></ul>
-
- <p> and at each inflection point, the value of the function is about 0.5:
- </p><ul class="toc">
-<li>
- f(c1) ~ f(c2) ~ 0.5.
- 
-</li></ul>
-
- <p> (Here, the symbol ~ means &quot;approximately equal&quot;.)
 </p>
- <p> To run the demonstration code, type &quot;<tt>demo psigmf</tt>&quot; (without the quotation
+<pre class="verbatim">     (a1)/4 ~ the rising slope at c1
+         c1 ~ the left inflection point
+     (a2)/4 ~ the falling slope at c2
+         c2 ~ the right inflection point
+ </pre>
+<p> and at each inflection point, the value of the function is about 0.5:
+</p>
+<pre class="verbatim">      f(c1) ~ f(c2) ~ 0.5.
+ </pre>
+<p> (Here, the symbol ~ means &quot;approximately equal&quot;.)
+</p>
+<p> To run the demonstration code, type &quot;<tt>demo psigmf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 <p> <strong>See also: </strong>

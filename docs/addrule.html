@@ -79,62 +79,41 @@
 </p>
 <div class="ms-5">
 <p> Each row of the <var>rule_matrix</var> represents one rule and has the form:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> [in1_mf ... inM_mf out1_mf ... outN_mf weight connect]
- </pre></td></tr></table>
-
- <p> where:
 </p>
- <ul class="toc">
-<li>
- in&lt;i&gt;_mf == membership function index for input i
- 
-</li><li>
- out&lt;j&gt;_mf == membership function index for output j
- 
-</li><li>
- weight == relative weight of the rule (0 &lt;= weight &lt;= 1)
- 
-</li><li>
- connect == antecedent connective (1 == and; 2 == or)
- 
-</li></ul>
-
-<p> To express:
- </p><ul class="toc">
-<li>
- &quot;not&quot; &ndash; prepend a minus sign to the membership function index
- 
-</li><li>
- &quot;somewhat&quot; &ndash; append &quot;.05&quot; to the membership function index
- 
-</li><li>
- &quot;very&quot; &ndash; append &quot;.20&quot; to the membership function index
- 
-</li><li>
- &quot;extremely&quot; &ndash; append &quot;.30&quot; to the membership function index
- 
-</li><li>
- &quot;very very&quot; &ndash; append &quot;.40&quot; to the membership function index
- 
-</li><li>
- custom hedge &ndash; append .xy, where x.y is the degree to which the membership
-   value should be raised, to the membership function index
- 
-</li></ul>
-
+<pre class="verbatim">     [in1_mf ... inM_mf out1_mf ... outN_mf weight connect]
+ </pre>
+<p> where:
+</p>
+ <table>
+<thead><tr><th width="25%">Element in Rule Vector</th><th width="70%">Expected Type or Value</th></tr></thead>
+<tr><td width="25%">in&lt;i&gt;_mf</td><td width="70%">membership function index for input i</td></tr>
+<tr><td width="25%">out&lt;j&gt;_mf</td><td width="70%">membership function index for output j</td></tr>
+<tr><td width="25%">weight</td><td width="70%">relative weight of the rule (0 &lt;= weight &lt;= 1)</td></tr>
+<tr><td width="25%">connect</td><td width="70%">antecedent connective (1 == and; 2 == or)</td></tr>
+<tr><td width="25%">&nbsp;&nbsp;</td><td width="70%">&nbsp;&nbsp;</td></tr>
+<thead><tr><th width="25%">Hedge String</th><th width="70%">Effect of Applying Hedge</th></tr></thead>
+<tr><td width="25%">&quot;not&quot;</td><td width="70%">prepend a minus sign to the membership function index</td></tr>
+<tr><td width="25%">&quot;somewhat&quot;</td><td width="70%">append &quot;.05&quot; to the membership function index</td></tr>
+<tr><td width="25%">&quot;very&quot;</td><td width="70%">append &quot;.20&quot; to the membership function index</td></tr>
+<tr><td width="25%">&quot;extremely&quot;</td><td width="70%">append &quot;.30&quot; to the membership function index</td></tr>
+<tr><td width="25%">&quot;very very&quot;</td><td width="70%">append &quot;.40&quot; to the membership function index</td></tr>
+<tr><td width="25%">custom hedge</td><td width="70%">append .xy, where x.y is the degree to which the membership
+       value should be raised, to the membership function index</td></tr>
+</table>
+ <br>
 <p> To omit an input or output, use 0 for the membership function index.
  The consequent connective is always &quot;and&quot;.
 </p>
- <p> For example, to express:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> &quot;If (input_1 is mf_2) or (input_3 is not mf_1) or (input_4 is very mf_1),
-  then (output_1 is mf_2) and (output_2 is mf_1^0.3).&quot;
- </pre></td></tr></table>
-
- <p> with weight 1, the corresponding row of <var>rule_matrix</var> would be:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> [2   0   -1   4.2   2   1.03   1   2]
- </pre></td></tr></table>
-
- <p> For a complete example that uses addrule, see heart_disease_demo_1.m.
+<p> For example, to express:
+</p>
+<pre class="verbatim">     &quot;If (input_1 is mf_2) or (input_3 is not mf_1) or (input_4 is very mf_1),
+      then (output_1 is mf_2) and (output_2 is mf_1^0.3).&quot;
+ </pre>
+<p> with weight 1, the corresponding row of <var>rule_matrix</var> would be:
+</p>
+<pre class="verbatim">     [2   0   -1   4.2   2   1.03   1   2]
+ </pre>
+<p> For a complete example that uses addrule, see heart_disease_demo_1.m.
 </p>
 <p> <strong>See also: </strong>
   <a href="heart_disease_demo_1.html">heart_disease_demo_1</a>, 

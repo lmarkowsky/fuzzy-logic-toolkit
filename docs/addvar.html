@@ -78,26 +78,20 @@
  structure and return the updated FIS.
 </p>
 <div class="ms-5">
-<p> The types of the arguments are expected to be:
- </p><ul class="toc">
-<li>
- <var>fis</var> - an FIS structure
- 
-</li><li>
- <var>in_or_out</var> - either &rsquo;input&rsquo; or &rsquo;output&rsquo; (case-insensitive)
- 
-</li><li>
- <var>var_name</var> - a string
- 
-</li><li>
- <var>var_range</var> - a vector [x1 x2] of two real numbers
- 
-</li></ul>
-
+<p> The types/values of the arguments are expected to be:
+</p>
+ <table>
+<thead><tr><th width="35%">Argument</th><th width="40%">Expected Type or Value</th></tr></thead>
+<tr><td width="35%"><var>fis</var></td><td width="40%">an FIS structure</td></tr>
+<tr><td width="35%"><var>in_or_out</var></td><td width="40%">either &rsquo;input&rsquo; or &rsquo;output&rsquo; (case-insensitive)</td></tr>
+<tr><td width="35%"><var>var_name</var></td><td width="40%">a string</td></tr>
+<tr><td width="35%"><var>var_range</var></td><td width="40%">a vector [x1 x2] of two real numbers</td></tr>
+</table>
+ <br>
 <p> The vector components x1 and x2, which must also satisfy x1 &lt;= x2,
  specify the lower and upper bounds of the variable&rsquo;s domain.
 </p>
- <p> To run the demonstration code, type &quot;<tt>demo addvar</tt>&quot; (without the quotation
+<p> To run the demonstration code, type &quot;<tt>demo addvar</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 

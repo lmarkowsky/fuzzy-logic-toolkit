@@ -84,28 +84,29 @@
  increasing real numbers, <var>a</var>, <var>b</var>, and <var>c</var> must be real numbers,
  <var>a</var> must be non-zero, and <var>b</var> must be an integer. This membership
  function satisfies the equation:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> f(x) = 1/(1 + (abs((x - c)/a))^(2 * b))
- </pre></td></tr></table>
+</p>
+<pre class="verbatim">     f(x) = 1/(1 + (abs((x - c)/a))^(2 * b))
+ </pre>
 <p> which always returns values in the range [0, 1].
 </p>
 <p> The parameters <var>a</var>, <var>b</var>, and <var>c</var> give:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example"> a == controls the width of the curve at f(x) = 0.5;
-      f(c-a) = f(c+a) = 0.5
- b == controls the slope of the curve at x = c-a and x = c+a;
-      f'(c-a) = b/2a and f'(c+a) = -b/2a
- c == the center of the curve
- </pre><pre class="example"> </pre></td></tr></table>
-
+</p>
+<pre class="verbatim">     a == controls the width of the curve at f(x) = 0.5;
+          f(c-a) = f(c+a) = 0.5
+     b == controls the slope of the curve at x = c-a and x = c+a;
+          f'(c-a) = b/2a and f'(c+a) = -b/2a
+     c == the center of the curve
+ </pre>
 <p> This membership function has a value of 0.5 at the two points c - a and
  c + a, and the width of the curve at f(x) == 0.5 is 2 * |a|:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example"> f(c - a) == f(c + a) == 0.5
- 2 * |a| == the width of the curve at f(x) == 0.5
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> The generalized bell-shaped membership function is continuously
+</p>
+<pre class="verbatim">     f(c - a) == f(c + a) == 0.5
+     2 * |a| == the width of the curve at f(x) == 0.5
+ </pre>
+<p> The generalized bell-shaped membership function is continuously
  differentiable and is symmetric about the line x = c.
 </p>
- <p> To run the demonstration code, type &quot;<tt>demo gbellmf</tt>&quot; (without the quotation
+<p> To run the demonstration code, type &quot;<tt>demo gbellmf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 <p> <strong>See also: </strong>

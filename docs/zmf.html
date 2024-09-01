@@ -82,32 +82,24 @@
 <p> The argument <var>x</var> must be a real number or a non-empty vector of strictly
  increasing real numbers, and <var>a</var> and <var>b</var> must be real numbers, with
  <var>a</var> &lt; <var>b</var>. This membership function satisfies:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">         1                                if x &lt;= a
- f(x) =  1 - 2 * ((x - a)/(b - a))^2      if a &lt; x &lt;= (a + b)/2
-         2 * ((x - b)/(b - a))^2          if (a + b)/2 &lt; x &lt; b
-         0                                if x &gt;= b
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> which always returns values in the range [0, 1].
+</p>
+<pre class="verbatim">             1                               if x &lt;= a
+     f(x) =  1 - 2 * ((x - a)/(b - a))^2     if a &lt; x &lt;= (a + b)/2
+             2 * ((x - b)/(b - a))^2         if (a + b)/2 &lt; x &lt; b
+             0                               if x &gt;= b
+ </pre>
+<p> which always returns values in the range [0, 1].
 </p>
 <p> The parameters a and b specify:
- </p><ul class="toc">
-<li>
- a == the rightmost point at which f(x) = 1
- 
-</li><li>
- b == the leftmost point at which f(x) = 0
- 
-</li></ul>
-
- <p> At the midpoint of the segment [a, b], the function value is 0.5:
- </p><ul class="toc">
-<li>
- f((a + b)/2) = 0.5
- 
-</li></ul>
-
- <p> To run the demonstration code, type &quot;<tt>demo zmf</tt>&quot; (without the quotation
+</p>
+<pre class="verbatim">     a == the rightmost point at which f(x) = 1
+     b == the leftmost point at which f(x) = 0
+ </pre>
+<p> At the midpoint of the segment [a, b], the function value is 0.5:
+</p>
+<pre class="verbatim">     f((a + b)/2) = 0.5
+ </pre>
+<p> To run the demonstration code, type &quot;<tt>demo zmf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 <p> <strong>See also: </strong>

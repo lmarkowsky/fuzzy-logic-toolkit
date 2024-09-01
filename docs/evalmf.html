@@ -94,18 +94,17 @@
  &quot;extremely&quot;, and &quot;very very&quot;, raise the membership function values to
  the power corresponding to the hedge.
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example"> (fraction == .05) &lt;=&gt;  somewhat x       &lt;=&gt;  mu(x)^0.5  &lt;=&gt;  sqrt(mu(x))
- (fraction == .20) &lt;=&gt;  very x           &lt;=&gt;  mu(x)^2    &lt;=&gt;  sqr(mu(x))
- (fraction == .30) &lt;=&gt;  extremely x      &lt;=&gt;  mu(x)^3    &lt;=&gt;  cube(mu(x))
- (fraction == .40) &lt;=&gt;  very very x      &lt;=&gt;  mu(x)^4
- (fraction == .dd) &lt;=&gt;  &lt;custom hedge&gt; x &lt;=&gt;  mu(x)^(dd/10)
- </pre><pre class="example"> </pre></td></tr></table>
-
+<pre class="verbatim">   (fraction == .05) &lt;=&gt;  somewhat x       &lt;=&gt;  mu(x)^0.5  &lt;=&gt;  sqrt(mu(x))
+   (fraction == .20) &lt;=&gt;  very x           &lt;=&gt;  mu(x)^2    &lt;=&gt;  sqr(mu(x))
+   (fraction == .30) &lt;=&gt;  extremely x      &lt;=&gt;  mu(x)^3    &lt;=&gt;  cube(mu(x))
+   (fraction == .40) &lt;=&gt;  very very x      &lt;=&gt;  mu(x)^4
+   (fraction == .dd) &lt;=&gt;  &lt;custom hedge&gt; x &lt;=&gt;  mu(x)^(dd/10)
+ </pre>
 <p> The <var>not_flag</var> negates the membership function using:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> mu(not(x)) = 1 - mu(x)
- </pre></td></tr></table>
-
- <p> To run the demonstration code, type &quot;<tt>demo evalmf</tt>&quot; (without the quotation
+</p>
+<pre class="verbatim">   mu(not(x)) = 1 - mu(x)
+ </pre>
+<p> To run the demonstration code, type &quot;<tt>demo evalmf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
  </p>
 </div>

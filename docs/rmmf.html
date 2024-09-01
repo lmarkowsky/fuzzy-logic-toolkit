@@ -78,20 +78,17 @@
  structure and return the updated FIS.
 </p>
 <div class="ms-5">
-<p> The types of the arguments are expected to be:
- </p><ul>
-<li>
- <var>fis</var> - an FIS structure
- </li><li>
- <var>in_or_out</var> - either &rsquo;input&rsquo; or &rsquo;output&rsquo; (case-insensitive)
- </li><li>
- <var>var_index</var> - an FIS input or output variable index
- </li><li>
- <var>mf</var> - the string &rsquo;mf&rsquo;
- </li><li>
- <var>mf_index</var> - a string
- </li></ul>
-
+<p> The types/values of the arguments are expected to be:
+</p>
+ <table>
+<thead><tr><th width="35%">Argument</th><th width="40%">Expected Type or Value</th></tr></thead>
+<tr><td width="35%"><var>fis</var></td><td width="40%">an FIS structure</td></tr>
+<tr><td width="35%"><var>in_or_out</var></td><td width="40%">&rsquo;input&rsquo; or &rsquo;output&rsquo; (case-insensitive)</td></tr>
+<tr><td width="35%"><var>var_index</var></td><td width="40%">valid index of an FIS input/output variable</td></tr>
+<tr><td width="35%"><var>mf</var></td><td width="40%">the string &rsquo;mf&rsquo;</td></tr>
+<tr><td width="35%"><var>mf_index</var></td><td width="40%">an integer</td></tr>
+</table>
+ <br>
 <p> Note that rmmf will allow the user to delete membership functions that are
  currently in use by rules in the FIS.
 </p>

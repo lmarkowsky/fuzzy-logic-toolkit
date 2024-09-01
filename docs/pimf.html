@@ -84,18 +84,18 @@
  numbers, and <var>a</var>, <var>b</var>, <var>c</var>, and <var>d</var> must be real numbers,
  with <var>a</var> &lt; <var>b</var> &lt;= <var>c</var> &lt; <var>d</var>. This membership function
  satisfies:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">         0                             if x &lt;= a
-         2 * ((x - a)/(b - a))^2       if a &lt; x &lt;= (a + b)/2
-         1 - 2 * ((x - b)/(b - a))^2   if (a + b)/2 &lt; x &lt; b
- f(x) =  1                             if b &lt;= x &lt;= c
-         1 - 2 * ((x - c)/(d - c))^2   if c &lt; x &lt;= (c + d)/2
-         2 * ((x - d)/(d - c))^2       if (c + d)/2 &lt; x &lt; d
-         0                             if x &gt;= d
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> which always returns values in the range [0, 1].
 </p>
- <p> To run the demonstration code, type &quot;<tt>demo pimf</tt>&quot; (without the quotation
+<pre class="verbatim">           0                             if x &lt;= a
+           2 * ((x - a)/(b - a))^2       if a &lt; x &lt;= (a + b)/2
+           1 - 2 * ((x - b)/(b - a))^2   if (a + b)/2 &lt; x &lt; b
+   f(x) =  1                             if b &lt;= x &lt;= c
+           1 - 2 * ((x - c)/(d - c))^2   if c &lt; x &lt;= (c + d)/2
+           2 * ((x - d)/(d - c))^2       if (c + d)/2 &lt; x &lt; d
+           0                             if x &gt;= d
+ </pre>
+<p> which always returns values in the range [0, 1].
+</p>
+<p> To run the demonstration code, type &quot;<tt>demo pimf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 <p> <strong>See also: </strong>

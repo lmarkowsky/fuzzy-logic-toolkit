@@ -83,32 +83,21 @@
 <p> The argument <var>x</var> must be a real number or a non-empty vector of strictly
  increasing real numbers, and <var>a</var> and <var>c</var> must be real numbers. This
  membership function satisfies the equation:
- </p><ul class="toc">
-<li>
- f(x) = 1/(1 + exp(-a*(x - c)))
- 
-</li></ul>
-
- <p> which always returns values in the range [0, 1].
+</p>
+<pre class="verbatim">     f(x) = 1/(1 + exp(-a*(x - c)))
+ </pre>
+<p> which always returns values in the range [0, 1].
 </p>
 <p> The parameters a and c specify:
- </p><ul class="toc">
-<li>
- a == the slope at c
- 
-</li><li>
- c == the inflection point
- 
-</li></ul>
-
- <p> and at the inflection point, the value of the function is 0.5:
- </p><ul class="toc">
-<li>
- f(c) == 0.5.
- 
-</li></ul>
-
- <p> To run the demonstration code, type &quot;<tt>demo sigmf</tt>&quot; (without the quotation
+</p>
+<pre class="verbatim">     a == the slope at c
+     c == the inflection point
+ </pre>
+<p> and at the inflection point, the value of the function is 0.5:
+</p>
+<pre class="verbatim">     f(c) == 0.5.
+ </pre>
+<p> To run the demonstration code, type &quot;<tt>demo sigmf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 <p> <strong>See also: </strong>

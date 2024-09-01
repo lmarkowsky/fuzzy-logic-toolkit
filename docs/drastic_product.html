@@ -76,19 +76,20 @@
 </dl>
 
 <p> Return the drastic product of the input.
- The drastic product of two real scalars x and y is:
- </p><<div class="ms-5">
-table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example"> min (x, y)     if max (x, y) == 1
- 0              otherwise
- </pre><pre class="example"> </pre></td></tr></table>
-
+</p>
+<div class="ms-5">
+<p> The drastic product of two real scalars x and y is:
+</p>
+<pre class="verbatim">     min (x, y)     if max (x, y) == 1
+     0              otherwise
+ </pre>
 <p> For one vector argument, apply the drastic product to all of the elements
  of the vector. (The drastic product is associative.) For one
  two-dimensional matrix argument, return a vector of the drastic product
  of each column.
 </p>
 <p> For two vectors or matrices of identical dimensions, or for one scalar and
- one vector or matrix argument, return the pair-wise drastic product.
+ one vector or matrix argument, return the pairwise drastic product.
 </p>
 <p> <strong>See also: </strong>
   <a href="algebraic_product.html">algebraic_product</a>, 

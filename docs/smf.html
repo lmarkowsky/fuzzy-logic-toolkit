@@ -82,15 +82,15 @@
 <p> The argument <var>x</var> must be a real number or a non-empty vector of strictly
  increasing real numbers, and <var>a</var> and <var>b</var> must be real numbers, with
  <var>a</var> &lt; <var>b</var>. This membership function satisfies:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">         0                                if x &lt;= a
- f(x) =  2 * ((x - a)/(b - a))^2          if a &lt; x &lt;= (a + b)/2
-         1 - 2 * ((x - b)/(b - a))^2      if (a + b)/2 &lt; x &lt; b
-         1                                if x &gt;= b
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> which always returns values in the range [0, 1].
 </p>
- <p> To run the demonstration code, type &quot;<tt>demo smf</tt>&quot; (without the quotation
+<pre class="verbatim">           0                                if x &lt;= a
+   f(x) =  2 * ((x - a)/(b - a))^2          if a &lt; x &lt;= (a + b)/2
+           1 - 2 * ((x - b)/(b - a))^2      if (a + b)/2 &lt; x &lt; b
+           1                                if x &gt;= b
+ </pre>
+<p> which always returns values in the range [0, 1].
+</p>
+<p> To run the demonstration code, type &quot;<tt>demo smf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 <p> <strong>See also: </strong>

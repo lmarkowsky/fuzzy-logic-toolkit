@@ -76,19 +76,20 @@
 </dl>
 
 <p> Return the drastic sum of the input.
- The drastic sum of two real scalars x and y is:
- </p><<div class="ms-5">
-table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example"> max (x, y)     if min (x, y) == 0
- 1              otherwise
- </pre><pre class="example"> </pre></td></tr></table>
-
+</p>
+<div class="ms-5">
+<p> The drastic sum of two real scalars x and y is:
+</p>
+<pre class="verbatim">     max (x, y)     if min (x, y) == 0
+     1              otherwise
+ </pre>
 <p> For one vector argument, apply the drastic sum to all of the elements
  of the vector. (The drastic sum is associative.) For one
  two-dimensional matrix argument, return a vector of the drastic sum
  of each column.
 </p>
 <p> For two vectors or matrices of identical dimensions, or for one scalar and
- one vector or matrix argument, return the pair-wise drastic sum.
+ one vector or matrix argument, return the pairwise drastic sum.
 </p>
 <p> <strong>See also: </strong>
   <a href="algebraic_product.html">algebraic_product</a>, 

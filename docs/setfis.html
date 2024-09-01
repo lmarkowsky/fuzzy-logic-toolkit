@@ -77,85 +77,44 @@
 </dl>
 
 <p> Set a property (field) value of an FIS structure and return the
- updated FIS. There are three forms of setfis:
+ updated FIS.
 </p>
 <div class="ms-5">
- <dl compact="compact">
-<dt> # Arguments</dt>
-</dl>
-<p> Action Taken
- </p></dd>
-<dt> 3</dt>
-</dl>
-<p> Set a property of the FIS structure. The properties that may
- be set are: name, type, andmethod, ormethod, impmethod,
- addmethod, defuzzmethod, and version.
- </p></dd>
-<dt> 5</dt>
-</dl>
-<p> Set a property of an input or output variable of the FIS
- structure. The properties that may be set are: name and range.
- </p></dd>
-<dt> 7</dt>
-</dl>
-<p> Set a property of a membership function. The properties that
- may be set are: name, type, and params.
- </p></dd>
-</dl>
-
-<p> The types of the arguments are expected to be:
- </p><dl compact="compact">
-<dt> <var>fis</var></dt>
-</dl>
-<p> an FIS structure
- </p></dd>
-<dt> <var>property</var></dt>
-</dl>
-<p> a string; one of &rsquo;name&rsquo;, &rsquo;type&rsquo;, &rsquo;andmethod&rsquo;,
- &rsquo;ormethod&rsquo;, &rsquo;impmethod&rsquo;, &rsquo;addmethod&rsquo;, 
- &rsquo;defuzzmethod&rsquo;, and &rsquo;version&rsquo; (case-insensitive)
- </p></dd>
-<dt> <var>property_value</var></dt>
-</dl>
-<p> a number (if property is &rsquo;version&rsquo;); a string (otherwise)
- </p></dd>
-<dt> <var>in_or_out</var></dt>
-</dl>
-<p> either &rsquo;input&rsquo; or &rsquo;output&rsquo; (case-insensitive)
- </p></dd>
-<dt> <var>var_index</var></dt>
-</dl>
-<p> a valid integer index of an input or output FIS variable
- </p></dd>
-<dt> <var>var_property</var></dt>
-</dl>
-<p> a string; either &rsquo;name&rsquo; or &rsquo;range&rsquo;
- </p></dd>
-<dt> <var>var_property_value</var></dt>
-</dl>
-<p> a string (if var_property is &rsquo;name&rsquo;) or 
- a vector range (if var_property is &rsquo;range&rsquo;)
- </p></dd>
-<dt> <var>mf</var></dt>
-</dl>
-<p> the string &rsquo;mf&rsquo;
- </p></dd>
-<dt> <var>mf_index</var></dt>
-</dl>
-<p> a valid integer index of a membership function 
- </p></dd>
-<dt> <var>mf_property</var></dt>
-</dl>
-<p> a string; one of &rsquo;name&rsquo;, &rsquo;type&rsquo;, or &rsquo;params&rsquo;
- </p></dd>
-<dt> <var>mf_property_value</var></dt>
-</dl>
-<p> a string (if mf_property is &rsquo;name&rsquo; or &rsquo;type&rsquo;);
- an array (if mf_property is &rsquo;params&rsquo;)
- </p></dd>
-</dl>
-
- <p> Note that all of the strings representing properties above are case
+<p> There are three forms of setfis:
+</p>
+ <table>
+<thead><tr><th width="20%">Number of Arguments</th><th width="70%">Action Taken</th></tr></thead>
+<tr><td width="20%">3</td><td width="70%">Set a property of the FIS structure. The properties that may
+       be set are: name, type, andmethod, ormethod, impmethod,
+       addmethod, defuzzmethod, and version.</td></tr>
+<tr><td width="20%">5</td><td width="70%">Set a property of an input or output variable of the FIS
+       structure. The properties that may be set are: name and range.</td></tr>
+<tr><td width="20%">7</td><td width="70%">Set a property of a membership function. The properties that
+       may be set are: name, type, and params.</td></tr>
+</table>
+ <br>
+<p> The types/values of the arguments are expected to be:
+</p>
+ <table>
+<thead><tr><th width="20%">Argument</th><th width="70%">Expected Type or Value</th></tr></thead>
+<tr><td width="20%"><var>fis</var></td><td width="70%">an FIS structure</td></tr>
+<tr><td width="20%"><var>property</var></td><td width="70%">a string; one of &rsquo;name&rsquo;, &rsquo;type&rsquo;, &rsquo;andmethod&rsquo;,
+       &rsquo;ormethod&rsquo;, &rsquo;impmethod&rsquo;, &rsquo;addmethod&rsquo;, 
+       &rsquo;defuzzmethod&rsquo;, and &rsquo;version&rsquo; (case-insensitive)</td></tr>
+<tr><td width="20%"><var>property_value</var></td><td width="70%">a number (if property is &rsquo;version&rsquo;); a string (otherwise)</td></tr>
+<tr><td width="20%"><var>in_or_out</var></td><td width="70%">either &rsquo;input&rsquo; or &rsquo;output&rsquo; (case-insensitive)</td></tr>
+<tr><td width="20%"><var>var_index</var></td><td width="70%">a valid integer index of an input or output FIS variable</td></tr>
+<tr><td width="20%"><var>var_property</var></td><td width="70%">a string; either &rsquo;name&rsquo; or &rsquo;range&rsquo;</td></tr>
+<tr><td width="20%"><var>var_property_value</var></td><td width="70%">a string (if var_property is &rsquo;name&rsquo;) or 
+       a vector range (if var_property is &rsquo;range&rsquo;)</td></tr>
+<tr><td width="20%"><var>mf</var></td><td width="70%">the string &rsquo;mf&rsquo;</td></tr>
+<tr><td width="20%"><var>mf_index</var></td><td width="70%">a valid integer index of a membership function</td></tr>
+<tr><td width="20%"><var>mf_property</var></td><td width="70%">a string; one of &rsquo;name&rsquo;, &rsquo;type&rsquo;, or &rsquo;params&rsquo;</td></tr>
+<tr><td width="20%"><var>mf_property_value</var></td><td width="70%">a string (if mf_property is &rsquo;name&rsquo; or &rsquo;type&rsquo;);
+       an array (if mf_property is &rsquo;params&rsquo;)</td></tr>
+</table>
+ <br>
+<p> Note that all of the strings representing properties above are case
  insensitive.
 </p>
 <p> <strong>See also: </strong>

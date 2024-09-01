@@ -77,55 +77,38 @@
 </dl>
 
 <p> Save the specified FIS currently in the Octave workspace to a file
- named by the user. There are three forms of writefis:
+ named by the user.
 </p>
 <div class="ms-5">
- <dl compact="compact">
-<dt> # Arguments</dt>
-</dl>
-<p> Action Taken
- </p></dd>
-<dt> 1</dt>
-</dl>
-<p> Open a dialog GUI to help the user choose a directory and name
- for the output file.
- </p></dd>
-<dt> 2</dt>
-</dl>
-<p> Do not open a dialog GUI. Save the FIS to a file in the
- current directory with the specified <var>filename</var>. If the
- specified <var>filename</var> does not end in &rsquo;.fis&rsquo;, append &rsquo;.fis&rsquo;
- to the <var>filename</var>.
- </p></dd>
-<dt> 3</dt>
-</dl>
-<p> Open a dialog GUI with the specified <var>filename</var> in the
- &rsquo;filename&rsquo; textbox of the GUI. If the specified <var>filename</var>
- does not end in &rsquo;.fis&rsquo;, append &rsquo;.fis&rsquo; to the <var>filename</var>.
- </p></dd>
-</dl>
-
-<p> The types of the arguments are expected to be:
- </p><dl compact="compact">
-<dt> <var>fis</var></dt>
-</dl>
-<p> an FIS structure satisfying is_fis (see private/is_fis.m)
- </p></dd>
-<dt> <var>filename</var></dt>
-</dl>
-<p> a string; if the string does not already end with the extension
- &quot;.fis&quot;, then &quot;.fis&quot; is added
- </p></dd>
-<dt> <var>dialog</var></dt>
-</dl>
-<p> the string &rsquo;dialog&rsquo; (case insensitive)
- </p></dd>
-</dl>
-
- <p> Note:
+<p> There are three forms of writefis:
+</p>
+ <table>
+<thead><tr><th width="20%">Number of Arguments</th><th width="70%">Action Taken</th></tr></thead>
+<tr><td width="20%">1</td><td width="70%">Open a dialog GUI to help the user choose a directory and name
+       for the output file.</td></tr>
+<tr><td width="20%">2</td><td width="70%">Do not open a dialog GUI. Save the FIS to a file in the
+       current directory with the specified <var>filename</var>. If the
+       specified <var>filename</var> does not end in &rsquo;.fis&rsquo;, append &rsquo;.fis&rsquo;
+       to the <var>filename</var>.</td></tr>
+<tr><td width="20%">3</td><td width="70%">Open a dialog GUI with the specified <var>filename</var> in the
+       &rsquo;filename&rsquo; textbox of the GUI. If the specified <var>filename</var>
+       does not end in &rsquo;.fis&rsquo;, append &rsquo;.fis&rsquo; to the <var>filename</var>.</td></tr>
+</table>
+ <br>
+<p> The types/values of the arguments are expected to be:
+</p>
+ <table>
+<thead><tr><th width="20%">Argument</th><th width="70%">Expected Type or Value</th></tr></thead>
+<tr><td width="20%"><var>fis</var></td><td width="70%">an FIS structure satisfying is_fis (see private/is_fis.m)</td></tr>
+<tr><td width="20%"><var>filename</var></td><td width="70%">a string; if the string does not already end with the extension
+       &quot;.fis&quot;, then &quot;.fis&quot; is added</td></tr>
+<tr><td width="20%"><var>dialog</var></td><td width="70%">the string &rsquo;dialog&rsquo; (case insensitive)</td></tr>
+</table>
+ <br>
+<p> Note:
  The GUI dialog requires zenity to be installed on the system.
 </p>
- <p> Known error:
+<p> Known error:
  When using the file dialog, if the user clicks &quot;Cancel&quot; instead of
  saving the file, an error message is generated.
 </p>

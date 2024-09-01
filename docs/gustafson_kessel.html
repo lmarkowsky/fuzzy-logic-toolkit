@@ -93,10 +93,10 @@
 <p> The required arguments to gustafson_kessel are:
  </p><ul class="toc">
 <li>
- <var>input_data</var> - a matrix of input data points; each row corresponds to one point
+ <var>input_data</var>: a matrix of input data points; each row corresponds to one point
  
 </li><li>
- <var>num_clusters</var> - the number of clusters to form
+ <var>num_clusters</var>: the number of clusters to form
  
 </li></ul>
 
@@ -106,16 +106,16 @@
 <p> The fourth (optional) argument to gustafson_kessel is a vector consisting of:
  </p><ul class="toc">
 <li>
- <var>m</var> - the parameter (exponent) in the objective function; default = 2.0
+ <var>m</var>: the parameter (exponent) in the objective function; default = 2.0
  
 </li><li>
- <var>max_iterations</var> - the maximum number of iterations before stopping; default = 100
+ <var>max_iterations</var>: the maximum number of iterations before stopping; default = 100
  
 </li><li>
- <var>epsilon</var> - the stopping criteria; default = 1e-5
+ <var>epsilon</var>: the stopping criteria; default = 1e-5
  
 </li><li>
- <var>display_intermediate_results</var> - if 1, display results after each iteration, and if 0, do not; default = 1
+ <var>display_intermediate_results</var>: if 1, display results after each iteration, and if 0, do not; default = 1
  
 </li></ul>
 
@@ -125,13 +125,13 @@
 <p> The return values are:
  </p><ul class="toc">
 <li>
- <var>cluster_centers</var> - a matrix of the cluster centers; each row corresponds to one point
+ <var>cluster_centers</var>: a matrix of the cluster centers; each row corresponds to one point
  
 </li><li>
- <var>soft_partition</var> - a constrained soft partition matrix
+ <var>soft_partition</var>: a constrained soft partition matrix
  
 </li><li>
- <var>obj_fcn_history</var> - the values of the objective function after each iteration
+ <var>obj_fcn_history</var>: the values of the objective function after each iteration
  
 </li></ul>
 
@@ -148,27 +148,24 @@
 <p> If n denotes the number of input points and k denotes the number of
  clusters to be formed, then X, V, and Mu have the dimensions:
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">                               1    2   ...  #features
-                          1 [                           ]
-    X  =  input_data  =   2 [                           ]
-                        ... [                           ]
-                          n [                           ]
- </pre><pre class="example"> </pre></td></tr></table>
+<pre class="verbatim">                                     1    2   ...  #features
+                               1 [[                           ]
+    X  =  input_data       =   2  [                           ]
+                              ... [                           ]
+                               n  [                           ]]
 
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">                                    1    2   ...  #features
-                               1 [                           ]
-    V  =  cluster_centers  =   2 [                           ]
-                             ... [                           ]
-                               k [                           ]
- </pre><pre class="example"> </pre></td></tr></table>
+                                     1    2   ...  #features
+                               1 [[                           ]
+    V  =  cluster_centers  =   2  [                           ]
+                              ... [                           ]
+                               k  [                           ]]
 
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">                                    1    2   ...   n
-                               1 [                    ]
-    Mu  =  soft_partition  =   2 [                    ]
-                             ... [                    ]
-                               k [                    ]
- </pre><pre class="example"> </pre></td></tr></table>
-
+                                     1    2   ...   n
+                               1 [[                    ]
+    Mu  =  soft_partition  =   2  [                    ]
+                              ... [                    ]
+                               k  [                    ]]
+ </pre>
 <p> <strong>See also: </strong>
   <a href="fcm.html">fcm</a>, 
   <a href="partition_coeff.html">partition_coeff</a>, 
@@ -247,51 +244,54 @@
          xie_beni_index (input_data, cluster_centers, ...
          soft_partition));
 
-Iteration count = 1,  Objective fcn = 46.455340
-Iteration count = 2,  Objective fcn = 35.052233
-Iteration count = 3,  Objective fcn = 26.746849
-Iteration count = 4,  Objective fcn = 25.769084
-Iteration count = 5,  Objective fcn = 25.677565
-Iteration count = 6,  Objective fcn = 25.655207
-Iteration count = 7,  Objective fcn = 25.648140
-Iteration count = 8,  Objective fcn = 25.645814
-Iteration count = 9,  Objective fcn = 25.645038
-Iteration count = 10,  Objective fcn = 25.644777
-Iteration count = 11,  Objective fcn = 25.644689
-Iteration count = 12,  Objective fcn = 25.644659
-Iteration count = 13,  Objective fcn = 25.644649
-Iteration count = 14,  Objective fcn = 25.644646
-Iteration count = 15,  Objective fcn = 25.644645
-Iteration count = 16,  Objective fcn = 25.644644
-Iteration count = 17,  Objective fcn = 25.644644
+Iteration count = 1,  Objective fcn = 32.036570
+Iteration count = 2,  Objective fcn = 26.486425
+Iteration count = 3,  Objective fcn = 26.199786
+Iteration count = 4,  Objective fcn = 25.994545
+Iteration count = 5,  Objective fcn = 25.831740
+Iteration count = 6,  Objective fcn = 25.730027
+Iteration count = 7,  Objective fcn = 25.679108
+Iteration count = 8,  Objective fcn = 25.657508
+Iteration count = 9,  Objective fcn = 25.649243
+Iteration count = 10,  Objective fcn = 25.646251
+Iteration count = 11,  Objective fcn = 25.645199
+Iteration count = 12,  Objective fcn = 25.644835
+Iteration count = 13,  Objective fcn = 25.644709
+Iteration count = 14,  Objective fcn = 25.644666
+Iteration count = 15,  Objective fcn = 25.644652
+Iteration count = 16,  Objective fcn = 25.644647
+Iteration count = 17,  Objective fcn = 25.644645
 Iteration count = 18,  Objective fcn = 25.644644
 Iteration count = 19,  Objective fcn = 25.644644
 Iteration count = 20,  Objective fcn = 25.644644
 Iteration count = 21,  Objective fcn = 25.644644
 Iteration count = 22,  Objective fcn = 25.644644
+Iteration count = 23,  Objective fcn = 25.644644
+Iteration count = 24,  Objective fcn = 25.644644
+Iteration count = 25,  Objective fcn = 25.644644
 cluster_centers =
 
-   12.2661    5.3877
     4.2228   11.3276
+   12.2661    5.3877
 
 soft_partition =
 
-   0.065974   0.109477   0.129494   0.976471   0.971912   0.987408
-   0.934026   0.890523   0.870506   0.023529   0.028088   0.012592
+   0.934026   0.890527   0.870501   0.023530   0.028088   0.012592
+   0.065974   0.109473   0.129499   0.976470   0.971912   0.987408
 
 obj_fcn_history =
 
- Columns 1 through 9:
+ Columns 1 through 10:
 
-   46.455   35.052   26.747   25.769   25.678   25.655   25.648   25.646   25.645
+   32.037   26.486   26.200   25.995   25.832   25.730   25.679   25.658   25.649   25.646
 
- Columns 10 through 18:
+ Columns 11 through 20:
 
-   25.645   25.645   25.645   25.645   25.645   25.645   25.645   25.645   25.645
+   25.645   25.645   25.645   25.645   25.645   25.645   25.645   25.645   25.645   25.645
 
- Columns 19 through 22:
+ Columns 21 through 25:
 
-   25.645   25.645   25.645   25.645
+   25.645   25.645   25.645   25.645   25.645
 
 hold is now off for current axes
 Partition Coefficient: 0.888484
@@ -415,70 +415,66 @@ Xie-Beni Index: 0.107028
 
 cluster_centers =
 
-    3.2679    3.7416    9.5189
-    2.0744   11.9210    6.0810
    11.1675    9.5123   13.4360
+    2.0744   11.9210    6.0810
+    3.2679    3.7416    9.5189
 
 soft_partition =
 
  Columns 1 through 6:
 
-   1.9129e-02   9.7022e-03   1.0643e-02   2.4975e-02   8.9273e-05   1.9737e-02
+   1.1157e-02   7.1682e-03   9.2570e-03   1.3792e-02   6.1636e-05   1.8522e-02
    9.6971e-01   9.8313e-01   9.8010e-01   9.6123e-01   9.9985e-01   9.6174e-01
-   1.1157e-02   7.1681e-03   9.2569e-03   1.3793e-02   6.1636e-05   1.8522e-02
+   1.9130e-02   9.7022e-03   1.0643e-02   2.4973e-02   8.9272e-05   1.9737e-02
 
  Columns 7 through 12:
 
-   2.1778e-02   4.1337e-02   2.3680e-02   9.6778e-01   9.1988e-01   9.5714e-01
-   9.6753e-01   9.3340e-01   9.5532e-01   2.2954e-02   6.1140e-02   2.9744e-02
-   1.0694e-02   2.5264e-02   2.0998e-02   9.2635e-03   1.8979e-02   1.3117e-02
+   1.0694e-02   2.5264e-02   2.0999e-02   9.2634e-03   1.8979e-02   1.3117e-02
+   9.6753e-01   9.3340e-01   9.5532e-01   2.2956e-02   6.1145e-02   2.9746e-02
+   2.1778e-02   4.1336e-02   2.3681e-02   9.6778e-01   9.1988e-01   9.5714e-01
 
  Columns 13 through 18:
 
-   9.2049e-01   9.9099e-01   8.8919e-01   9.8157e-01   8.2057e-01   8.7617e-01
-   5.6772e-02   6.5221e-03   7.9763e-02   1.3944e-02   1.4998e-01   9.6877e-02
-   2.2734e-02   2.4882e-03   3.1044e-02   4.4868e-03   2.9448e-02   2.6948e-02
+   2.2734e-02   2.4881e-03   3.1043e-02   4.4868e-03   2.9448e-02   2.6948e-02
+   5.6777e-02   6.5225e-03   7.9769e-02   1.3945e-02   1.4999e-01   9.6884e-02
+   9.2049e-01   9.9099e-01   8.8919e-01   9.8157e-01   8.2056e-01   8.7617e-01
 
  Columns 19 through 24:
 
-   8.2343e-01   8.1787e-01   1.3809e-01   4.4812e-02   5.9662e-02   4.7384e-02
-   1.4313e-01   1.2767e-01   1.3231e-01   5.3109e-02   7.6959e-02   5.2618e-02
-   3.3445e-02   5.4462e-02   7.2960e-01   9.0208e-01   8.6338e-01   9.0000e-01
+   3.3446e-02   5.4461e-02   7.2961e-01   9.0208e-01   8.6338e-01   9.0000e-01
+   1.4314e-01   1.2767e-01   1.3230e-01   5.3105e-02   7.6953e-02   5.2614e-02
+   8.2342e-01   8.1786e-01   1.3809e-01   4.4813e-02   5.9663e-02   4.7385e-02
 
  Columns 25 through 30:
 
-   1.0958e-01   8.6143e-03   5.4236e-02   8.1535e-02   4.1312e-02   3.1916e-02
-   1.0865e-01   1.0973e-02   5.8411e-02   1.0065e-01   6.3519e-02   4.6918e-02
-   7.8177e-01   9.8041e-01   8.8735e-01   8.1781e-01   8.9517e-01   9.2117e-01
+   7.8178e-01   9.8041e-01   8.8736e-01   8.1782e-01   8.9517e-01   9.2117e-01
+   1.0864e-01   1.0972e-02   5.8405e-02   1.0065e-01   6.3515e-02   4.6914e-02
+   1.0958e-01   8.6145e-03   5.4237e-02   8.1536e-02   4.1313e-02   3.1917e-02
 
  Columns 31 and 32:
 
-   2.5981e-02   5.2999e-02
-   4.2584e-02   7.2535e-02
    9.3144e-01   8.7447e-01
+   4.2581e-02   7.2530e-02
+   2.5982e-02   5.3000e-02
 
 obj_fcn_history =
 
- Columns 1 through 9:
+ Columns 1 through 10:
 
-   245.70   211.02   182.51   166.13   159.33   153.85   147.65   140.88   135.03
+   231.36   183.01   167.78   158.16   149.79   141.02   133.08   127.09   123.40   121.53
 
- Columns 10 through 18:
+ Columns 11 through 20:
 
-   130.65   126.93   123.81   121.78   120.76   120.32   120.14   120.07   120.05
+   120.64   120.26   120.11   120.06   120.04   120.04   120.03   120.03   120.03   120.03
 
- Columns 19 through 27:
+ Columns 21 through 30:
 
-   120.04   120.03   120.03   120.03   120.03   120.03   120.03   120.03   120.03
-
- Columns 28 through 33:
-
-   120.03   120.03   120.03   120.03   120.03   120.03
+   120.03   120.03   120.03   120.03   120.03   120.03   120.03   120.03   120.03   120.03
 
 hold is now off for current axes
 Partition Coefficient: 0.841843
-Partition Entropy (with a = 2): 0.472419
-Xie-Beni Index: 0.192632
+Partition Entropy (with a = 2): 0.472418
+Xie-Beni Index: 0.192630
 
                     </pre></td></tr></tbody>
                   </table>

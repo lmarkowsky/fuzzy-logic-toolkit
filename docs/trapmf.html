@@ -77,26 +77,27 @@
 
 <p> For a given domain <var>x</var> and parameters <var>params</var> (or <var>[a b c d]</var>),
  return the corresponding <var>y</var> values for the trapezoidal membership
- function. The argument <var>x</var> must be a real number or a non-empty vector of
+ function.
+</p>
+<div class="ms-5">
+<p> The argument <var>x</var> must be a real number or a non-empty vector of
  strictly increasing real numbers, and parameters <var>a</var>, <var>b</var>, <var>c</var>,
  and <var>d</var> must satisfy the inequalities:
  <var>a</var> &lt; <var>b</var> &lt;= <var>c</var> &lt; <var>d</var>. None of the parameters <var>a</var>,
  <var>b</var>, <var>c</var>, <var>d</var> are required to be in the domain <var>x</var>. The
  minimum and maximum values of the trapezoid are assumed to be 0 and 1.
 </p>
-<div class="ms-5">
 <p> The parameters <var>[a b c d]</var> correspond to the x values
  of the corners of the trapezoid:
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">        1-|      --------
+<pre class="verbatim">        1-|      --------
           |     /        \
           |    /          \
           |   /            \
         0-----------------------
              a   b      c   d
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> To run the demonstration code, type &quot;<tt>demo trapmf</tt>&quot; (without the quotation
+ </pre>
+<p> To run the demonstration code, type &quot;<tt>demo trapmf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 <p> <strong>See also: </strong>

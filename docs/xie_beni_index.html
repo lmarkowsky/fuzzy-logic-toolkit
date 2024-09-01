@@ -80,28 +80,27 @@
 <p> The arguments to xie_beni_index are:
  </p><ul class="toc">
 <li>
- <var>input_data</var> - a matrix of input data points; each row corresponds to one point
+ <var>input_data</var>: a matrix of input data points; each row corresponds to one point
  
 </li><li>
- <var>cluster_centers</var> - a matrix of cluster centers; each row corresponds to one point
+ <var>cluster_centers</var>: a matrix of cluster centers; each row corresponds to one point
  
 </li><li>
- <var>soft_partition</var> - the membership degree of each input data point in each cluster
+ <var>soft_partition</var>: the membership degree of each input data point in each cluster
  
 </li></ul>
 
 <p> The return value is:
  </p><ul class="toc">
 <li>
- <var>vxb</var> - the Xie-Beni validity index for the given partition
+ <var>vxb</var>: the Xie-Beni validity index for the given partition
  
 </li></ul>
 
-<p> For demos of this function, please type:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> demo 'fcm'
- demo 'gustafson_kessel'
- </pre></td></tr></table>
-
+<p> To run demonstration code that uses this function, type &quot;<tt>demo fcm</tt>&quot;
+ or &quot;<tt>demo gustafson_kessel</tt>&quot; (without the quotation marks) at the
+ Octave prompt.
+</p>
 <p> For more information about the <var>input_data</var>, <var>cluster_centers</var>,
  and <var>soft_partition</var> matrices, please see the documentation for function
  fcm.

@@ -85,31 +85,23 @@
 <p> The argument <var>x</var> must be a real number or a non-empty vector of strictly
  increasing real numbers, and <var>sig</var> and <var>c</var> must be real numbers.
  This membership function satisfies the equation:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> f(x) = exp((-(x - c)^2)/(2 * sig^2))
- </pre></td></tr></table>
-
- <p> which always returns values in the range [0, 1].
+</p>
+<pre class="verbatim">     f(x) = exp((-(x - c)^2)/(2 * sig^2))
+ </pre>
+<p> which always returns values in the range [0, 1].
 </p>
 <p> Just as for the Gaussian (normal) distribution, the parameters <var>sig</var> and
  <var>c</var> represent:
- </p><ul class="toc">
-<li>
- sig^2 == the variance (a measure of the width of the curve)
- 
-</li><li>
- c == the center (the mean; the x value of the peak)
- 
-</li></ul>
-
- <p> For larger values of <var>sig</var>, the curve is flatter, and for smaller values
+</p>
+<pre class="verbatim">     sig^2 == the variance (a measure of the width of the curve)
+         c == the center (the mean; the x value of the peak)
+ </pre>
+<p> For larger values of <var>sig</var>, the curve is flatter, and for smaller values
  of sig, the curve is narrower. The <var>y</var> value at the center is always 1:
- </p><ul class="toc">
-<li>
- f(c) == 1
- 
-</li></ul>
-
- <p> To run the demonstration code, type &quot;<tt>demo gaussmf</tt>&quot; (without the quotation
+</p>
+<pre class="verbatim">     f(c) == 1
+ </pre>
+<p> To run the demonstration code, type &quot;<tt>demo gaussmf</tt>&quot; (without the quotation
  marks) at the Octave prompt.
 </p>
 <p> <strong>See also: </strong>

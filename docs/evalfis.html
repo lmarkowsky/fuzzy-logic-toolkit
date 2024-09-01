@@ -82,66 +82,51 @@
  Also, for the last row of <var>user_input</var>, return the intermediate results:
 </p>
 <div class="ms-5">
- <dl compact="compact">
-<dt> <var>rule_input</var></dt>
-</dl>
-<p> a matrix of the degree to which
- each FIS rule matches each FIS input variable
- </p></dd>
-<dt> <var>rule_output</var></dt>
-</dl>
-<p> a matrix of the fuzzy output for each (rule, FIS output) pair
- </p></dd>
-<dt> <var>fuzzy_output</var></dt>
-</dl>
-<p> a matrix of the aggregated output for each FIS output variable
- </p></dd>
-</dl>
-
+ <table>
+<thead><tr><th width="25%">Intermediate Result</th><th width="65%">Value Returned</th></tr></thead>
+<tr><td width="25%"><var>rule_input</var></td><td width="65%">a matrix of the degree to which each FIS rule matches each
+       FIS input variable</td></tr>
+<tr><td width="25%"><var>rule_output</var></td><td width="65%">a matrix of the fuzzy output for each (rule, FIS output) pair</td></tr>
+<tr><td width="25%"><var>fuzzy_output</var></td><td width="65%">a matrix of the aggregated output for each FIS output variable</td></tr>
+</table>
+ <br>
 <p> The optional argument <var>num_points</var> specifies the number of points over
  which to evaluate the fuzzy values. The default value of <var>num_points</var> is
  101.
 </p>
- <p> Argument <var>user_input</var>:
-</p> 
-<p> <var>user_input</var> is a matrix of crisp input values. Each row 
+<p> <strong>Argument <var>user_input</var>:</strong>
+ <var>user_input</var> is a matrix of crisp input values. Each row 
  represents one set of crisp FIS input values. For an FIS that has N inputs,
  an input matrix of z sets of input values will have the form:
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example"> [input_11 input_12 ... input_1N]  &lt;-- 1st row is 1st set of inputs
- [input_21 input_22 ... input_2N]  &lt;-- 2nd row is 2nd set of inputs
- [             ...              ]                 ...
- [input_z1 input_z2 ... input_zN]  &lt;-- zth row is zth set of inputs
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> Return value <var>output</var>:
-</p>
-<p> <var>output</var> is a matrix of crisp output values. Each row represents
+<pre class="verbatim">   [[input_11 input_12 ... input_1N]   &lt;-- 1st row is 1st set of inputs
+    [input_21 input_22 ... input_2N]   &lt;-- 2nd row is 2nd set of inputs
+    [             ...              ]                  ...
+    [input_z1 input_z2 ... input_zN]]  &lt;-- zth row is zth set of inputs
+ </pre>
+<p> <strong>Return value <var>output</var>:</strong>
+ <var>output</var> is a matrix of crisp output values. Each row represents
  the set of crisp FIS output values for the corresponding row of
  <var>user_input</var>. For an FIS that has M outputs, an <var>output</var> matrix
  corresponding to the preceding input matrix will have the form:
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example"> [output_11 output_12 ... output_1M]  &lt;-- 1st row is 1st set of outputs
- [output_21 output_22 ... output_2M]  &lt;-- 2nd row is 2nd set of outputs
- [               ...               ]                 ...
- [output_z1 output_z2 ... output_zM]  &lt;-- zth row is zth set of outputs
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> The intermediate result <var>rule_input</var>:
-</p> 
-<p> The matching degree for each (rule, input value) pair is specified by the
+<pre class="verbatim">   [[output_11 output_12 ... output_1M]   &lt;-- 1st row is 1st set of outputs
+    [output_21 output_22 ... output_2M]   &lt;-- 2nd row is 2nd set of outputs
+    [               ...               ]                  ...
+    [output_z1 output_z2 ... output_zM]]  &lt;-- zth row is zth set of outputs
+ </pre>
+<p> <strong>The intermediate result <var>rule_input</var>:</strong>
+ The matching degree for each (rule, input value) pair is specified by the
  <var>rule_input</var> matrix. For an FIS that has Q rules and N input variables,
  the matrix will have the form:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">          in_1  in_2 ...  in_N
- rule_1 [mu_11 mu_12 ... mu_1N]
- rule_2 [mu_21 mu_22 ... mu_2N]
-        [            ...      ]
- rule_Q [mu_Q1 mu_Q2 ... mu_QN]
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> Evaluation of hedges and &quot;not&quot;:
-</p>
-<p> Each element of each FIS rule antecedent and consequent indicates the
+ </p><pre class="verbatim">            in_1  in_2 ...  in_N
+   rule_1 [[mu_11 mu_12 ... mu_1N]
+   rule_2  [mu_21 mu_22 ... mu_2N]
+           [            ...      ]
+   rule_Q  [mu_Q1 mu_Q2 ... mu_QN]]
+ </pre>
+<p> <strong>Evaluation of hedges and &quot;not&quot;:</strong>
+ Each element of each FIS rule antecedent and consequent indicates the
  corresponding membership function, hedge, and whether or not &quot;not&quot; should
  be applied to the result. The index of the membership function to be used is
  given by the positive whole number portion of the antecedent/consequent
@@ -160,23 +145,21 @@
  matching degree recorded in <var>rule_input</var> will be computed by applying
  the hedge and &quot;not&quot; in two steps. First, the hedge is applied:
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example"> (fraction == .05) &lt;=&gt;  somewhat x       &lt;=&gt;  mu(x)^0.5  &lt;=&gt;  sqrt(mu(x))
- (fraction == .20) &lt;=&gt;  very x           &lt;=&gt;  mu(x)^2    &lt;=&gt;  sqr(mu(x))
- (fraction == .30) &lt;=&gt;  extremely x      &lt;=&gt;  mu(x)^3    &lt;=&gt;  cube(mu(x))
- (fraction == .40) &lt;=&gt;  very very x      &lt;=&gt;  mu(x)^4
- (fraction == .dd) &lt;=&gt;  &lt;custom hedge&gt; x &lt;=&gt;  mu(x)^(dd/10)
- </pre><pre class="example"> </pre></td></tr></table>
-
+<pre class="verbatim">   (fraction == .05) &lt;=&gt;  somewhat x       &lt;=&gt;  mu(x)^0.5  &lt;=&gt;  sqrt(mu(x))
+   (fraction == .20) &lt;=&gt;  very x           &lt;=&gt;  mu(x)^2    &lt;=&gt;  sqr(mu(x))
+   (fraction == .30) &lt;=&gt;  extremely x      &lt;=&gt;  mu(x)^3    &lt;=&gt;  cube(mu(x))
+   (fraction == .40) &lt;=&gt;  very very x      &lt;=&gt;  mu(x)^4
+   (fraction == .dd) &lt;=&gt;  &lt;custom hedge&gt; x &lt;=&gt;  mu(x)^(dd/10)
+ </pre>
 <p> After applying the appropriate hedge, &quot;not&quot; is calculated by:
- </p><table><tr><td>&nbsp;</td><td><pre class="example"> minus sign present           &lt;=&gt; not x         &lt;=&gt; 1 - mu(x)
- minus sign and hedge present &lt;=&gt; not &lt;hedge&gt; x &lt;=&gt; 1 - mu(x)^(dd/10)
- </pre></td></tr></table>
-
+</p>
+<pre class="verbatim">   minus sign present           &lt;=&gt; not x         &lt;=&gt; 1 - mu(x)
+   minus sign and hedge present &lt;=&gt; not &lt;hedge&gt; x &lt;=&gt; 1 - mu(x)^(dd/10)
+ </pre>
 <p> Hedges and &quot;not&quot; in the consequent are handled similarly.
 </p>
- <p> The intermediate result <var>rule_output</var>:
-</p>
-<p> For either a Mamdani-type FIS (that is, an FIS that does not have constant or
+<p> <strong>The intermediate result <var>rule_output</var>:</strong>
+ For either a Mamdani-type FIS (that is, an FIS that does not have constant or
  linear output membership functions) or a Sugeno-type FIS (that is, an FIS
  that has only constant and linear output membership functions),
  <var>rule_output</var> specifies the fuzzy output for each (rule, FIS output) pair.
@@ -187,29 +170,26 @@
  variables. Each column of this matrix gives the y-values of the fuzzy
  output for a single (rule, FIS output) pair.
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">                  Q cols            Q cols              Q cols 
-             ---------------   ---------------     ---------------
-             out_1 ... out_1   out_2 ... out_2 ... out_M ... out_M
-          1 [                                                     ]
-          2 [                                                     ]
-        ... [                                                     ]
- num_points [                                                     ]
- </pre><pre class="example"> </pre></td></tr></table>
-
+<pre class="verbatim">                     Q cols            Q cols              Q cols 
+                ---------------   ---------------     ---------------
+                out_1 ... out_1   out_2 ... out_2 ... out_M ... out_M
+            1 [[                                                     ]
+            2  [                                                     ]
+           ... [                                                     ]
+   num_points  [                                                     ]]
+ </pre>
 <p> For a Sugeno-type FIS, <var>rule_output</var> is a 2 x (Q * M) matrix.
  Each column of this matrix gives the (location, height) pair of the
  singleton output for a single (rule, FIS output) pair.
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">                Q cols            Q cols                  Q cols 
-           ---------------   ---------------         ---------------
-           out_1 ... out_1   out_2 ... out_2   ...   out_M ... out_M
- location [                                                         ]
-   height [                                                         ]
- </pre><pre class="example"> </pre></td></tr></table>
-
- <p> The intermediate result <var>fuzzy_output</var>:
-</p>
-<p> The format of <var>fuzzy_output</var> depends on the FIS type (&rsquo;mamdani&rsquo; or
+<pre class="verbatim">                   Q cols            Q cols                  Q cols 
+              ---------------   ---------------         ---------------
+              out_1 ... out_1   out_2 ... out_2   ...   out_M ... out_M
+   location [[                                                         ]
+     height  [                                                         ]]
+ </pre>
+<p> <strong>The intermediate result <var>fuzzy_output</var>:</strong>
+ The format of <var>fuzzy_output</var> depends on the FIS type (&rsquo;mamdani&rsquo; or
  &rsquo;sugeno&rsquo;).
 </p>
 <p> For either a Mamdani-type FIS or a Sugeno-type FIS, <var>fuzzy_output</var>
@@ -219,28 +199,25 @@
  <var>num_points</var> x M matrix. Each column of this matrix gives the y-values
  of the fuzzy output for a single FIS output, aggregated over all rules.
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">             out_1  out_2  ...  out_M
-          1 [                        ]
-          2 [                        ]
-        ... [                        ]
- num_points [                        ]
- </pre><pre class="example"> </pre></td></tr></table>
-
+<pre class="verbatim">                out_1  out_2  ...  out_M
+            1 [[                        ]
+            2  [                        ]
+           ... [                        ]
+   num_points  [                        ]]
+ </pre>
 <p> For a Sugeno-type FIS, the aggregated output for each FIS output is a 2 x L
  matrix, where L is the number of distinct singleton locations in the
  <var>rule_output</var> for that FIS output:
 </p>
- <table><tr><td>&nbsp;</td><td><pre class="example"> </pre><pre class="example">           singleton_1  singleton_2 ... singleton_L
- location [                                        ]
-   height [                                        ]
- </pre><pre class="example"> </pre></td></tr></table>
-
+<pre class="verbatim">              singleton_1  singleton_2 ... singleton_L
+   location [[                                        ]
+     height  [                                        ]]
+ </pre>
 <p> Then <var>fuzzy_output</var> is a vector of M structures, each of which has an index and
  one of these matrices.
 </p>
- <p> Examples:
-</p>
-<p> Five examples of using evalfis are shown in:
+<p> <strong>Examples:</strong>
+ Five examples of using evalfis are shown in:
  </p><ul>
 <li>
  heart_disease_demo_2.m
