@@ -19,19 +19,17 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{output} =} defuzzify_output_sugeno (@var{fis}, @var{aggregated_output})
 ##
-## @noindent
 ## Given the:
 ## @itemize @bullet
-## @item @var{fis.defuzzMethod}
+## @item @var{fis.defuzzMethod:}
 ## the defuzzification method for the given @var{fis}
-## @item @var{aggregated_output}
+## @item @var{aggregated_output:}
 ## a vector of structures containing the aggregated output for each FIS output variable
 ## @end itemize
 ##
-## @noindent
 ## Return:
 ## @itemize @bullet
-## @item @var{output}
+## @item @var{output:}
 ## a vector of crisp output values
 ## @end itemize
 ##
@@ -43,21 +41,19 @@
 ## for that FIS output variable. The first row gives the (distinct) locations,
 ## and the second gives the (non-zero) heights:
 ##
-## @example
-## @group
-##           singleton_1  singleton_2 ... singleton_L
-## location [                                        ]
-##   height [                                        ]
-## @end group
-## @end example
+## @verbatim
+##                singleton_1  singleton_2 ... singleton_L
+##     location [[                                        ]
+##       height  [                                        ]]
+## @end verbatim
 ##
 ## The crisp @var{output} values are computed from the corresponding fuzzy
 ## values using the FIS defuzzification method. The @var{output}
 ## vector has the form:
 ##
-## @example
-## output:  [output_1 output_2 ... output_M]
-## @end example
+## @verbatim
+##     output:  [output_1 output_2 ... output_M]
+## @end verbatim
 ##
 ## Because defuzzify_output_sugeno is called only by the private
 ## function evalfis_private, it does no error checking of the argument values.
@@ -67,7 +63,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      defuzzify_output_sugeno.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 26 Jul 2024
 
 function output = defuzzify_output_sugeno (fis, aggregated_output)
 

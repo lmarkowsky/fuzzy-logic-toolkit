@@ -19,13 +19,13 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_mf_index (@var{fis}, @var{in_or_out}, @var{var_index}, @var{mf_index})
 ##
-## If @var{in_or_out} == 'input', return 1 if @var{mf_index} is a valid
+## If @var{in_or_out} == 'input', return true if @var{mf_index} is a valid
 ## membership function index for the input variable with index @var{var_index},
-## and return 0 otherwise.
+## and return false otherwise.
 ##
-## If @var{in_or_out} == 'output', return 1 if @var{mf_index} is a valid
+## If @var{in_or_out} == 'output', return true if @var{mf_index} is a valid
 ## membership function index for the output variable with index @var{var_index},
-## and return 0 otherwise.
+## and return false otherwise.
 ##
 ## is_mf_index is a private function that localizes the test for valid FIS
 ## membership function indices. The arguments @var{fis}, @var{in_or_out}, and
@@ -37,7 +37,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_mf_index.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 10 Jun 2024
 
 function y = is_mf_index (fis, in_or_out, var_index, mf_index)
 

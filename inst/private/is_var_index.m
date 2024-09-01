@@ -19,11 +19,11 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_var_index (@var{fis}, @var{in_or_out}, @var{var_index})
 ##
-## If @var{in_or_out} == 'input', return 1 if @var{var_index} is a valid input
-## variable index for the given FIS structure, and return 0 otherwise.
+## If @var{in_or_out} == 'input', return true if @var{var_index} is a valid input
+## variable index for the given FIS structure, and return false otherwise.
 ##
-## If @var{in_or_out} == 'output', return 1 if @var{var_index} is a valid output
-## variable index for the given FIS structure, and return 0 otherwise.
+## If @var{in_or_out} == 'output', return true if @var{var_index} is a valid output
+## variable index for the given FIS structure, and return false otherwise.
 ##
 ## is_var_index is a private function that localizes the test for valid FIS
 ## input and output variable indices. The arguments @var{fis} and
@@ -35,7 +35,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_var_index.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 10 Jun 2024
 
 function y = is_var_index (fis, in_or_out, var_index)
 

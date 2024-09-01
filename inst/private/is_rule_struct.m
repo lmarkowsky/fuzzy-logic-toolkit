@@ -19,8 +19,8 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_rule_struct (@var{x})
 ##
-## Return 1 if the argument @var{x} is a valid FIS (Fuzzy Inference System) rule
-## structure, and return 0 otherwise.
+## Return true if the argument @var{x} is a valid FIS (Fuzzy Inference System)
+## rule structure, and return false otherwise.
 ##
 ## is_rule_struct is a private function that localizes the test for valid FIS
 ## rule structs. For efficiency, is_rule_struct only determines if the argument
@@ -33,7 +33,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_rule_struct.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 10 Jun 2024
 
 function y = is_rule_struct (x)
 

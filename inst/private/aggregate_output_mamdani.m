@@ -19,19 +19,17 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{fuzzy_output} =} aggregate_output_mamdani (@var{fis}, @var{rule_output})
 ##
-## @noindent
 ## Given the:
 ## @itemize @bullet
-## @item @var{fis.aggMethod}
+## @item @var{fis.aggMethod:}
 ## the aggregation method for the given @var{fis}
-## @item @var{rule_output}
+## @item @var{rule_output:}
 ## a matrix of the fuzzy output for each (rule, FIS output) pair
 ## @end itemize
 ##
-## @noindent
 ## Return:
 ## @itemize @bullet
-## @item @var{fuzzy_output}
+## @item @var{fuzzy_output:}
 ## a matrix of the aggregated output for each FIS output variable
 ## @end itemize
 ##
@@ -42,31 +40,27 @@
 ## the y-values of the fuzzy output for a single (rule, FIS output)
 ## pair:
 ##
-## @example
-## @group
-##                  Q cols            Q cols              Q cols 
-##             ---------------   ---------------     ---------------
-##             out_1 ... out_1   out_2 ... out_2 ... out_M ... out_M
-##          1 [                                                     ]
-##          2 [                                                     ]
-##        ... [                                                     ]
-## num_points [                                                     ]
-## @end group
-## @end example
+## @verbatim
+##                       Q cols            Q cols              Q cols 
+##                  ---------------   ---------------     ---------------
+##                  out_1 ... out_1   out_2 ... out_2 ... out_M ... out_M
+##              1 [[                                                     ]
+##              2  [                                                     ]
+##             ... [                                                     ]
+##     num_points  [                                                     ]]
+## @end verbatim
 ##
 ## The return value @var{fuzzy_output} is a @var{num_points} x M matrix. Each
 ## column of @var{fuzzy_output} gives the y-values of the fuzzy output for a
 ## single FIS output variable, aggregated over all rules:
 ##
-## @example
-## @group
-##             out_1  out_2  ...  out_M
-##          1 [                        ]
-##          2 [                        ]
-##        ... [                        ]
-## num_points [                        ]
-## @end group
-## @end example
+## @verbatim
+##                  out_1  out_2  ...  out_M
+##              1 [[                        ]
+##              2  [                        ]
+##             ... [                        ]
+##     num_points  [                        ]]
+## @end verbatim
 ##
 ## Because aggregate_output_mamdani is called only by the private
 ## function evalfis_private, it does no error checking of the argument values.
@@ -76,7 +70,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      aggregate_output_mamdani.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 26 Jul 2024
 
 function fuzzy_output = aggregate_output_mamdani (fis, rule_output)
 

@@ -19,22 +19,21 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_int (@var{x})
 ##
-## Return 1 if @var{x} is an integer-valued real scalar, and return 0 otherwise.
+## Return true if @var{x} is an integer-valued real scalar, and
+## return false otherwise.
 ##
 ## is_int is a private function that localizes the test for integers.
 ## In Octave, integer constants such as 1 are not represented by ints
 ## internally: isinteger(1) returns 0.
 ##
 ## Examples:
-## @example
-## @group
-## is_int(6)         ==> true
-## is_int(6.2)       ==> false
-## is_int(ones(2))   ==> false
-## is_int(6 + 0i)    ==> true
-## is_int(0)         ==> true
-## @end group
-## @end example
+## @verbatim
+##     is_int(6)         ==> true
+##     is_int(6.2)       ==> false
+##     is_int(ones(2))   ==> false
+##     is_int(6 + 0i)    ==> true
+##     is_int(0)         ==> true
+## @end verbatim
 ##
 ## @end deftypefn
 
@@ -42,7 +41,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_int.m
-## Last-Modified: 24 May 2024
+## Last-Modified: 31 Aug 2024
 
 function y = is_int (x)
 

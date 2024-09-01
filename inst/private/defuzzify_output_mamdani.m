@@ -19,19 +19,17 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{output} =} defuzzify_output_mamdani (@var{fis}, @var{fuzzy_output})
 ##
-## @noindent
 ## Given the:
 ## @itemize @bullet
-## @item @var{fis.defuzzMethod}
+## @item @var{fis.defuzzMethod:}
 ## the defuzzification method for the given @var{fis}
-## @item @var{fuzzy_output}
+## @item @var{fuzzy_output:}
 ## a matrix of the aggregated output for each FIS output variable
 ## @end itemize
 ##
-## @noindent
 ## Return:
 ## @itemize @bullet
-## @item @var{output}
+## @item @var{output:}
 ## a vector of crisp output values
 ## @end itemize
 ##
@@ -41,23 +39,21 @@
 ## column of @var{fuzzy_output} gives the y-values of the fuzzy output for a
 ## single FIS output variable, aggregated over all rules:
 ##
-## @example
-## @group
-##             out_1  out_2  ...  out_M
-##          1 [                        ]
-##          2 [                        ]
-##        ... [                        ]
-## num_points [                        ]
-## @end group
-## @end example
+## @verbatim
+##                  out_1  out_2  ...  out_M
+##              1 [[                        ]
+##              2  [                        ]
+##             ... [                        ]
+##     num_points  [                        ]]
+## @end verbatim
 ##
 ## The crisp @var{output} values are computed from the corresponding fuzzy
 ## values using the FIS defuzzification method. The @var{output}
 ## vector has the form:
 ##
-## @example
-## output:  [output_1 output_2 ... output_M]
-## @end example
+## @verbatim
+##     output:  [output_1 output_2 ... output_M]
+## @end verbatim
 ##
 ## Because defuzzify_output_mamdani is called only by the private
 ## function evalfis_private, it does no error checking of the argument values.
@@ -67,7 +63,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      defuzzify_output_mamdani.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 26 Jul 2024
 
 function output = defuzzify_output_mamdani (fis, fuzzy_output)
 

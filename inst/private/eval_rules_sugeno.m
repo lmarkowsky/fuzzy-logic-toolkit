@@ -44,11 +44,11 @@
 ##
 ## @example
 ## @group
-##               Q cols            Q cols                  Q cols 
-##           ---------------   ---------------         ---------------
-##           out_1 ... out_1   out_2 ... out_2   ...   out_M ... out_M
-## location [                                                         ]
-##   height [                                                         ]
+##                Q cols            Q cols                  Q cols 
+##            ---------------   ---------------         ---------------
+##            out_1 ... out_1   out_2 ... out_2   ...   out_M ... out_M
+## location [[                                                         ]
+##   height  [                                                         ]]
 ## @end group
 ## @end example
 ##
@@ -64,7 +64,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      eval_rules_sugeno.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 10 Jun 2024
 
 function rule_output = eval_rules_sugeno (fis, firing_strength, ...
                                           user_input)

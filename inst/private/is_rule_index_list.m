@@ -23,17 +23,15 @@
 ## and return 0 otherwise.
 ##
 ## Examples:
-## @example
-## @group
-## is_rule_index_list(2, 5)        ==> 1
-## is_rule_index_list([1 2], 5)    ==> 1
-## is_rule_index_list([1, 2], 5)   ==> 1
-## is_rule_index_list([1; 2], 5)   ==> 1
-## is_rule_index_list(0, 0)        ==> 0
-## is_rule_index_list([4 5], 2)    ==> 0
-## is_rule_index_list([], 2)       ==> 0
-## @end group
-## @end example
+## @verbatim
+##     is_rule_index_list(2, 5)        ==> 1
+##     is_rule_index_list([1 2], 5)    ==> 1
+##     is_rule_index_list([1, 2], 5)   ==> 1
+##     is_rule_index_list([1; 2], 5)   ==> 1
+##     is_rule_index_list(0, 0)        ==> 0
+##     is_rule_index_list([4 5], 2)    ==> 0
+##     is_rule_index_list([], 2)       ==> 0
+## @end verbatim
 ##
 ## @end deftypefn
 
@@ -41,7 +39,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_rule_index_list.m
-## Last-Modified: 24 May 2024
+## Last-Modified: 31 Aug 2024
 
 function y = is_rule_index_list (x, max_index)
 

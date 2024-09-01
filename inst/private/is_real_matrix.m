@@ -23,16 +23,14 @@
 ## and return 0 otherwise.
 ##
 ## Examples:
-## @example
-## @group
-## is_real_matrix(6)            ==> 1
-## is_real_matrix([])           ==> 1
-## is_real_matrix([1 2; 3 4])   ==> 1
-## is_real_matrix([1 2 3])      ==> 1
-## is_real_matrix([i 2 3])      ==> 0
-## is_real_matrix("hello")      ==> 0
-## @end group
-## @end example
+## @verbatim
+##     is_real_matrix(6)            ==> 1
+##     is_real_matrix([])           ==> 1
+##     is_real_matrix([1 2; 3 4])   ==> 1
+##     is_real_matrix([1 2 3])      ==> 1
+##     is_real_matrix([i 2 3])      ==> 0
+##     is_real_matrix("hello")      ==> 0
+## @end verbatim
 ##
 ## @end deftypefn
 
@@ -40,7 +38,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_real_matrix.m
-## Last-Modified: 24 May 2024
+## Last-Modified: 31 Aug 2024
 
 function y = is_real_matrix (x)
 

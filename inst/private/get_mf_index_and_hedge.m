@@ -19,7 +19,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{[mf_index hedge not_flag]} =} get_mf_index_and_hedge (@var{mf_index_and_hedge})
 ##
-## Return the membership function index, hedge, and flag indicating "not"
+## Return the membership function index, hedge, and "not" flag
 ## indicated by the argument.
 ##
 ## The membership function index, @var{mf_index}, is the positive whole number
@@ -36,7 +36,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      get_mf_index_and_hedge.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 10 Jun 2024
 
 function [mf_index hedge not_flag] = ...
   get_mf_index_and_hedge (mf_index_and_hedge)

@@ -19,19 +19,17 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_pos_int (@var{x})
 ##
-## Return 1 if @var{x} is a positive integer-valued real scalar, and return 0
-## otherwise.
+## Return true if @var{x} is a positive integer-valued real scalar, and return
+## false otherwise.
 ##
 ## Examples:
-## @example
-## @group
-## is_pos_int(6)         ==> true
-## is_pos_int(6.2)       ==> false
-## is_pos_int(ones(2))   ==> false
-## is_pos_int(6 + 0i)    ==> true
-## is_pos_int(0)         ==> false
-## @end group
-## @end example
+## @verbatim
+##     is_pos_int(6)         ==> true
+##     is_pos_int(6.2)       ==> false
+##     is_pos_int(ones(2))   ==> false
+##     is_pos_int(6 + 0i)    ==> true
+##     is_pos_int(0)         ==> false
+## @end verbatim
 ##
 ## @end deftypefn
 
@@ -39,17 +37,10 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_pos_int.m
-## Last-Modified: 24 May 2024
+## Last-Modified: 31 Aug 2024
 
 function y = is_pos_int (x)
 
   y = is_int (x) && (x > 0);
 
 endfunction
-
-## Tests corresponding to examples in the comment at the top of this file.
-%!assert(is_pos_int(6), true)
-%!assert(is_pos_int(6.2), false)
-%!assert(is_pos_int(ones(2)), false)
-%!assert(is_pos_int(6 + 0i), true)
-%!assert(is_pos_int(0), false)

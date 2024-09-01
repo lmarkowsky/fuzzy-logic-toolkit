@@ -20,8 +20,8 @@
 ## @deftypefn {Function File} {@var{y} =} is_domain (@var{x})
 ## @deftypefnx {Function File} {@var{y} =} is_domain (@var{[x1 x2 ... xn]})
 ##
-## Return 1 if @var{x} is a real number of a vector of strictly increasing real
-## numbers, and return 0 otherwise.
+## Return true if @var{x} is a real number of a vector of strictly increasing real
+## numbers, and return false otherwise.
 ##
 ## is_domain is a private function that localizes the test for validity of FIS
 ## input variable domains.
@@ -32,7 +32,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_domain.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 31 Aug 2024
 
 function y = is_domain (x)
 
@@ -48,3 +48,9 @@ function y = is_domain (x)
   endif
 
 endfunction
+
+%!assert(is_domain(6), 1)
+%!assert(is_domain([1 2]), 1)
+%!assert(is_domain([2 1]), 0)
+%!assert(is_domain([]), 0)
+%!assert(is_domain('hello'), 0)

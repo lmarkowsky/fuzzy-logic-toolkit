@@ -19,19 +19,17 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{fuzzy_output} =} aggregate_output_sugeno (@var{fis}, @var{rule_output})
 ##
-## @noindent
 ## Given the:
 ## @itemize @bullet
-## @item @var{fis.aggMethod}
+## @item @var{fis.aggMethod:}
 ## the aggregation method for the given @var{fis}
-## @item @var{rule_output}
+## @item @var{rule_output:}
 ## a matrix of the singleton output of each (rule, FIS output) pair
 ## @end itemize
 ##
-## @noindent
 ## Return:
 ## @itemize @bullet
-## @item @var{fuzzy_output}
+## @item @var{fuzzy_output:}
 ## a vector of structures containing the aggregated output for each FIS output
 ## @end itemize
 ##
@@ -40,15 +38,13 @@
 ## gives the (location, height) pair of the singleton output for one
 ## (rule, FIS output) pair:
 ##
-## @example
-## @group
-##                Q cols            Q cols                  Q cols 
-##           ---------------   ---------------         ---------------
-##           out_1 ... out_1   out_2 ... out_2   ...   out_M ... out_M
-## location [                                                         ]
-##   height [                                                         ]
-## @end group
-## @end example
+## @verbatim
+##                     Q cols            Q cols                  Q cols 
+##                ---------------   ---------------         ---------------
+##                out_1 ... out_1   out_2 ... out_2   ...   out_M ... out_M
+##     location [[                                                         ]
+##       height  [                                                         ]]
+## @end verbatim
 ##
 ## The return value @var{fuzzy_output} is a vector of M structures,
 ## each of which has an index i and a matrix of singletons that form the
@@ -58,13 +54,11 @@
 ## for that FIS output variable. The first row gives the (distinct) locations,
 ## and the second gives the (non-zero) heights:
 ##
-## @example
-## @group
-##           singleton_1  singleton_2 ... singleton_L
-## location [                                        ]
-##   height [                                        ]
-## @end group
-## @end example
+## @verbatim
+##                singleton_1  singleton_2 ... singleton_L
+##     location [[                                        ]
+##       height  [                                        ]]
+## @end verbatim
 ##
 ## Because aggregate_output_sugeno is called only by the private
 ## function evalfis_private, it does no error checking of the argument values.
@@ -74,7 +68,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      aggregate_output_sugeno.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 26 Jul 2024
 
 ##----------------------------------------------------------------------
 

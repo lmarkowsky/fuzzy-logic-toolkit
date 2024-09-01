@@ -19,16 +19,15 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_row_vector (@var{x})
 ##
-## Return 1 if @var{x} is a non-empty row vector, and return 0 otherwise.
+## Return true if @var{x} is a non-empty row vector, and return
+## false otherwise.
 ##
 ## Examples:
-## @example
-## @group
-## is_row_vector([])         ==> false
-## is_row_vector([1 2 3])    ==> true
-## is_row_vector([1; 2; 3])  ==> false
-## @end group
-## @end example
+## @verbatim
+##     is_row_vector([])         ==> false
+##     is_row_vector([1 2 3])    ==> true
+##     is_row_vector([1; 2; 3])  ==> false
+## @end verbatim
 ##
 ## @end deftypefn
 
@@ -36,7 +35,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_row_vector.m
-## Last-Modified: 24 May 2024
+## Last-Modified: 31 Aug 2024
 
 function y = is_row_vector (x)
 

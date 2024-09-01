@@ -19,44 +19,39 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{rule_output} =} eval_rules_mamdani (@var{fis}, @var{firing_strength}, @var{num_points})
 ##
-## @noindent
 ## Return the fuzzy output for each (rule, FIS output) pair
 ## for a Mamdani-type FIS (an FIS that does not have constant or linear
 ## output membership functions).
 ##
 ## The firing strength of each rule is given by a row vector of length Q, where
 ## Q is the number of rules in the FIS:
-## @example
-## @group
-##  rule_1             rule_2             ... rule_Q
-## [firing_strength(1) firing_strength(2) ... firing_strength(Q)]
-## @end group
-## @end example
+##
+## @verbatim
+##      rule_1             rule_2             ... rule_Q
+##     [firing_strength(1) firing_strength(2) ... firing_strength(Q)]
+## @end verbatim
 ##
 ## The implication method and fuzzy consequent for each rule are given by:
-## @example
-## @group
-## fis.impMethod
-## fis.rule(i).consequent     for i = 1..Q
-## @end group
-## @end example
+##
+## @verbatim
+##     fis.impMethod
+##     fis.rule(i).consequent     for i = 1..Q
+## @end verbatim
 ##
 ## The return value, @var{rule_output}, is a @var{num_points} x (Q * M)
 ## matrix, where Q is the number of rules and M is the number of FIS output
 ## variables. Each column of this matrix gives the y-values of the fuzzy
 ## output for a single (rule, FIS output) pair.
 ##
-## @example
-## @group
-##                  Q cols            Q cols              Q cols 
-##             ---------------   ---------------     ---------------
-##             out_1 ... out_1   out_2 ... out_2 ... out_M ... out_M
-##          1 [                                                     ]
-##          2 [                                                     ]
-##        ... [                                                     ]
-## num_points [                                                     ]
-## @end group
-## @end example
+## @verbatim
+##                     Q cols            Q cols              Q cols 
+##                ---------------   ---------------     ---------------
+##                out_1 ... out_1   out_2 ... out_2 ... out_M ... out_M
+##            1 [[                                                     ]
+##            2  [                                                     ]
+##           ... [                                                     ]
+##   num_points  [                                                     ]]
+## @end verbatim
 ##
 ## Because eval_rules_mamdani is called only by the private function
 ## evalfis_private, it does no error checking of the argument values.
@@ -67,7 +62,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      eval_rules_mamdani.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 13 Jun 2024
 
 function rule_output = eval_rules_mamdani (fis, firing_strength, ...
                                            num_points)

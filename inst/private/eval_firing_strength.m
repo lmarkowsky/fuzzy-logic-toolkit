@@ -25,17 +25,14 @@
 ## The second argument (@var{rule_input}) gives the fuzzified input values to
 ## the FIS rules as a Q x N matrix:
 ##
-## @example
-## @group
-##          in_1   in_2   ...  in_N
-## rule_1  [mu_11  mu_12  ...  mu_1N]
-## rule_2  [mu_21  mu_22  ...  mu_2N]
-##         [              ...       ]
-## rule_Q  [mu_Q1  mu_Q2  ...  mu_QN]
-## @end group
-## @end example
+## @verbatim
+##               in_1   in_2   ...  in_N
+##     rule_1  [[mu_11  mu_12  ...  mu_1N]
+##     rule_2   [mu_21  mu_22  ...  mu_2N]
+##              [              ...       ]
+##     rule_Q   [mu_Q1  mu_Q2  ...  mu_QN]]
+## @end verbatim
 ##
-## @noindent
 ## where Q is the number of rules and N is the number of FIS input variables.
 ##
 ## For i = 1 .. Q, the fuzzy antecedent, connection, and weight for rule i
@@ -60,7 +57,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy inference system fis
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      eval_firing_strength.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 13 Jun 2024
 
 function firing_strength = eval_firing_strength (fis, rule_input)
 

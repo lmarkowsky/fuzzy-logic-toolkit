@@ -19,8 +19,8 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_format (@var{x})
 ##
-## Return 1 if @var{x} is one of the strings 'verbose', 'symbolic', and
-## 'indexed', and return 0 otherwise. The comparison is case-insensitive.
+## Return true if @var{x} is one of the strings 'verbose', 'symbolic', and
+## 'indexed', and return false otherwise. The comparison is case-insensitive.
 ##
 ## is_format is a private function that localizes the test for valid fis rule
 ## input/output formats.
@@ -31,7 +31,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_format.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 10 Jun 2024
 
 function y = is_format (x)
 

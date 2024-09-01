@@ -19,27 +19,23 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_fis (@var{x})
 ##
-## Return 1 if the argument @var{x} is a valid FIS (Fuzzy Inference System)
-## structure, and return 0 otherwise.
+## Return true if the argument @var{x} is a valid FIS (Fuzzy Inference System)
+## structure, and return false otherwise.
 ##
 ## is_fis is a private function that localizes the test for valid FIS structs.
 ## For efficiency, is_fis only determines if the argument @var{x} is a structure
 ## with the expected fields, and that these fields have the expected types.
 ##
 ## Examples:
-## @example
-## @group
-## fis = newfis('FIS');
-## is_fis(fis)            ==> 1
-## @end group
-## @end example
+## @verbatim
+##     fis = newfis('FIS');
+##     is_fis(fis)            ==> true
+## @end verbatim
 ##
-## @example
-## @group
-## x = pi;
-## is_fis(x)              ==> 0
-## @end group
-## @end example
+## @verbatim
+##     x = pi;
+##     is_fis(x)              ==> false
+## @end verbatim
 ##
 ## @end deftypefn
 
@@ -47,7 +43,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_fis.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 31 Aug 2024
 
 function y = is_fis (x)
 

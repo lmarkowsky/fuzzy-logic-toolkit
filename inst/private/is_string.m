@@ -19,7 +19,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_string (@var{x})
 ##
-## Return 1 if @var{x} is a character vector, and return 0 otherwise.
+## Return true if @var{x} is a character vector, and return false otherwise.
 ##
 ## is_string is a private function that localizes the test for valid Octave
 ## strings, which may need to be changed in the future. Octave 3.2.4 implements
@@ -33,7 +33,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_string.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 10 Jun 2024
 
 function y = is_string (x)
 

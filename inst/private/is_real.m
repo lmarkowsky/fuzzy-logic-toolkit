@@ -19,23 +19,21 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_real (@var{x})
 ##
-## Return 1 if @var{x} is an real scalar, and return 0 otherwise.
+## Return true if @var{x} is an real scalar, and return false otherwise.
 ##
 ## is_real is a private function that localizes the test for real scalars.
 ##
 ## Examples:
-## @example
-## @group
-## is_real(6)         ==> true
-## is_real(6.2)       ==> true
-## is_real(ones(2))   ==> false
-## is_real(6 + 0i)    ==> true
-## is_real(6 + i)     ==> false
-## is_real([0])       ==> true
-## is_real([0 0])     ==> false
-## is_real('h')       ==> false
-## @end group
-## @end example
+## @verbatim
+##     is_real(6)         ==> true
+##     is_real(6.2)       ==> true
+##     is_real(ones(2))   ==> false
+##     is_real(6 + 0i)    ==> true
+##     is_real(6 + i)     ==> false
+##     is_real([0])       ==> true
+##     is_real([0 0])     ==> false
+##     is_real('h')       ==> false
+## @end verbatim
 ##
 ## @end deftypefn
 
@@ -43,7 +41,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_real.m
-## Last-Modified: 24 May 2024
+## Last-Modified: 31 Aug 2024
 
 function y = is_real (x)
 

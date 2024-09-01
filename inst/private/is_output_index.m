@@ -19,8 +19,9 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_output_index (@var{x}, @var{fis})
 ##
-## Return 1 if @var{x} is a valid output index for the given FIS structure, and
-## return 0 otherwise. The FIS structure @var{fis} is assumed to be valid.
+## Return true if @var{x} is a valid output index for the given FIS structure,
+## and return false otherwise. The FIS structure @var{fis} is assumed to be
+## valid.
 ##
 ## @end deftypefn
 
@@ -28,7 +29,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_output_index.m
-## Last-Modified: 20 Aug 2012
+## Last-Modified: 10 Jun 2024
 
 function y = is_output_index (x, fis)
 

@@ -19,8 +19,8 @@
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {@var{y} =} is_builtin_language (@var{x})
 ##
-## Return 1 if @var{x} is one of the strings representing the
-## built-in languages, and return 0 otherwise. The comparison is
+## Return true if @var{x} is one of the strings representing the
+## built-in languages, and return false otherwise. The comparison is
 ## case-insensitive.
 ##
 ## is_builtin_language is a private function that localizes the test 
@@ -32,7 +32,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy private parameter-test
 ## Directory:     fuzzy-logic-toolkit/inst/private/
 ## Filename:      is_builtin_language.m
-## Last-Modified: 3 Sep 2012
+## Last-Modified: 31 Aug 2024
 
 function y = is_builtin_language (x)
 
@@ -45,3 +45,8 @@ function y = is_builtin_language (x)
                               'german', 'deutsch'});
 
 endfunction
+
+%!assert(is_builtin_language(6), false)
+%!assert(is_builtin_language('english'), true)
+%!assert(is_builtin_language('francais'), true)
+%!assert(is_builtin_language(''), false)
