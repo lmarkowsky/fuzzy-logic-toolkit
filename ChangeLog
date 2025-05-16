@@ -1,3 +1,24 @@
+2025-05-15 L. Markowsky <lmarkowsky@gmail.com>
+
+  * Version 0.6.2 released.
+  * ChangeLog: Updated file.
+  * DESCRIPTION: Updated file.
+  * NEWS: Updated file.
+  * inst/defuzz.m: Edited in response to Bug #56008 (defuzz provides inaccurate
+      results). The defuzz results were not inaccurate, but the bug report did
+      suggest an improvement. The defuzz option "centroid" was redefined using a
+      more efficient method (weighted average, as suggested by the poster of the
+      bug report), and the previous "centroid" implementation was renamed
+      "centroid_integral" to continue to provide the integral-based option.
+      Several new tests were added to the existing tests in defuzz.m, and the
+      documentation was updated.
+  * inst/investment_portfolio_demo.m: Changed the DefuzzMethod from 'centroid'
+      to 'centroid_integral'.
+  * inst/*.m: Updated copyright notices.
+  * inst/*.fis: Updated copyright notices.
+  * inst/private/*.m: Updated copyright notices.
+  * docs/*.html: Updated html documentation.
+
 2024-08-31 L. Markowsky <lmarkowsky@gmail.com>
 
   * Version 0.6.1 released.

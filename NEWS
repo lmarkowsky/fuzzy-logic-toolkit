@@ -1,3 +1,15 @@
+Summary of important user-visible changes for fuzzy-logic-toolkit 0.6.2:
+------------------------------------------------------------------------
+
+ ** Redefined the defuzz option "centroid" using a more efficient method
+    (weighted average), and renamed the previous "centroid" implementation
+    "centroid_integral" (because it is an integral-based calculation) in
+    order to continue to provide the integral-based option. Most previously
+    written code using the old "centroid" definition will continue to work
+    without alteration, but in case of error, replace DefuzzMethod='centroid'
+    with DefuzzMethod='centroid_integral' in the .fis file. For an example,
+    see investment_portfolio.fis and investment_portfolio_demo.m.
+
 Summary of important user-visible changes for fuzzy-logic-toolkit 0.6.1:
 ------------------------------------------------------------------------
 
