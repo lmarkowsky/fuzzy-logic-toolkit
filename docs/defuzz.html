@@ -89,7 +89,16 @@
 </p>
  <table>
 <thead><tr><th width="20%">Method</th><th width="75%">Value Returned</th></tr></thead>
-<tr><td width="20%">centroid</td><td width="75%">Return the x-value of the centroid.</td></tr>
+<tr><td width="20%">centroid</td><td width="75%">Return the x-value of the centroid of the continuous area
+       described by the x-value, y-value pairs (using a weighted
+       average calculation). (Thanks to Luis for this improvement to
+       the toolkit).</td></tr>
+<tr><td width="20%">centroid_integral</td><td width="75%">Return the x-value of the centroid of the continuous area
+       described by the x-value, y-value pairs (using an integral
+       calculation). In some cases, this option will be more accurate
+       than the &quot;centroid&quot; option, but it will always be less
+       efficient. Nevertheless, either &quot;centroid&quot; or &quot;centroid_integral&quot;
+       should work equally well in most cases.</td></tr>
 <tr><td width="20%">bisector</td><td width="75%">Return the x-value of the vertical bisector of the area.</td></tr>
 <tr><td width="20%">mom</td><td width="75%">Return the mean x-value of the points with maximum y-values.</td></tr>
 <tr><td width="20%">som</td><td width="75%">Return the smallest (absolute) x-value of the points with
@@ -97,7 +106,7 @@
 <tr><td width="20%">lom</td><td width="75%">Return the largest (absolute) x-value of the points with
        maximum y-values.</td></tr>
 <tr><td width="20%">wtaver</td><td width="75%">Return the weighted average of the x-values, with the y-values
-       used as weights.</td></tr>
+       used as weights. (Identical to the &quot;centroid&quot; option above.)</td></tr>
 <tr><td width="20%">wtsum</td><td width="75%">Return the weighted sum of the x-values, with the y-values
        used as weights.</td></tr>
 </table>
