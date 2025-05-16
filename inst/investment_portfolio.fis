@@ -1,4 +1,4 @@
-## Copyright (C) 2011-2024 L. Markowsky <lmarkov@users.sourceforge.net>
+## Copyright (C) 2011-2025 L. Markowsky <lmarkowsky@gmail.com>
 ##
 ## This file is part of the fuzzy-logic-toolkit.
 ##
@@ -20,7 +20,7 @@
 ## Keywords:      fuzzy-logic-toolkit fis
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      investment_portfolio.fis
-## Last-Modified: 28 Aug 2012
+## Last-Modified: 15 May 2025
 
 [System]
 Name='Investment-Portfolio'
@@ -33,7 +33,7 @@ AndMethod='einstein_product'
 OrMethod='einstein_sum'
 ImpMethod='einstein_product'
 AggMethod='einstein_sum'
-DefuzzMethod='centroid'
+DefuzzMethod='centroid_integral'
 
 [Input1]
 Name='Age'

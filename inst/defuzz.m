@@ -1,4 +1,4 @@
-## Copyright (C) 2011-2024 L. Markowsky <lmarkov@users.sourceforge.net>
+## Copyright (C) 2011-2025 L. Markowsky <lmarkowsky@gmail.com>
 ##
 ## This file is part of the fuzzy-logic-toolkit.
 ##
@@ -34,7 +34,17 @@
 ## @multitable @columnfractions .20 .75
 ## @headitem Method @tab Value Returned
 ## @item centroid
-## @tab  Return the x-value of the centroid.
+## @tab  Return the x-value of the centroid of the continuous area
+##       described by the x-value, y-value pairs (using a weighted
+##       average calculation). (Thanks to Luis for this improvement to
+##       the toolkit).
+## @item centroid_integral
+## @tab  Return the x-value of the centroid of the continuous area
+##       described by the x-value, y-value pairs (using an integral
+##       calculation). In some cases, this option will be more accurate
+##       than the "centroid" option, but it will always be less
+##       efficient. Nevertheless, either "centroid" or "centroid_integral"
+##       should work equally well in most cases.
 ## @item bisector
 ## @tab  Return the x-value of the vertical bisector of the area.
 ## @item mom
@@ -47,7 +57,7 @@
 ##       maximum y-values.
 ## @item wtaver
 ## @tab  Return the weighted average of the x-values, with the y-values
-##       used as weights.
+##       used as weights. (Identical to the "centroid" option above.)
 ## @item wtsum
 ## @tab  Return the weighted sum of the x-values, with the y-values
 ##       used as weights.
@@ -59,7 +69,7 @@
 ## Keywords:      fuzzy-logic-toolkit fuzzy defuzzification
 ## Directory:     fuzzy-logic-toolkit/inst/
 ## Filename:      defuzz.m
-## Last-Modified: 10 Jun 2024
+## Last-Modified: 15 May 2025
 
 ##----------------------------------------------------------------------
 
@@ -91,14 +101,48 @@ endfunction
 ##
 ## For a given domain (x or [x1 x2 ... xn]) and corresponding y-values
 ## (y or [y1 y2 ... yn]), return the x-value of the centroid of the
-## region described by the points (xi, yi).
+## continuous area described by the points (xi, yi).
 ##
 ## Both arguments are assumed to be reals or non-empty vectors of reals.
 ## In addition, x is assumed to be strictly increasing, and x and y are
 ## assumed to be of equal length.
+##
+## This option returns the x-value of the centroid computed as the
+## weighted average of the values. For a (possibly) more accurate but
+## less efficient calculation, see the option "centroid_integral".
+##
+## Thanks to Luis for suggesting this improvement to the fuzzy logic
+## toolkit.
 ##----------------------------------------------------------------------
 
 function crisp_x = centroid (x, y)
+
+  crisp_x = wtaver (x, y);
+
+endfunction
+
+##----------------------------------------------------------------------
+## Usage: crisp_x = centroid_integral (x, y)
+##        crisp_x = centroid_integral ([x1 x2 ... xn], [y1 y2 ... yn])
+##
+## For a given domain (x or [x1 x2 ... xn]) and corresponding y-values
+## (y or [y1 y2 ... yn]), return the x-value of the centroid of the
+## continuous area described by the points (xi, yi).
+##
+## Both arguments are assumed to be reals or non-empty vectors of reals.
+## In addition, x is assumed to be strictly increasing, and x and y are
+## assumed to be of equal length.
+##
+## This function uses an integral calculation, which in some cases
+## will be more accurate (but always less efficient) than the "centroid"
+## option, which computes a weighted average.
+##
+## Nevertheless, either "centroid" or "centroid_integral" should work
+## equally well in most cases because fuzzy inference systems are rarely
+## sensitive to small changes in value.
+##----------------------------------------------------------------------
+
+function crisp_x = centroid_integral (x, y)
 
   crisp_x = trapz (x, x.*y) / trapz (x, y);
 
@@ -277,7 +321,10 @@ function retval = wtsum (values, weights)
 endfunction
 
 ## Test each of the defuzzification methods
-%!assert(defuzz([1 2 3 4], [1 2 3 4], 'centroid'), 2.8667, 1e-4)
+%!assert(defuzz([1 2 3 4], [1 1 1 1], 'centroid'), 2.5)
+%!assert(defuzz([1 2 3 4], [1 2 3 4], 'centroid'), 3)
+%!assert(defuzz([1 2 3 4], [0 0 1 1], 'centroid'), 3.5)
+%!assert(defuzz([1 2 3 4], [1 2 3 4], 'centroid_integral'), 2.8667, 1e-4)
 %!assert(defuzz([1 2 3 4], [1 2 3 4], 'bisector'), 3)
 %!assert(defuzz([1 2 3 4], [1 2 3 4], 'mom'), 4)
 %!assert(defuzz([1 2 3 4], [1 2 3 4], 'som'), 4)

@@ -1,4 +1,4 @@
-## Copyright (C) 2011-2024 L. Markowsky <lmarkov@users.sourceforge.net>
+## Copyright (C) 2011-2025 L. Markowsky <lmarkowsky@gmail.com>
 ##
 ## This file is part of the fuzzy-logic-toolkit.
 ##
