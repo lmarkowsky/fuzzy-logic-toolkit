@@ -32,6 +32,8 @@ Membership Functions
  gauss2mf
  gaussmf
  gbellmf
+ linsmf
+ linzmf
  pimf
  psigmf
  sigmf

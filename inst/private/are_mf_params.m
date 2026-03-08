@@ -42,7 +42,9 @@ function y = are_mf_params (type, params)
     case 'gauss2mf' y = four_reals (params);
     case 'gaussmf'  y = two_reals (params);
     case 'gbellmf'  y = gbellmf_params (params);
+    case 'linsmf'   y = linsmf_params (params);
     case 'linear'   y = real_vector (params);
+    case 'linzmf'   y = linzmf_params (params);
     case 'pimf'     y = pimf_params (params);
     case 'psigmf'   y = four_reals (params);
     case 'sigmf'    y = two_reals (params);
@@ -118,6 +120,34 @@ endfunction
 function y = gbellmf_params (params)
 
   y = three_reals (params) && (params(1) != 0) && is_int (params(2));
+
+endfunction
+
+##----------------------------------------------------------------------
+## Usage: y = linsmf_params (params)
+##        y = linsmf_params ([a b])
+##
+## Return 1 if params is a vector of 2 real numbers, [a b], with a <= b,
+## and return 0 otherwise.
+##----------------------------------------------------------------------
+
+function y = linsmf_params (params)
+
+  y = two_reals (params) && (params(1) <= params(2));
+
+endfunction
+
+##----------------------------------------------------------------------
+## Usage: y = linzmf_params (params)
+##        y = linzmf_params ([a b])
+##
+## Return 1 if params is a vector of 2 real numbers, [a b], with a <= b,
+## and return 0 otherwise.
+##----------------------------------------------------------------------
+
+function y = linzmf_params (params)
+
+  y = two_reals (params) && (params(1) <= params(2));
 
 endfunction
 
